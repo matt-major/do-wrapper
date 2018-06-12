@@ -1,6 +1,6 @@
 'use strict';
 
-const RequestHelper = require('../dist/request-helper'),
+const RequestHelper = require('../dist/request-helper').default,
       should = require('chai').should();
 
 describe('do-wrapper', function () {

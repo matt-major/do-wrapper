@@ -31,18 +31,19 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.74.0"
+    "request": "2.87.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
+    "chai": "4.1.2",
     "gulp": "3.9.1",
-    "gulp-babel": "5.2.1",
-    "gulp-uglify": "1.5.1",
-    "husky": "0.10.2",
-    "jsdoc": "3.4.0",
-    "jsdox": "^0.4.9",
-    "jshint": "2.8.0",
-    "mocha": "^2.4.5",
-    "should": "^8.2.2"
+    "gulp-babel": "7.0.1",
+    "gulp-uglify": "3.0.0",
+    "husky": "0.14.3",
+    "jsdoc": "3.5.5",
+    "jshint": "2.9.5",
+    "mocha": "2.4.5",
+    "should": "13.2.1"
   }
 }

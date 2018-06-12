@@ -8,7 +8,9 @@ gulp.task('default', ['compile']);
 
 gulp.task('compile', function () {
   return gulp.src(SOURCE_DIRECTORY)
-          .pipe(babel({experimental: true}))
-          .pipe(uglify())
-          .pipe(gulp.dest(DEST_DIRECTORY));
+    .pipe(babel({
+        presets: ['env']
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(DEST_DIRECTORY));
 });

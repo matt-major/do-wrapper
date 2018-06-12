@@ -1,6 +1,6 @@
 'use strict';
 
-const DigitalOcean = require('../dist/do-wrapper'),
+const DigitalOcean = require('../dist/do-wrapper').default,
       should = require('chai').should();
 
 describe('do-wrapper', function () {
