@@ -40,7 +40,7 @@ $ npm install --save do-wrapper
 Once installed you need to instantiate a new copy of ```do-wrapper``` in your application, like so:
 
 ```js
-var DigitalOcean = require('do-wrapper'),
+var DigitalOcean = require('do-wrapper').default,
     api = new DigitalOcean('[api_key]', [page_size]);
 ```
 *Note: replace [api_key] and [per_page_size] with your API key and desired page size.*
@@ -81,7 +81,7 @@ Please raise an issue on GitHub with as much information as possible and the ste
 ### License
 The MIT License (MIT)
 
-Copyright (c) 2016 Matt Major
+Copyright (c) 2018 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
