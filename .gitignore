@@ -1,0 +1,8 @@
+*.log
+node_modules
+.idea/
+*.iml
+doc/
+out/
+.DS_Store
+output/
