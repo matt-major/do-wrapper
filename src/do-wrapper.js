@@ -6,11 +6,11 @@ export default class DigitalOcean {
   /**
    * Digital Ocean API Wrapper
    * @param {string} token - Your Private API Token
-   * @param {number} size - Page Size of results to return
+   * @param {number} perPage - Page Size of results to return
    * @constructor
    */
-  constructor(token, size) {
-    this.per_page = size;
+  constructor(token, perPage) {
+    this.perPage = perPage;
     this.requestHelper = new RequestHelper(token);
   }
 
@@ -21,7 +21,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   account(callback) {
-    let options = {actionPath: 'account'};
+    const options = {actionPath: 'account'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -32,12 +32,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetActions(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'actions',
       key: 'actions',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -54,9 +54,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetAction(actionId, callback) {
-    let options = {
-      actionPath: 'actions/' + encodeURIComponent(actionId)
-    };
+    const options = {actionPath: `actions/${encodeURIComponent(actionId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -69,12 +67,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeys(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'account/keys',
       key: 'ssh_keys',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -91,7 +89,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountAddKey(configuration, callback) {
-    let options = {
+    const options = {
       actionPath: 'account/keys',
       method: 'POST',
       body: configuration
@@ -108,9 +106,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeyById(keyId, callback) {
-    let options = {
-      actionPath: 'account/keys/' + encodeURIComponent(keyId)
-    };
+    const options = {actionPath: `account/keys/${encodeURIComponent(keyId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -123,9 +119,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
-    let options = {
-      actionPath: 'account/keys/' + encodeURIComponent(fingerprint)
-    };
+    const options = {actionPath: `account/keys/${encodeURIComponent(fingerprint)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -139,8 +133,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountRenameKey(keyIdentity, keyName, callback) {
-    let options = {
-      actionPath: 'account/keys/' + encodeURIComponent(keyIdentity),
+    const options = {
+      actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`,
       method: 'PUT',
       body: {
         name: keyName
@@ -158,10 +152,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   accountDeleteKey(keyIdentity, callback) {
-    let options = {
-      actionPath: 'account/keys/' + encodeURIComponent(keyIdentity),
-      method: 'DELETE'
-    };
+    const options = {actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`, method: 'DELETE'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -174,12 +165,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'droplets',
       key: 'droplets',
       qs: {
         tag_name: query.tag_name || undefined,
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -197,12 +188,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetKernels(dropletId, query, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/kernels',
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}/kernels`,
       key: 'kernels',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -220,12 +211,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetSnapshots(dropletId, query, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/snapshots',
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}/snapshots`,
       key: 'snapshots',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -243,12 +234,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetBackups(dropletId, query, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/backups',
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}/backups`,
       key: 'backups',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -266,12 +257,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetActions(dropletId, query, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions',
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}/actions`,
       key: 'actions',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -288,7 +279,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsCreate(configuration, callback) {
-    let options = {
+    const options = {
       actionPath: 'droplets',
       method: 'POST',
       body: configuration
@@ -305,9 +296,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetById(dropletId, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId)
-    };
+    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -320,8 +309,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsDelete(dropletId, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId),
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}`,
       method: 'DELETE'
     };
     return this.requestHelper.request(options, callback);
@@ -336,9 +325,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetNeighbors(dropletId, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/neighbors'
-    };
+    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/neighbors`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -350,9 +337,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetNeighborsReport(callback) {
-    let options = {
-      actionPath: 'reports/droplet_neighbors'
-    };
+    const options = {actionPath: 'reports/droplet_neighbors'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -364,9 +349,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetUpgrades(callback) {
-    let options = {
-      actionPath: 'droplet_upgrades'
-    };
+    const options = {actionPath: 'droplet_upgrades'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -380,8 +363,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsRequestAction(dropletId, action, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions',
+    const options = {
+      actionPath: `droplets/${encodeURIComponent(dropletId)}/actions`,
       method: 'POST',
       body: action
     };
@@ -398,9 +381,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   dropletsGetAction(dropletId, actionId, callback) {
-    let options = {
-      actionPath: 'droplets/' + encodeURIComponent(dropletId) + '/actions/' + encodeURIComponent(actionId)
-    };
+    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -413,12 +394,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'domains',
       key: 'domains',
       qs: {
         tag_name: (query) ? ((query) ? (query.tag_name || '') : '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       }
     };
@@ -435,7 +416,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsCreate(name, ip, callback) {
-    let options = {
+    const options = {
       actionPath: 'domains',
       method: 'POST',
       body: {name: name, ip_address: ip}
@@ -452,8 +433,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsGet(name, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name)
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}`
     };
     return this.requestHelper.request(options, callback);
   }
@@ -467,8 +448,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainsDelete(name, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name),
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}`,
       method: 'DELETE'
     };
     return this.requestHelper.request(options, callback);
@@ -484,12 +465,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsGetAll(name, query, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name) + '/records',
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}/records`,
       key: 'domain_records',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -507,8 +488,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsCreate(name, configuration, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name) + '/records',
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}/records`,
       method: 'POST',
       body: configuration
     };
@@ -525,9 +506,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsGet(name, domainRecordId, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId)
-    };
+    const options = {actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -542,8 +521,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsUpdate(name, domainRecordId, configuration, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId),
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`,
       method: 'PUT',
       body: configuration
     };
@@ -560,8 +539,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   domainRecordsDelete(name, domainRecordId, callback) {
-    let options = {
-      actionPath: 'domains/' + encodeURIComponent(name) + '/records/' + encodeURIComponent(domainRecordId),
+    const options = {
+      actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`,
       method: 'DELETE'
     };
     return this.requestHelper.request(options, callback);
@@ -576,12 +555,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   regionsGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'regions',
       key: 'regions',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -598,12 +577,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   sizesGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'sizes',
       key: 'sizes',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -621,12 +600,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'images',
       key: 'images',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1,
         private: query.private || false,
         type: query.type || null
@@ -645,9 +624,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetById(imageId, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId)
-    };
+    const options = {actionPath: `images/${encodeURIComponent(imageId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -660,9 +637,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetBySlug(slug, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(slug)
-    };
+    const options = {actionPath: `images/${encodeURIComponent(slug)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -676,12 +651,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetActions(imageId, query, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions',
+    const options = {
+      actionPath: `images/${encodeURIComponent(imageId)}/actions`,
       key: 'actions',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -699,8 +674,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesUpdate(imageId, name, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId),
+    const options = {
+      actionPath: `images/${encodeURIComponent(imageId)}`,
       body: {name: name},
       method: 'PUT'
     };
@@ -716,8 +691,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesDelete(imageId, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId),
+    const options = {
+      actionPath: `images/${encodeURIComponent(imageId)}`,
       method: 'DELETE'
     };
     return this.requestHelper.request(options, callback);
@@ -733,8 +708,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesRequestAction(imageId, action, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions',
+    const options = {
+      actionPath: `images/${encodeURIComponent(imageId)}/actions`,
       method: 'POST',
       body: action
     };
@@ -751,9 +726,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   imagesGetAction(imageId, actionId, callback) {
-    let options = {
-      actionPath: 'images/' + encodeURIComponent(imageId) + '/actions/' + encodeURIComponent(actionId)
-    };
+    const options = {actionPath: `images/${encodeURIComponent(imageId)}/actions/${encodeURIComponent(actionId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -766,12 +739,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'floating_ips',
       key: 'floating_ips',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -788,7 +761,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsAssignDroplet(dropletId, callback) {
-    let options = {
+    const options = {
       actionPath: 'floating_ips',
       method: 'POST',
       body: {
@@ -807,7 +780,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsAssignRegion(region, callback) {
-    let options = {
+    const options = {
       actionPath: 'floating_ips',
       method: 'POST',
       body: {
@@ -826,9 +799,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGet(ipAddress, callback) {
-    let options = {
-      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress)
-    };
+    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -841,10 +812,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsDelete(ipAddress, callback) {
-    let options = {
-      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress),
-      method: 'DELETE'
-    };
+    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`, method: 'DELETE'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -858,8 +826,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsRequestAction(ipAddress, action, callback) {
-    let options = {
-      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions',
+    const options = {
+      actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions`,
       method: 'POST',
       body: action
     };
@@ -876,12 +844,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetActions(ipAddress, query, callback) {
-    let options = {
-      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions',
+    const options = {
+      actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions`,
       key: 'actions',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -899,9 +867,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
-    let options = {
-      actionPath: 'floating_ips/' + encodeURIComponent(ipAddress) + '/actions/' + encodeURIComponent(actionId)
-    };
+    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions/${encodeURIComponent(actionId)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -914,7 +880,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsCreate(name, callback) {
-    let options = {
+    const options = {
       actionPath: 'tags',
       method: 'POST',
       body: {name: name}
@@ -931,10 +897,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDelete(name, callback) {
-    let options = {
-      actionPath: 'tags/' + encodeURIComponent(name),
-      method: 'DELETE'
-    };
+    const options = {actionPath: `tags/${encodeURIComponent(name)}`, method: 'DELETE'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -947,9 +910,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGet(name, callback) {
-    let options = {
-      actionPath: 'tags/' + encodeURIComponent(name)
-    };
+    const options = {actionPath: `tags/${encodeURIComponent(name)}`};
     return this.requestHelper.request(options, callback);
   }
 
@@ -962,12 +923,12 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGetAll(query, callback) {
-    let options = {
+    const options = {
       actionPath: 'tags',
       key: 'tags',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
       },
       includeAll: (query) ? (query.includeAll || false) : false
@@ -985,8 +946,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsAddResources(name, configuration, callback) {
-    let options = {
-      actionPath: 'tags/' + encodeURIComponent(name) + '/resources',
+    const options = {
+      actionPath: `tags/${encodeURIComponent(name)}/resources`,
       method: 'POST',
       body: configuration
     };
@@ -1003,8 +964,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDeleteResource(name, configuration, callback) {
-    let options = {
-      actionPath: 'tags/' + encodeURIComponent(name) + '/resources',
+    const options = {
+      actionPath: `tags/${encodeURIComponent(name)}/resources`,
       method: 'DELETE',
       body: configuration
     };
@@ -1022,11 +983,11 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsGetDroplets(name, query, callback) {
-    let options = {
+    const options = {
       actionPath: 'droplets',
       key: 'droplets',
       qs: {
-        per_page: (query) ? (query.per_page || this.per_page) : this.per_page,
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1,
         tag_name: name
       },
@@ -1045,7 +1006,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsDeleteDroplets(name, callback) {
-    let options = {
+    const options = {
       actionPath: 'droplets',
       method: 'DELETE',
       qs: {
@@ -1065,7 +1026,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   tagsRequestAction(name, action, callback) {
-    let options = {
+    const options = {
       actionPath: 'droplets/actions',
       method: 'POST',
       qs: {
@@ -1085,7 +1046,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumes(region, callback) {
-    let options = {
+    const options = {
       actionPath: 'volumes',
       method: 'GET',
       qs: {
@@ -1104,7 +1065,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesCreate(volume, callback) {
-    let options = {
+    const options = {
       actionPath: 'volumes',
       method: 'POST',
       body: volume
@@ -1121,10 +1082,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesGetById(driveId, callback) {
-    let options = {
-      actionPath: `volumes/${driveId}`,
-      method: 'GET'
-    };
+    const options = {actionPath: `volumes/${driveId}`, method: 'GET'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -1138,7 +1096,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesGetByName(name, region, callback) {
-    let options = {
+    const options = {
       actionPath: 'volumes',
       method: 'GET',
       qs: {
@@ -1158,10 +1116,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesDeleteById(driveId, callback) {
-    let options = {
-      actionPath: `volumes/${driveId}`,
-      method: 'DELETE'
-    };
+    const options = {actionPath: `volumes/${driveId}`, method: 'DELETE'};
     return this.requestHelper.request(options, callback);
   }
 
@@ -1175,7 +1130,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesDeleteByName(name, region, callback) {
-    let options = {
+    const options = {
       actionPath: 'volumes',
       method: 'DELETE',
       qs: {
@@ -1196,8 +1151,8 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if callback is not defined
    */
   volumesRequestAction(volumeId, action, callback) {
-    let options = {
-      actionPath: 'volumes/' + encodeURIComponent(volumeId) + '/actions',
+    const options = {
+      actionPath: `volumes/${encodeURIComponent(volumeId)}/actions`,
       method: 'POST',
       body: action
     };
