@@ -15,7 +15,7 @@ describe('do-wrapper', function () {
 
   describe('On instantiation of a new DigitalOcean class', function () {
     it('it should have the correct page size', function () {
-      api.per_page.should.equal(testSize);
+      api.perPage.should.equal(testSize);
     });
 
     it('it should have a new RequestHelper class', function () {
