@@ -18,7 +18,7 @@ export default class DigitalOcean {
    * Get Account Information
    * Info {@link https://developers.digitalocean.com/documentation/v2/#account account}
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   account(callback) {
     const options = {actionPath: 'account'};
@@ -29,7 +29,7 @@ export default class DigitalOcean {
    * Get Account Actions
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetActions(query, callback) {
     const options = {
@@ -51,7 +51,7 @@ export default class DigitalOcean {
    *
    * @param {number} actionId - The Id of the Action
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetAction(actionId, callback) {
     const options = {actionPath: `actions/${encodeURIComponent(actionId)}`};
@@ -64,7 +64,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetKeys(query, callback) {
     const options = {
@@ -86,7 +86,7 @@ export default class DigitalOcean {
    *
    * @param {*} configuration - Information required to create SSH Key | {name: ?, public_key: ?}
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountAddKey(configuration, callback) {
     const options = {
@@ -103,7 +103,7 @@ export default class DigitalOcean {
    *
    * @param {number} keyId - The Id of the Key
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetKeyById(keyId, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(keyId)}`};
@@ -116,7 +116,7 @@ export default class DigitalOcean {
    *
    * @param {string} fingerprint - The Fingerprint of the Key
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(fingerprint)}`};
@@ -130,7 +130,7 @@ export default class DigitalOcean {
    * @param {*} keyIdentity - The Id or Fingerprint of the SSH Key
    * @param {string} keyName - What to rename the SSH Key to
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountRenameKey(keyIdentity, keyName, callback) {
     const options = {
@@ -149,7 +149,7 @@ export default class DigitalOcean {
    *
    * @param {*} keyIdentity - The Id or Fingerprint of the SSH Key
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountDeleteKey(keyIdentity, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`, method: 'DELETE'};
@@ -162,7 +162,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetAll(query, callback) {
     const options = {
@@ -185,7 +185,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetKernels(dropletId, query, callback) {
     const options = {
@@ -208,7 +208,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetSnapshots(dropletId, query, callback) {
     const options = {
@@ -231,7 +231,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetBackups(dropletId, query, callback) {
     const options = {
@@ -254,7 +254,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetActions(dropletId, query, callback) {
     const options = {
@@ -276,7 +276,7 @@ export default class DigitalOcean {
    *
    * @param {*} configuration - Creation parameters, see info for more details.
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsCreate(configuration, callback) {
     const options = {
@@ -293,7 +293,7 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetById(dropletId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}`};
@@ -306,7 +306,7 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsDelete(dropletId, callback) {
     const options = {
@@ -322,7 +322,7 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetNeighbors(dropletId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/neighbors`};
@@ -334,7 +334,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplet-neighbors list-all-droplet-neighbors}
    *
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetNeighborsReport(callback) {
     const options = {actionPath: 'reports/droplet_neighbors'};
@@ -346,7 +346,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-droplet-upgrades list-droplet-upgrades}
    *
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetUpgrades(callback) {
     const options = {actionPath: 'droplet_upgrades'};
@@ -360,7 +360,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {*} action - Action Object
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsRequestAction(dropletId, action, callback) {
     const options = {
@@ -378,7 +378,7 @@ export default class DigitalOcean {
    * @param {number} dropletId - The Id of the Droplet
    * @param {number} actionId - The Id of the Action
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetAction(dropletId, actionId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}`};
@@ -391,7 +391,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainsGetAll(query, callback) {
     const options = {
@@ -413,7 +413,7 @@ export default class DigitalOcean {
    * @param {string} name - Domain Name
    * @param {string} ip - The Ip of the Droplet
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainsCreate(name, ip, callback) {
     const options = {
@@ -430,7 +430,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainsGet(name, callback) {
     const options = {
@@ -445,7 +445,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Domain Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainsDelete(name, callback) {
     const options = {
@@ -462,7 +462,7 @@ export default class DigitalOcean {
    * @param {string} name - The Domain Name
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsGetAll(name, query, callback) {
     const options = {
@@ -485,7 +485,7 @@ export default class DigitalOcean {
    * @param {string} name - The Domain Name
    * @param {*} configuration - Data required to create the Domain Record
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsCreate(name, configuration, callback) {
     const options = {
@@ -503,7 +503,7 @@ export default class DigitalOcean {
    * @param {string} name - The Domain Name
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsGet(name, domainRecordId, callback) {
     const options = {actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`};
@@ -518,7 +518,7 @@ export default class DigitalOcean {
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} configuration - Data required to update the Domain Record
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsUpdate(name, domainRecordId, configuration, callback) {
     const options = {
@@ -536,7 +536,7 @@ export default class DigitalOcean {
    * @param {string} name - The Domain Name
    * @param {number} domainRecordId - The Id of the Domain Record
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsDelete(name, domainRecordId, callback) {
     const options = {
@@ -552,7 +552,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   regionsGetAll(query, callback) {
     const options = {
@@ -574,7 +574,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   sizesGetAll(query, callback) {
     const options = {
@@ -597,7 +597,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean, private: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetAll(query, callback) {
     const options = {
@@ -621,7 +621,7 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetById(imageId, callback) {
     const options = {actionPath: `images/${encodeURIComponent(imageId)}`};
@@ -634,7 +634,7 @@ export default class DigitalOcean {
    *
    * @param {string} slug - The Slug of the Image
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetBySlug(slug, callback) {
     const options = {actionPath: `images/${encodeURIComponent(slug)}`};
@@ -648,7 +648,7 @@ export default class DigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetActions(imageId, query, callback) {
     const options = {
@@ -671,7 +671,7 @@ export default class DigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {string} name - The Name to update the Image to
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesUpdate(imageId, name, callback) {
     const options = {
@@ -688,7 +688,7 @@ export default class DigitalOcean {
    *
    * @param {number} imageId - The Id of the Image
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesDelete(imageId, callback) {
     const options = {
@@ -705,7 +705,7 @@ export default class DigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {*} action - Action Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesRequestAction(imageId, action, callback) {
     const options = {
@@ -723,7 +723,7 @@ export default class DigitalOcean {
    * @param {number} imageId - The Id of the Image
    * @param {number} actionId - The Id of the Action
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetAction(imageId, actionId, callback) {
     const options = {actionPath: `images/${encodeURIComponent(imageId)}/actions/${encodeURIComponent(actionId)}`};
@@ -736,7 +736,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGetAll(query, callback) {
     const options = {
@@ -758,7 +758,7 @@ export default class DigitalOcean {
    *
    * @param {number} dropletId - The ID of Droplet that the Floating IP will be assigned to.
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsAssignDroplet(dropletId, callback) {
     const options = {
@@ -777,7 +777,7 @@ export default class DigitalOcean {
    *
    * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsAssignRegion(region, callback) {
     const options = {
@@ -796,7 +796,7 @@ export default class DigitalOcean {
    *
    * @param {string} ipAddress - Floating IP address.
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGet(ipAddress, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`};
@@ -809,7 +809,7 @@ export default class DigitalOcean {
    *
    * @param {string} ipAddress - Floating IP address
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsDelete(ipAddress, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`, method: 'DELETE'};
@@ -823,7 +823,7 @@ export default class DigitalOcean {
    * @param {string} ipAddress - Floating IP address
    * @param {*} action - Action options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsRequestAction(ipAddress, action, callback) {
     const options = {
@@ -841,7 +841,7 @@ export default class DigitalOcean {
    * @param {string} ipAddress - Floating IP address
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGetActions(ipAddress, query, callback) {
     const options = {
@@ -864,7 +864,7 @@ export default class DigitalOcean {
    * @param {string} ipAddress - Floating IP address
    * @param {number} actionId - The Id of the action
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions/${encodeURIComponent(actionId)}`};
@@ -877,7 +877,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - Tag Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsCreate(name, callback) {
     const options = {
@@ -894,7 +894,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - Tag Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsDelete(name, callback) {
     const options = {actionPath: `tags/${encodeURIComponent(name)}`, method: 'DELETE'};
@@ -907,7 +907,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsGet(name, callback) {
     const options = {actionPath: `tags/${encodeURIComponent(name)}`};
@@ -920,7 +920,7 @@ export default class DigitalOcean {
    *
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsGetAll(query, callback) {
     const options = {
@@ -943,7 +943,7 @@ export default class DigitalOcean {
    * @param {string} name - The Tag Name
    * @param {*} configuration - Array of objects which identify the resources to tag
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsAddResources(name, configuration, callback) {
     const options = {
@@ -961,7 +961,7 @@ export default class DigitalOcean {
    * @param {string} name - The Tag Name
    * @param {*} configuration - Array of objects which identify the resources to untag
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsDeleteResource(name, configuration, callback) {
     const options = {
@@ -980,7 +980,7 @@ export default class DigitalOcean {
    * @param {string} name - The Tag Name
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsGetDroplets(name, query, callback) {
     const options = {
@@ -1003,7 +1003,7 @@ export default class DigitalOcean {
    *
    * @param {string} name - The Tag Name
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsDeleteDroplets(name, callback) {
     const options = {
@@ -1023,7 +1023,7 @@ export default class DigitalOcean {
    * @param {string} name - The Tag Name
    * @param {*} action - Action Object
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsRequestAction(name, action, callback) {
     const options = {
@@ -1043,7 +1043,7 @@ export default class DigitalOcean {
    *
    * @param {string} [region] - Optional Region Name Filter
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumes(region, callback) {
     const options = {
@@ -1062,7 +1062,7 @@ export default class DigitalOcean {
    *
    * @param {Object} volume - Volume configuration to create
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesCreate(volume, callback) {
     const options = {
@@ -1079,7 +1079,7 @@ export default class DigitalOcean {
    *
    * @param {string} driveId - ID of the Volume Drive
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesGetById(driveId, callback) {
     const options = {actionPath: `volumes/${driveId}`, method: 'GET'};
@@ -1093,7 +1093,7 @@ export default class DigitalOcean {
    * @param {string} name - Name of the Block Storage Volume
    * @param {string} region - Region of the Block Storage Volume
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesGetByName(name, region, callback) {
     const options = {
@@ -1113,7 +1113,7 @@ export default class DigitalOcean {
    *
    * @param {string} driveId - ID of the Block Storage Volume Drive
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesDeleteById(driveId, callback) {
     const options = {actionPath: `volumes/${driveId}`, method: 'DELETE'};
@@ -1127,7 +1127,7 @@ export default class DigitalOcean {
    * @param {string} name - Name of the Block Storage Volume
    * @param {string} region - Region of the Block Storage Volume
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesDeleteByName(name, region, callback) {
     const options = {
@@ -1148,13 +1148,166 @@ export default class DigitalOcean {
    * @param {number} volumeId - The Id of the Volume
    * @param {*} action - Action Object
    * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesRequestAction(volumeId, action, callback) {
     const options = {
       actionPath: `volumes/${encodeURIComponent(volumeId)}/actions`,
       method: 'POST',
       body: action
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Create a new Load Balancer
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-load-balancer load-balancer-create}
+   * 
+   * @param {Object} data - Load Balancer configuration data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersCreate(data, callback) {
+    const options = {
+      actionPath: 'load_balancers',
+      method: 'POST',
+      body: data
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Get an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-load-balancer load-balancer-get-by-id}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersGetById(loadBalancerId, callback) {
+    const options = {actionPath: `load_balancers/${loadBalancerId}`};
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Get a list of existing Load Balancers
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-load-balancers load-balancers-get-all}
+   * 
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancers(callback) {
+    const options = {actionPath: 'load_balancers'};
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Update an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-load-balancer load-balancers-update}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {Object} data - Load Balancer configuration data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersUpdateById(loadBalancerId, data, callback) {
+    const options = {
+      actionPath: `load_balancers/${loadBalancerId}`,
+      method: 'PUT',
+      body: data
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Delete an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-load-balancer load-balancers-delete}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersDelete(loadBalancerId, callback) {
+    const options = {actionPath: `load_balancers/${loadBalancerId}`, method: 'DELETE'};
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Add Droplets to an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-droplets-to-a-load-balancer load-balancers-add-droplets}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {Array} dropletIds - The Droplet Ids
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersAddDroplets(loadBalancerId, dropletIds, callback) {
+    const options = {
+      actionPath: `load_balancers/${loadBalancerId}/droplets`,
+      method: 'POST',
+      body: {
+        droplet_ids: dropletIds
+      }
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Remove Droplets from an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-droplets-from-a-load-balancer load-balancers-remove-droplets}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {Array} dropletIds - The Droplet Ids
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersRemoveDroplets(loadBalancerId, dropletIds, callback) {
+    const options = {
+      actionPath: `load_balancers/${loadBalancerId}/droplets`,
+      method: 'DELETE',
+      body: {
+        droplet_ids: dropletIds
+      }
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Add a Forwarding Rule to an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-forwarding-rules-to-a-load-balancer load-balancers-add-forwarding-rule}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {Object} forwardingRules - The Forwarding Rule objects to add to the Load Balancer
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersAddForwardingRule(loadBalancerId, forwardingRules, callback) {
+    const options = {
+      actionPath: `load_balancers/${loadBalancerId}/forwarding_rules`,
+      method: 'POST',
+      body: {
+        forwarding_rules: forwardingRules
+      }
+    };
+    return this.requestHelper.request(options, callback);
+  }
+
+  /**
+   * Remove a Forwarding Rule to an existing Load Balancer using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-forwarding-rules-to-a-load-balancer load-balancers-add-forwarding-rule}
+   * 
+   * @param {string} loadBalancerId - The Id of the Load Balancer
+   * @param {Object} forwardingRules - The Forwarding Rule objects to remove from the Load Balancer
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  loadBalancersRemoveForwardingRule(loadBalancerId, forwardingRules, callback) {
+    const options = {
+      actionPath: `load_balancers/${loadBalancerId}/forwarding_rules`,
+      method: 'DELETE',
+      body: {
+        forwarding_rules: forwardingRules
+      }
     };
     return this.requestHelper.request(options, callback);
   }
