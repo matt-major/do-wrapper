@@ -14,7 +14,7 @@
     "build": "gulp compile && npm run doc",
     "precommit": "npm t",
     "test": "jshint src/*.js && ./node_modules/mocha/bin/mocha",
-    "doc": "./node_modules/.bin/jsdoc src/*.js -d docs/"
+    "doc": "./node_modules/.bin/jsdoc2md src/do-wrapper.js > docs/do-wrapper.md && ./node_modules/.bin/jsdoc2md src/request-helper.js > docs/request-helper.md"
   },
   "license": "MIT",
   "bugs": {
@@ -42,6 +42,7 @@
     "gulp-uglify": "3.0.0",
     "husky": "0.14.3",
     "jsdoc": "3.5.5",
+    "jsdoc-to-markdown": "^4.0.1",
     "jshint": "2.9.5",
     "mocha": "2.4.5",
     "should": "13.2.1"
