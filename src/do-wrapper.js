@@ -14,6 +14,10 @@ export default class DigitalOcean {
     this.requestHelper = new RequestHelper(token);
   }
 
+  _handleRequest(options, callback) {
+    return this.requestHelper.request(options, callback);
+  }
+
   /**
    * Get Account Information
    * Info {@link https://developers.digitalocean.com/documentation/v2/#account account}
@@ -22,7 +26,7 @@ export default class DigitalOcean {
    */
   account(callback) {
     const options = {actionPath: 'account'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -42,7 +46,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -55,7 +59,7 @@ export default class DigitalOcean {
    */
   accountGetAction(actionId, callback) {
     const options = {actionPath: `actions/${encodeURIComponent(actionId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -77,7 +81,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -94,7 +98,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -107,7 +111,7 @@ export default class DigitalOcean {
    */
   accountGetKeyById(keyId, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(keyId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -120,7 +124,7 @@ export default class DigitalOcean {
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(fingerprint)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -140,7 +144,7 @@ export default class DigitalOcean {
         name: keyName
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -153,7 +157,7 @@ export default class DigitalOcean {
    */
   accountDeleteKey(keyIdentity, callback) {
     const options = {actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`, method: 'DELETE'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -175,7 +179,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -198,7 +202,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -221,7 +225,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -244,7 +248,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -267,7 +271,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -284,7 +288,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -297,7 +301,7 @@ export default class DigitalOcean {
    */
   dropletsGetById(dropletId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -313,7 +317,7 @@ export default class DigitalOcean {
       actionPath: `droplets/${encodeURIComponent(dropletId)}`,
       method: 'DELETE'
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -326,7 +330,7 @@ export default class DigitalOcean {
    */
   dropletsGetNeighbors(dropletId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/neighbors`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -338,7 +342,7 @@ export default class DigitalOcean {
    */
   dropletsGetNeighborsReport(callback) {
     const options = {actionPath: 'reports/droplet_neighbors'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -350,7 +354,7 @@ export default class DigitalOcean {
    */
   dropletsGetUpgrades(callback) {
     const options = {actionPath: 'droplet_upgrades'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -368,7 +372,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -382,7 +386,7 @@ export default class DigitalOcean {
    */
   dropletsGetAction(dropletId, actionId, callback) {
     const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -403,7 +407,7 @@ export default class DigitalOcean {
         page: (query) ? (query.page || 1) : 1
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -421,7 +425,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: {name: name, ip_address: ip}
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -436,7 +440,7 @@ export default class DigitalOcean {
     const options = {
       actionPath: `domains/${encodeURIComponent(name)}`
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -452,7 +456,7 @@ export default class DigitalOcean {
       actionPath: `domains/${encodeURIComponent(name)}`,
       method: 'DELETE'
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -475,7 +479,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -493,7 +497,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -507,7 +511,7 @@ export default class DigitalOcean {
    */
   domainRecordsGet(name, domainRecordId, callback) {
     const options = {actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -526,7 +530,7 @@ export default class DigitalOcean {
       method: 'PUT',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -543,7 +547,7 @@ export default class DigitalOcean {
       actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`,
       method: 'DELETE'
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -565,7 +569,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -587,7 +591,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -612,7 +616,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -625,7 +629,7 @@ export default class DigitalOcean {
    */
   imagesGetById(imageId, callback) {
     const options = {actionPath: `images/${encodeURIComponent(imageId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -638,7 +642,7 @@ export default class DigitalOcean {
    */
   imagesGetBySlug(slug, callback) {
     const options = {actionPath: `images/${encodeURIComponent(slug)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -661,7 +665,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -679,7 +683,7 @@ export default class DigitalOcean {
       body: {name: name},
       method: 'PUT'
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -695,7 +699,7 @@ export default class DigitalOcean {
       actionPath: `images/${encodeURIComponent(imageId)}`,
       method: 'DELETE'
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -713,7 +717,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -727,7 +731,7 @@ export default class DigitalOcean {
    */
   imagesGetAction(imageId, actionId, callback) {
     const options = {actionPath: `images/${encodeURIComponent(imageId)}/actions/${encodeURIComponent(actionId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -749,7 +753,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -768,7 +772,7 @@ export default class DigitalOcean {
         droplet_id: dropletId
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -787,7 +791,7 @@ export default class DigitalOcean {
         region: region
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -800,7 +804,7 @@ export default class DigitalOcean {
    */
   floatingIpsGet(ipAddress, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -813,7 +817,7 @@ export default class DigitalOcean {
    */
   floatingIpsDelete(ipAddress, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`, method: 'DELETE'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -831,7 +835,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -854,7 +858,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -868,7 +872,7 @@ export default class DigitalOcean {
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
     const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions/${encodeURIComponent(actionId)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -885,7 +889,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: {name: name}
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -898,7 +902,7 @@ export default class DigitalOcean {
    */
   tagsDelete(name, callback) {
     const options = {actionPath: `tags/${encodeURIComponent(name)}`, method: 'DELETE'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -911,7 +915,7 @@ export default class DigitalOcean {
    */
   tagsGet(name, callback) {
     const options = {actionPath: `tags/${encodeURIComponent(name)}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -933,7 +937,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -951,7 +955,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -969,7 +973,7 @@ export default class DigitalOcean {
       method: 'DELETE',
       body: configuration
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -993,7 +997,7 @@ export default class DigitalOcean {
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1013,7 +1017,7 @@ export default class DigitalOcean {
         tag_name: name
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1034,7 +1038,7 @@ export default class DigitalOcean {
       },
       body: action
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1053,7 +1057,7 @@ export default class DigitalOcean {
         region: region || ''
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1070,7 +1074,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: volume
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1083,7 +1087,7 @@ export default class DigitalOcean {
    */
   volumesGetById(driveId, callback) {
     const options = {actionPath: `volumes/${driveId}`, method: 'GET'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1104,7 +1108,7 @@ export default class DigitalOcean {
         region: region
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1117,7 +1121,7 @@ export default class DigitalOcean {
    */
   volumesDeleteById(driveId, callback) {
     const options = {actionPath: `volumes/${driveId}`, method: 'DELETE'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1138,7 +1142,7 @@ export default class DigitalOcean {
         region: region
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1156,7 +1160,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: action
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1173,7 +1177,7 @@ export default class DigitalOcean {
       method: 'POST',
       body: data
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1186,7 +1190,7 @@ export default class DigitalOcean {
    */
   loadBalancersGetById(loadBalancerId, callback) {
     const options = {actionPath: `load_balancers/${loadBalancerId}`};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1198,7 +1202,7 @@ export default class DigitalOcean {
    */
   loadBalancers(callback) {
     const options = {actionPath: 'load_balancers'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1216,7 +1220,7 @@ export default class DigitalOcean {
       method: 'PUT',
       body: data
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1229,7 +1233,7 @@ export default class DigitalOcean {
    */
   loadBalancersDelete(loadBalancerId, callback) {
     const options = {actionPath: `load_balancers/${loadBalancerId}`, method: 'DELETE'};
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1249,7 +1253,7 @@ export default class DigitalOcean {
         droplet_ids: dropletIds
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1269,7 +1273,7 @@ export default class DigitalOcean {
         droplet_ids: dropletIds
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1289,7 +1293,7 @@ export default class DigitalOcean {
         forwarding_rules: forwardingRules
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 
   /**
@@ -1309,6 +1313,6 @@ export default class DigitalOcean {
         forwarding_rules: forwardingRules
       }
     };
-    return this.requestHelper.request(options, callback);
+    return this._handleRequest(options, callback);
   }
 }
