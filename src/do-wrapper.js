@@ -1322,6 +1322,7 @@ export default class DigitalOcean {
    * 
    * @param {Object} firewallData 
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsCreate(firewallData, callback) {
     const options = {
@@ -1338,6 +1339,7 @@ export default class DigitalOcean {
    * 
    * @param {string} firewallId - The Id of the Firewall to retrieve
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsGetById(firewallId, callback) {
     const options = {actionPath: `firewalls/${firewallId}`};
@@ -1349,6 +1351,7 @@ export default class DigitalOcean {
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-firewalls firealls-get-all}
    * 
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewalls(callback) {
     const options = {actionPath: 'firewalls'};
@@ -1362,6 +1365,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {Object} firewallData - The Firewall update data
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsUpdateById(firewallId, firewallData, callback) {
     const options = {
@@ -1378,6 +1382,7 @@ export default class DigitalOcean {
    * 
    * @param {string} firewallId - The Id of the Firewall
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsDeleteById(firewallId, callback) {
     const options = {
@@ -1394,6 +1399,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<number>} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsAddDroplets(firewallId, dropletIds, callback) {
     const options = {
@@ -1413,6 +1419,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<number>} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsRemoveDroplets(firewallId, dropletIds, callback) {
     const options = {
@@ -1432,6 +1439,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<string>} tags - The Tags to add to the Firewall
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsAddTags(firewallId, tags, callback) {
     const options = {
@@ -1451,6 +1459,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<string>} tags - The Tags to remove from the Firewall
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsRemoveTags(firewallId, tags, callback) {
     const options = {
@@ -1470,6 +1479,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {object} rules - The Rules to add to the Firewall
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsAddRules(firewallId, rules, callback) {
     const options = {
@@ -1487,6 +1497,7 @@ export default class DigitalOcean {
    * @param {string} firewallId - The Id of the Firewall
    * @param {object} rules - The Rules to remove from the Firewall
    * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsRemoveRules(firewallId, rules, callback) {
     const options = {
