@@ -1315,4 +1315,185 @@ export default class DigitalOcean {
     };
     return this._handleRequest(options, callback);
   }
+
+  /**
+   * Create a new Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-firewall firewall-create-new}
+   * 
+   * @param {Object} firewallData 
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsCreate(firewallData, callback) {
+    const options = {
+      actionPath: 'firewalls',
+      method: 'POST',
+      body: firewallData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Retrieve an existing Firewall using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-firewall firewall-get-by-id}
+   * 
+   * @param {string} firewallId - The Id of the Firewall to retrieve
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsGetById(firewallId, callback) {
+    const options = {actionPath: `firewalls/${firewallId}`};
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Retrieve a list of Firewalls
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-firewalls firealls-get-all}
+   * 
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewalls(callback) {
+    const options = {actionPath: 'firewalls'};
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Update a Firewall using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-firewall firewalls-update-by-id}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {Object} firewallData - The Firewall update data
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsUpdateById(firewallId, firewallData, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}`,
+      method: 'PUT',
+      body: firewallData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a Firewall using its Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-firewall firewalls-delete-by-id}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsDeleteById(firewallId, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add Droplets to an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-droplets-to-a-firewall firewalls-add-droplets}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {Array<number>} dropletIds - The Droplet Ids
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsAddDroplets(firewallId, dropletIds, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/droplets`,
+      method: 'POST',
+      body: {
+        droplet_ids: dropletIds
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Remove Droplets from an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-droplets-from-a-firewall firewalls-remove-droplets}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {Array<number>} dropletIds - The Droplet Ids
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsRemoveDroplets(firewallId, dropletIds, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/droplets`,
+      method: 'DELETE',
+      body: {
+        droplet_ids: dropletIds
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add Tags to an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-tags-to-a-firewall firealls-add-tags}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {Array<string>} tags - The Tags to add to the Firewall
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsAddTags(firewallId, tags, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/tags`,
+      method: 'POST',
+      body: {
+        tags: tags
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Remove Tags from an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-tags-from-a-firewall firewalls-remove-tags}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {Array<string>} tags - The Tags to remove from the Firewall
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsRemoveTags(firewallId, tags, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/tags`,
+      method: 'DELETE',
+      body: {
+        tags: tags
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add Rules to an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-rules-to-a-firewall firewalls-add-rules}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {object} rules - The Rules to add to the Firewall
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsAddRules(firewallId, rules, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/rules`,
+      method: 'POST',
+      body: rules
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Remove Rules from an existing Firewall
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-rules-from-a-firewall firewalls-remove-rules}
+   * 
+   * @param {string} firewallId - The Id of the Firewall
+   * @param {object} rules - The Rules to remove from the Firewall
+   * @param {*} [callback] - Optional function to execute on completion
+   */
+  firewallsRemoveRules(firewallId, rules, callback) {
+    const options = {
+      actionPath: `firewalls/${firewallId}/rules`,
+      method: 'DELETE',
+      body: rules
+    };
+    return this._handleRequest(options, callback);
+  }
 }
