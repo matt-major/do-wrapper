@@ -84,7 +84,7 @@ Please raise an issue on GitHub with as much information as possible and the ste
 This module is built in my spare time and provided at no cost. However, if you'd like to donate to support it's development please use on of the following methods:
 
 * **BTC/Bitcoin**
-`37nNLjeq1CvDfHAeL7Gk1feshjUPpGjXiS`
+`12zVttiHDb5TuFSk4eH3wNDDdGBmnPiqz4`
 * **ETN/Electroneum**
 `etnkPD87TLjSsdsm1krtJ3KPuLSm9XwEk9f7EsfR7bEJQ9YgwgLGjFvfVAaNnvfSpfWLnVLJhsMALeWwo8CLDVFa1YJMrabdUY`
 * **XTL/Stellite**
