@@ -17,6 +17,7 @@ $ npm install --save do-wrapper
 ```
 
 ### Documentation
+
 All methods are documented. You can generate the API docs using the following command.
 
 ```sh
@@ -78,7 +79,19 @@ If you get back a response similar to the below, success!
 
 Please raise an issue on GitHub with as much information as possible and the steps to replicate (if possible).
 
+### Donate
+
+This module is built in my spare time and provided at no cost. However, if you'd like to donate to support it's development please use on of the following methods:
+
+* **BTC/Bitcoin**
+`37nNLjeq1CvDfHAeL7Gk1feshjUPpGjXiS`
+* **ETN/Electroneum**
+`etnkPD87TLjSsdsm1krtJ3KPuLSm9XwEk9f7EsfR7bEJQ9YgwgLGjFvfVAaNnvfSpfWLnVLJhsMALeWwo8CLDVFa1YJMrabdUY`
+* **XTL/Stellite**
+`Se3XMShG4hQ7UeQ7rLGyqFG4AQuC1vEfXhr1eTy9C8ekdHEunhG96w7N92qxzv5vHDasZJXh5speWimHm2F6rY2w2nmhDMNfV`
+
 ### License
+
 The MIT License (MIT)
 
 Copyright (c) 2018 Matt Major
