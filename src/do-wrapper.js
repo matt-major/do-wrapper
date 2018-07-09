@@ -611,8 +611,8 @@ export default class DigitalOcean {
         tag_name: (query) ? (query.tag_name || '') : '',
         per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1,
-        private: query.private || false,
-        type: query.type || null
+        private: (query) ? (query.private || false) : false,
+        type: (query) ? (query.type || null) : null
       },
       includeAll: (query) ? (query.includeAll || false) : false
     };
