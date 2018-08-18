@@ -1577,10 +1577,10 @@ export default class DigitalOcean {
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
-  snapshotsGetById(snapshotId, callback) {
+  snapshotsDeleteById(snapshotId, callback) {
     const options = {
       actionPath: `snapshots/${snapshotId}`,
-      method: DELETE
+      method: 'DELETE'
     };
     return this._handleRequest(options, callback);
   }
