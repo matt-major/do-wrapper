@@ -25,7 +25,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   account(callback) {
-    const options = {actionPath: 'account'};
+    const options = { actionPath: 'account' };
     return this._handleRequest(options, callback);
   }
 
@@ -58,7 +58,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetAction(actionId, callback) {
-    const options = {actionPath: `actions/${encodeURIComponent(actionId)}`};
+    const options = { actionPath: `actions/${encodeURIComponent(actionId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -110,7 +110,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetKeyById(keyId, callback) {
-    const options = {actionPath: `account/keys/${encodeURIComponent(keyId)}`};
+    const options = { actionPath: `account/keys/${encodeURIComponent(keyId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -123,7 +123,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountGetKeyByFingerprint(fingerprint, callback) {
-    const options = {actionPath: `account/keys/${encodeURIComponent(fingerprint)}`};
+    const options = { actionPath: `account/keys/${encodeURIComponent(fingerprint)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -156,7 +156,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   accountDeleteKey(keyIdentity, callback) {
-    const options = {actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`, method: 'DELETE'};
+    const options = { actionPath: `account/keys/${encodeURIComponent(keyIdentity)}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
 
@@ -300,7 +300,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetById(dropletId, callback) {
-    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}`};
+    const options = { actionPath: `droplets/${encodeURIComponent(dropletId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -329,7 +329,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetNeighbors(dropletId, callback) {
-    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/neighbors`};
+    const options = { actionPath: `droplets/${encodeURIComponent(dropletId)}/neighbors` };
     return this._handleRequest(options, callback);
   }
 
@@ -341,7 +341,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetNeighborsReport(callback) {
-    const options = {actionPath: 'reports/droplet_neighbors'};
+    const options = { actionPath: 'reports/droplet_neighbors' };
     return this._handleRequest(options, callback);
   }
 
@@ -353,7 +353,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetUpgrades(callback) {
-    const options = {actionPath: 'droplet_upgrades'};
+    const options = { actionPath: 'droplet_upgrades' };
     return this._handleRequest(options, callback);
   }
 
@@ -385,7 +385,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   dropletsGetAction(dropletId, actionId, callback) {
-    const options = {actionPath: `droplets/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}`};
+    const options = { actionPath: `droplets/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -423,7 +423,7 @@ export default class DigitalOcean {
     const options = {
       actionPath: 'domains',
       method: 'POST',
-      body: {name: name, ip_address: ip}
+      body: { name: name, ip_address: ip }
     };
     return this._handleRequest(options, callback);
   }
@@ -510,7 +510,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   domainRecordsGet(name, domainRecordId, callback) {
-    const options = {actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}`};
+    const options = { actionPath: `domains/${encodeURIComponent(name)}/records/${encodeURIComponent(domainRecordId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -628,7 +628,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetById(imageId, callback) {
-    const options = {actionPath: `images/${encodeURIComponent(imageId)}`};
+    const options = { actionPath: `images/${encodeURIComponent(imageId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -641,7 +641,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetBySlug(slug, callback) {
-    const options = {actionPath: `images/${encodeURIComponent(slug)}`};
+    const options = { actionPath: `images/${encodeURIComponent(slug)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -680,7 +680,7 @@ export default class DigitalOcean {
   imagesUpdate(imageId, name, callback) {
     const options = {
       actionPath: `images/${encodeURIComponent(imageId)}`,
-      body: {name: name},
+      body: { name: name },
       method: 'PUT'
     };
     return this._handleRequest(options, callback);
@@ -730,7 +730,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   imagesGetAction(imageId, actionId, callback) {
-    const options = {actionPath: `images/${encodeURIComponent(imageId)}/actions/${encodeURIComponent(actionId)}`};
+    const options = { actionPath: `images/${encodeURIComponent(imageId)}/actions/${encodeURIComponent(actionId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -803,7 +803,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGet(ipAddress, callback) {
-    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`};
+    const options = { actionPath: `floating_ips/${encodeURIComponent(ipAddress)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -816,7 +816,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsDelete(ipAddress, callback) {
-    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`, method: 'DELETE'};
+    const options = { actionPath: `floating_ips/${encodeURIComponent(ipAddress)}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
 
@@ -871,7 +871,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   floatingIpsGetAction(ipAddress, actionId, callback) {
-    const options = {actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions/${encodeURIComponent(actionId)}`};
+    const options = { actionPath: `floating_ips/${encodeURIComponent(ipAddress)}/actions/${encodeURIComponent(actionId)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -887,7 +887,7 @@ export default class DigitalOcean {
     const options = {
       actionPath: 'tags',
       method: 'POST',
-      body: {name: name}
+      body: { name: name }
     };
     return this._handleRequest(options, callback);
   }
@@ -901,7 +901,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsDelete(name, callback) {
-    const options = {actionPath: `tags/${encodeURIComponent(name)}`, method: 'DELETE'};
+    const options = { actionPath: `tags/${encodeURIComponent(name)}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
 
@@ -914,7 +914,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   tagsGet(name, callback) {
-    const options = {actionPath: `tags/${encodeURIComponent(name)}`};
+    const options = { actionPath: `tags/${encodeURIComponent(name)}` };
     return this._handleRequest(options, callback);
   }
 
@@ -1086,7 +1086,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesGetById(driveId, callback) {
-    const options = {actionPath: `volumes/${driveId}`, method: 'GET'};
+    const options = { actionPath: `volumes/${driveId}`, method: 'GET' };
     return this._handleRequest(options, callback);
   }
 
@@ -1120,7 +1120,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   volumesDeleteById(driveId, callback) {
-    const options = {actionPath: `volumes/${driveId}`, method: 'DELETE'};
+    const options = { actionPath: `volumes/${driveId}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
 
@@ -1189,7 +1189,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   loadBalancersGetById(loadBalancerId, callback) {
-    const options = {actionPath: `load_balancers/${loadBalancerId}`};
+    const options = { actionPath: `load_balancers/${loadBalancerId}` };
     return this._handleRequest(options, callback);
   }
 
@@ -1201,7 +1201,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   loadBalancers(callback) {
-    const options = {actionPath: 'load_balancers'};
+    const options = { actionPath: 'load_balancers' };
     return this._handleRequest(options, callback);
   }
 
@@ -1232,7 +1232,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   loadBalancersDelete(loadBalancerId, callback) {
-    const options = {actionPath: `load_balancers/${loadBalancerId}`, method: 'DELETE'};
+    const options = { actionPath: `load_balancers/${loadBalancerId}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
 
@@ -1342,7 +1342,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewallsGetById(firewallId, callback) {
-    const options = {actionPath: `firewalls/${firewallId}`};
+    const options = { actionPath: `firewalls/${firewallId}` };
     return this._handleRequest(options, callback);
   }
 
@@ -1354,7 +1354,7 @@ export default class DigitalOcean {
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   firewalls(callback) {
-    const options = {actionPath: 'firewalls'};
+    const options = { actionPath: 'firewalls' };
     return this._handleRequest(options, callback);
   }
 
@@ -1510,19 +1510,19 @@ export default class DigitalOcean {
 
   /**
    * List all snapshots
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-snapshots}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-snapshots list-all-snapshots}
    *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
   snapshots(callback) {
-    const options = {actionPath: 'snapshots'};
+    const options = { actionPath: 'snapshots' };
     return this._handleRequest(options, callback);
   }
 
   /**
    * List all Droplet snapshots
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplet-snapshots}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplet-snapshots list-all-droplet-snapshots}
    *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1539,7 +1539,7 @@ export default class DigitalOcean {
 
   /**
    * List all Volume snapshots
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-volume-snapshots}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-volume-snapshots list-all-volume-snapshots}
    *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1556,7 +1556,7 @@ export default class DigitalOcean {
 
   /**
    * Retrieve an existing snapshot by id
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-snapshot-by-id}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-snapshot-by-id retrieve-an-existing-snapshot-by-id}
    *
    * @param {string} snapshotId - The Id of the Snapshot
    * @param {*} [callback] - Optional function to execute on completion
@@ -1571,7 +1571,7 @@ export default class DigitalOcean {
 
   /**
    * Delete a snapshot
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot delete-a-snapshot}
    *
    * @param {string} snapshotId - The Id of the Snapshot
    * @param {*} [callback] - Optional function to execute on completion

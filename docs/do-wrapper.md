@@ -341,6 +341,26 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#add-rules-t
 <dd><p>Remove Rules from an existing Firewall
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#remove-rules-from-a-firewall">firewalls-remove-rules</a></p>
 </dd>
+<dt><a href="#snapshots">snapshots([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all snapshots
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-snapshots">list-all-snapshots</a></p>
+</dd>
+<dt><a href="#snapshotsDroplets">snapshotsDroplets([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all Droplet snapshots
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-droplet-snapshots">list-all-droplet-snapshots</a></p>
+</dd>
+<dt><a href="#snapshotsVolumes">snapshotsVolumes([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all Volume snapshots
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-volume-snapshots">list-all-volume-snapshots</a></p>
+</dd>
+<dt><a href="#snapshotsGetById">snapshotsGetById(snapshotId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Retrieve an existing snapshot by id
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-snapshot-by-id">retrieve-an-existing-snapshot-by-id</a></p>
+</dd>
+<dt><a href="#snapshotsDeleteById">snapshotsDeleteById(snapshotId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a snapshot
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot">delete-a-snapshot</a></p>
+</dd>
 </dl>
 
 <a name="account"></a>
@@ -1568,5 +1588,72 @@ Info: [firewalls-remove-rules](https://developers.digitalocean.com/documentation
 | --- | --- | --- |
 | firewallId | <code>string</code> | The Id of the Firewall |
 | rules | <code>object</code> | The Rules to remove from the Firewall |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="snapshots"></a>
+
+## snapshots([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all snapshots
+Info: [list-all-snapshots](https://developers.digitalocean.com/documentation/v2/#list-all-snapshots)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="snapshotsDroplets"></a>
+
+## snapshotsDroplets([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all Droplet snapshots
+Info: [list-all-droplet-snapshots](https://developers.digitalocean.com/documentation/v2/#list-all-droplet-snapshots)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="snapshotsVolumes"></a>
+
+## snapshotsVolumes([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all Volume snapshots
+Info: [list-all-volume-snapshots](https://developers.digitalocean.com/documentation/v2/#list-all-volume-snapshots)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="snapshotsGetById"></a>
+
+## snapshotsGetById(snapshotId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Retrieve an existing snapshot by id
+Info: [retrieve-an-existing-snapshot-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-snapshot-by-id)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| snapshotId | <code>string</code> | The Id of the Snapshot |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="snapshotsDeleteById"></a>
+
+## snapshotsDeleteById(snapshotId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a snapshot
+Info: [delete-a-snapshot](https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| snapshotId | <code>string</code> | The Id of the Snapshot |
 | [callback] | <code>\*</code> | Optional function to execute on completion |
 
