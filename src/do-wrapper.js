@@ -1507,4 +1507,81 @@ export default class DigitalOcean {
     };
     return this._handleRequest(options, callback);
   }
+
+  /**
+   * List all snapshots
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-snapshots}
+   *
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  snapshots(callback) {
+    const options = {actionPath: 'snapshots'};
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all Droplet snapshots
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplet-snapshots}
+   *
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  snapshotsDroplets(callback) {
+    const options = {
+      actionPath: 'snapshots',
+      qs: {
+        resource_type: 'droplet'
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all Volume snapshots
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-volume-snapshots}
+   *
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  snapshotsVolumes(callback) {
+    const options = {
+      actionPath: 'snapshots',
+      qs: {
+        resource_type: 'volume'
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Retrieve an existing snapshot by id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-snapshot-by-id}
+   *
+   * @param {string} snapshotId - The Id of the Snapshot
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  snapshotsGetById(snapshotId, callback) {
+    const options = {
+      actionPath: `snapshots/${snapshotId}`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a snapshot
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot}
+   *
+   * @param {string} snapshotId - The Id of the Snapshot
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  snapshotsDeleteById(snapshotId, callback) {
+    const options = {
+      actionPath: `snapshots/${snapshotId}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
 }
