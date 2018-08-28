@@ -175,7 +175,7 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-ne
 </dd>
 <dt><a href="#floatingIpsAssignRegion">floatingIpsAssignRegion(region, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Create and assign a Floating IP to a region.
-Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet">create-a-new-floating-ip-assigned-to-a-droplet</a></p>
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region">create-a-new-floating-ip-assigned-to-a-droplet</a></p>
 </dd>
 <dt><a href="#floatingIpsGet">floatingIpsGet(ipAddress, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Retrieve an existing Floating IP
