@@ -105,7 +105,6 @@ export default class RequestHelper {
     });
   }
 
-
   /**
    * Get the Remaining Pages
    * @param {*} options - Request Options
