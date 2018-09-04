@@ -1,6 +1,7 @@
 'use strict';
 
 import request from 'request';
+import timesSeries from 'async/times';
 
 export default class RequestHelper {
   /**
@@ -76,47 +77,55 @@ export default class RequestHelper {
   getAllPages(key, options, callback) {
     let items = [],
         total = 0,
-        required = 0,
-        completed = 1;
+        required = 0;
 
     options.qs.page = 1;
 
     this.submitRequest(options, (err, response, body) => {
       if ( err ) {
-        callback(err);
+        return callback(err);
       }
       total = body.meta.total;
       items = items.concat(body[key]);
-      required = total / (options.qs.per_page || 25);
+      required = Math.ceil(total / (options.qs.per_page || 25));
       if ( items.length >= total ) {
         return callback(null, response, items);
       } else {
-        this.getRemainingPages(options, 2, required, function (err, response, body) {
-          if ( err ) {
-            callback(err);
-          }
-          completed++;
+        let lastResponse;
+        this.getRemainingPages(options, 2, required, (response, body) => {
           items = items.concat(body[key]);
-          if ( completed === required ) {
-            callback(null, response, items);
+          lastResponse = response;
+        }, (err) => {
+          if (err) {
+            return callback(err);
           }
+          callback(null, lastResponse, items);
         });
       }
     });
   }
+
 
   /**
    * Get the Remaining Pages
    * @param {*} options - Request Options
    * @param {number} first - The first page to retrieve
    * @param {number} last - The last page to retrieve
+   * @param {*} step - Function to execute on every request
    * @param {*} callback - Function to execute on completion
    */
-  getRemainingPages(options, first, last, callback) {
-    for ( let current = first; current <= last; current++ ) {
-      options.qs.page = current;
-      this.submitRequest(options, callback);
-    }
+  getRemainingPages(options, first, last, step, callback) {
+    const delta = last - first;
+    timesSeries(delta, (n, next) => {
+      options.qs.page = first + n;
+      this.submitRequest(options, (err, response, body) => {
+        if (err) {
+          return next(err);
+        }
+        step(response, body);
+        next();
+      });
+    }, callback);
   }
 
   /**

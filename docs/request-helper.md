@@ -13,7 +13,7 @@
 <dt><a href="#getAllPages">getAllPages(key, options, callback)</a></dt>
 <dd><p>Get All Pages</p>
 </dd>
-<dt><a href="#getRemainingPages">getRemainingPages(options, first, last, callback)</a></dt>
+<dt><a href="#getRemainingPages">getRemainingPages(options, first, last, step, callback)</a></dt>
 <dd><p>Get the Remaining Pages</p>
 </dd>
 <dt><a href="#requestBuilder">requestBuilder(options)</a> ⇒ <code>*</code></dt>
@@ -72,7 +72,7 @@ Get All Pages
 
 <a name="getRemainingPages"></a>
 
-## getRemainingPages(options, first, last, callback)
+## getRemainingPages(options, first, last, step, callback)
 Get the Remaining Pages
 
 **Kind**: global function  
@@ -82,6 +82,7 @@ Get the Remaining Pages
 | options | <code>\*</code> | Request Options |
 | first | <code>number</code> | The first page to retrieve |
 | last | <code>number</code> | The last page to retrieve |
+| step | <code>\*</code> | Function to execute on every request |
 | callback | <code>\*</code> | Function to execute on completion |
 
 <a name="requestBuilder"></a>
