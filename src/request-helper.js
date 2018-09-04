@@ -115,8 +115,8 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   getRemainingPages(options, first, last, step, callback) {
-    const delta = last - first;
-    timesSeries(delta, (n, next) => {
+    const count = last - first + 1;
+    timesSeries(count, (n, next) => {
       options.qs.page = first + n;
       this.submitRequest(options, (err, response, body) => {
         if (err) {
