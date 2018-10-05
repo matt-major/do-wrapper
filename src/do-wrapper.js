@@ -234,6 +234,22 @@ export default class DigitalOcean {
   }
 
   /**
+   * Delete a specific CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint delete-a-cdn-endpoint}
+   *
+   * @param {string} id - The id of the CDN endpoint
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointDelete(id, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(id)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
