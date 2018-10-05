@@ -250,6 +250,24 @@ export default class DigitalOcean {
   }
 
   /**
+   * Purge cached content from a CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint purge-the-cache-for-an-existing-cdn-endpoint}
+   *
+   * @param {string} endpointId - The id of the CDN endpoint
+   * @param {Array} files - An array of strings containing the path to the content to be purged from the CDN cache
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointPurgeCache(endpointId, files, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
+      method: 'DELETE',
+      body: { files: files }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
