@@ -169,7 +169,7 @@ export default class DigitalOcean {
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
-  cdnCreateEndpoint(origin, ttl, callback) {
+  cdnEndpointCreate(origin, ttl, callback) {
     const options = {
       actionPath: 'cdn/endpoints',
       method: 'POST',
@@ -182,13 +182,13 @@ export default class DigitalOcean {
    * Get information about an existing CDN endpoint
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-cdn-endpoint retrieve-an-existing-cdn-endpoint}
    *
-   * @param {string} id - The id of your existing CDN endpoint
+   * @param {string} endpointId - The id of an existing CDN endpoint
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
-  cdnGetEndpoint(id, callback) {
+  cdnEndpointGet(endpointId, callback) {
     const options = {
-      actionPath: `cdn/endpoints/${encodeURIComponent(id)}`
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`
     };
     return this._handleRequest(options, callback);
   }
@@ -219,14 +219,14 @@ export default class DigitalOcean {
    * Update an existing endpoint
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-an-existing-cdn-endpoint update-an-existing-cdn-endpoint}
    *
-   * @param {string} id - The id of an existing CDN endpoint
+   * @param {string} endpointId - The id of an existing CDN endpoint
    * @param {number} ttl - The amount of time (seconds) the content is cached by the CDN's edge servers.
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
-  cdnEndpointUpdate(id, ttl, callback) {
+  cdnEndpointUpdate(endpointId, ttl, callback) {
     const options = {
-      actionPath: `cdn/endpoints/${encodeURIComponent(id)}`,
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
       method: 'PUT',
       body: { ttl: ttl }
     };
@@ -237,13 +237,13 @@ export default class DigitalOcean {
    * Delete a specific CDN endpoint
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint delete-a-cdn-endpoint}
    *
-   * @param {string} id - The id of the CDN endpoint
+   * @param {string} endpointId - The id of an existing CDN endpoint
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
-  cdnEndpointDelete(id, callback) {
+  cdnEndpointDelete(endpointId, callback) {
     const options = {
-      actionPath: `cdn/endpoints/${encodeURIComponent(id)}`,
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
       method: 'DELETE'
     };
     return this._handleRequest(options, callback);
@@ -253,7 +253,7 @@ export default class DigitalOcean {
    * Purge cached content from a CDN endpoint
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint purge-the-cache-for-an-existing-cdn-endpoint}
    *
-   * @param {string} endpointId - The id of the CDN endpoint
+   * @param {string} endpointId - The id of an existing CDN endpoint
    * @param {Array} files - An array of strings containing the path to the content to be purged from the CDN cache
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
