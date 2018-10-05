@@ -194,6 +194,28 @@ export default class DigitalOcean {
   }
 
   /**
+   * Get a list of CDN endpoints
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-cdn-endpoints list-all-cdn-endpoints}
+   *
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointGetAll(query, callback) {
+    const options = {
+      actionPath: '/cdn/endpoints',
+      key: 'endpoints',
+      qs: {
+        tag_name: (query) ? (query.tag_name || '') : '',
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
