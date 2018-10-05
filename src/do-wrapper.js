@@ -884,7 +884,7 @@ export default class DigitalOcean {
 
   /**
    * Create and assign a Floating IP to a region.
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region create-a-new-floating-ip-reserved-to-a-region}
    *
    * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
    * @param {*} [callback] - Optional function to execute on completion
