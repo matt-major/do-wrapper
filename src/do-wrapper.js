@@ -216,6 +216,24 @@ export default class DigitalOcean {
   }
 
   /**
+   * Update an existing endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-an-existing-cdn-endpoint update-an-existing-cdn-endpoint}
+   *
+   * @param {string} id - The id of an existing CDN endpoint
+   * @param {number} ttl - The amount of time (seconds) the content is cached by the CDN's edge servers.
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointUpdate(id, ttl, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(id)}`,
+      method: 'PUT',
+      body: { ttl: ttl }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
