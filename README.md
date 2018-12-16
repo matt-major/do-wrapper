@@ -6,6 +6,23 @@
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Known Vulnerabilities](https://snyk.io/test/github/matt-major/do-wrapper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/matt-major/do-wrapper?targetFile=package.json)
 
+### Donate
+
+This library is developed and provided at no cost. If you'd like to donate a small amount to help its continued development please consider one of the following:
+
+* **PayPal**
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/mattmajor14)
+* **XRP / Ripple**
+`rNo2F2p9esR6kHZwvdPqGRae7ocxBzXfDc`
+* **BTC / Bitcoin**
+`13WKuZhJkDohCsq4HkQbtCcdrA6aUV46Lx`
+* **ETH / Ethereum**
+`0x824b07d3d77539b6754A072ce88b220949ff587c`
+* **LTC / Litcoin**
+`LiDpAkDb4SHgwcDS1EFQyVCDUX3HzgFhXW`
+* **ETN / Electroneum**
+`etnkPD87TLjSsdsm1krtJ3KPuLSm9XwEk9f7EsfR7bEJQ9YgwgLGjFvfVAaNnvfSpfWLnVLJhsMALeWwo8CLDVFa1YJMrabdUY`
+
 ### Install
 
 ```do-wrapper``` is available on ```npm``` and as such, can be installed through ```npm``` with ease.
@@ -78,17 +95,6 @@ If you get back a response similar to the below, success!
 ### Issues
 
 Please raise an issue on GitHub with as much information as possible and the steps to replicate (if possible).
-
-### Donate
-
-This module is built in my spare time and provided at no cost. However, if you'd like to donate to support it's development please use on of the following methods:
-
-* **BTC/Bitcoin**
-`12zVttiHDb5TuFSk4eH3wNDDdGBmnPiqz4`
-* **ETN/Electroneum**
-`etnkPD87TLjSsdsm1krtJ3KPuLSm9XwEk9f7EsfR7bEJQ9YgwgLGjFvfVAaNnvfSpfWLnVLJhsMALeWwo8CLDVFa1YJMrabdUY`
-* **XTL/Stellite**
-`Se3XMShG4hQ7UeQ7rLGyqFG4AQuC1vEfXhr1eTy9C8ekdHEunhG96w7N92qxzv5vHDasZJXh5speWimHm2F6rY2w2nmhDMNfV`
 
 ### License
 
