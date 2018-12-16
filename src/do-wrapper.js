@@ -161,6 +161,113 @@ export default class DigitalOcean {
   }
 
   /**
+   * Create a new CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-cdn-endpoint create-a-new-cdn-endpoint}
+   *
+   * @param {string} origin - The origin server address (FQDN) which provides the content for the CDN
+   * @param {number} ttl - The amount of time (seconds) the content is cached by the CDN's edge servers. Defaults to 3600 (one hour)
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointCreate(origin, ttl, callback) {
+    const options = {
+      actionPath: 'cdn/endpoints',
+      method: 'POST',
+      body: { origin: origin, ttl: ttl }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get information about an existing CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-cdn-endpoint retrieve-an-existing-cdn-endpoint}
+   *
+   * @param {string} endpointId - The id of an existing CDN endpoint
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointGet(endpointId, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get a list of CDN endpoints
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-cdn-endpoints list-all-cdn-endpoints}
+   *
+   * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointGetAll(query, callback) {
+    const options = {
+      actionPath: '/cdn/endpoints',
+      key: 'endpoints',
+      qs: {
+        tag_name: (query) ? (query.tag_name || '') : '',
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Update an existing endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-an-existing-cdn-endpoint update-an-existing-cdn-endpoint}
+   *
+   * @param {string} endpointId - The id of an existing CDN endpoint
+   * @param {number} ttl - The amount of time (seconds) the content is cached by the CDN's edge servers.
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointUpdate(endpointId, ttl, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
+      method: 'PUT',
+      body: { ttl: ttl }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a specific CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint delete-a-cdn-endpoint}
+   *
+   * @param {string} endpointId - The id of an existing CDN endpoint
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointDelete(endpointId, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Purge cached content from a CDN endpoint
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint purge-the-cache-for-an-existing-cdn-endpoint}
+   *
+   * @param {string} endpointId - The id of an existing CDN endpoint
+   * @param {Array} files - An array of strings containing the path to the content to be purged from the CDN cache
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  cdnEndpointPurgeCache(endpointId, files, callback) {
+    const options = {
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
+      method: 'DELETE',
+      body: { files: files }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get a list of Droplets
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-droplets list-all-droplets}
    *
@@ -777,7 +884,7 @@ export default class DigitalOcean {
 
   /**
    * Create and assign a Floating IP to a region.
-   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet create-a-new-floating-ip-assigned-to-a-droplet}
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region create-a-new-floating-ip-reserved-to-a-region}
    *
    * @param {string} region - The slug identifier for the region the Floating IP will be reserved to.
    * @param {*} [callback] - Optional function to execute on completion
@@ -1166,7 +1273,7 @@ export default class DigitalOcean {
   /**
    * Create a new Load Balancer
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-load-balancer load-balancer-create}
-   * 
+   *
    * @param {Object} data - Load Balancer configuration data
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1183,7 +1290,7 @@ export default class DigitalOcean {
   /**
    * Get an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-load-balancer load-balancer-get-by-id}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1196,7 +1303,7 @@ export default class DigitalOcean {
   /**
    * Get a list of existing Load Balancers
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-load-balancers load-balancers-get-all}
-   * 
+   *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
@@ -1208,7 +1315,7 @@ export default class DigitalOcean {
   /**
    * Update an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-load-balancer load-balancers-update}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {Object} data - Load Balancer configuration data
    * @param {*} [callback] - Optional function to execute on completion
@@ -1226,7 +1333,7 @@ export default class DigitalOcean {
   /**
    * Delete an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-load-balancer load-balancers-delete}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1239,7 +1346,7 @@ export default class DigitalOcean {
   /**
    * Add Droplets to an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-droplets-to-a-load-balancer load-balancers-add-droplets}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {Array} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
@@ -1259,7 +1366,7 @@ export default class DigitalOcean {
   /**
    * Remove Droplets from an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-droplets-from-a-load-balancer load-balancers-remove-droplets}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {Array} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
@@ -1279,7 +1386,7 @@ export default class DigitalOcean {
   /**
    * Add a Forwarding Rule to an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-forwarding-rules-to-a-load-balancer load-balancers-add-forwarding-rule}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {Object} forwardingRules - The Forwarding Rule objects to add to the Load Balancer
    * @param {*} [callback] - Optional function to execute on completion
@@ -1299,7 +1406,7 @@ export default class DigitalOcean {
   /**
    * Remove a Forwarding Rule to an existing Load Balancer using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-forwarding-rules-to-a-load-balancer load-balancers-add-forwarding-rule}
-   * 
+   *
    * @param {string} loadBalancerId - The Id of the Load Balancer
    * @param {Object} forwardingRules - The Forwarding Rule objects to remove from the Load Balancer
    * @param {*} [callback] - Optional function to execute on completion
@@ -1319,8 +1426,8 @@ export default class DigitalOcean {
   /**
    * Create a new Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-firewall firewall-create-new}
-   * 
-   * @param {Object} firewallData 
+   *
+   * @param {Object} firewallData
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
@@ -1336,7 +1443,7 @@ export default class DigitalOcean {
   /**
    * Retrieve an existing Firewall using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-firewall firewall-get-by-id}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall to retrieve
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1349,7 +1456,7 @@ export default class DigitalOcean {
   /**
    * Retrieve a list of Firewalls
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-firewalls firealls-get-all}
-   * 
+   *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
@@ -1361,7 +1468,7 @@ export default class DigitalOcean {
   /**
    * Update a Firewall using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-firewall firewalls-update-by-id}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {Object} firewallData - The Firewall update data
    * @param {*} [callback] - Optional function to execute on completion
@@ -1379,7 +1486,7 @@ export default class DigitalOcean {
   /**
    * Delete a Firewall using its Id
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-firewall firewalls-delete-by-id}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1395,7 +1502,7 @@ export default class DigitalOcean {
   /**
    * Add Droplets to an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-droplets-to-a-firewall firewalls-add-droplets}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<number>} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
@@ -1415,7 +1522,7 @@ export default class DigitalOcean {
   /**
    * Remove Droplets from an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-droplets-from-a-firewall firewalls-remove-droplets}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<number>} dropletIds - The Droplet Ids
    * @param {*} [callback] - Optional function to execute on completion
@@ -1435,7 +1542,7 @@ export default class DigitalOcean {
   /**
    * Add Tags to an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-tags-to-a-firewall firealls-add-tags}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<string>} tags - The Tags to add to the Firewall
    * @param {*} [callback] - Optional function to execute on completion
@@ -1455,7 +1562,7 @@ export default class DigitalOcean {
   /**
    * Remove Tags from an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-tags-from-a-firewall firewalls-remove-tags}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {Array<string>} tags - The Tags to remove from the Firewall
    * @param {*} [callback] - Optional function to execute on completion
@@ -1475,7 +1582,7 @@ export default class DigitalOcean {
   /**
    * Add Rules to an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-rules-to-a-firewall firewalls-add-rules}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {object} rules - The Rules to add to the Firewall
    * @param {*} [callback] - Optional function to execute on completion
@@ -1493,7 +1600,7 @@ export default class DigitalOcean {
   /**
    * Remove Rules from an existing Firewall
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-rules-from-a-firewall firewalls-remove-rules}
-   * 
+   *
    * @param {string} firewallId - The Id of the Firewall
    * @param {object} rules - The Rules to remove from the Firewall
    * @param {*} [callback] - Optional function to execute on completion

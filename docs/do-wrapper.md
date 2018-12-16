@@ -36,6 +36,30 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#update-a-ke
 <dd><p>Delete a SSH Key
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#destroy-a-key">destroy-a-key</a></p>
 </dd>
+<dt><a href="#cdnEndpointCreate">cdnEndpointCreate(origin, ttl, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a new CDN endpoint
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-cdn-endpoint">create-a-new-cdn-endpoint</a></p>
+</dd>
+<dt><a href="#cdnEndpointGet">cdnEndpointGet(endpointId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get information about an existing CDN endpoint
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-cdn-endpoint">retrieve-an-existing-cdn-endpoint</a></p>
+</dd>
+<dt><a href="#cdnEndpointGetAll">cdnEndpointGetAll(query, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get a list of CDN endpoints
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-cdn-endpoints">list-all-cdn-endpoints</a></p>
+</dd>
+<dt><a href="#cdnEndpointUpdate">cdnEndpointUpdate(endpointId, ttl, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Update an existing endpoint
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#update-an-existing-cdn-endpoint">update-an-existing-cdn-endpoint</a></p>
+</dd>
+<dt><a href="#cdnEndpointDelete">cdnEndpointDelete(endpointId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a specific CDN endpoint
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint">delete-a-cdn-endpoint</a></p>
+</dd>
+<dt><a href="#cdnEndpointPurgeCache">cdnEndpointPurgeCache(endpointId, files, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Purge cached content from a CDN endpoint
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint">purge-the-cache-for-an-existing-cdn-endpoint</a></p>
+</dd>
 <dt><a href="#dropletsGetAll">dropletsGetAll(query, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Get a list of Droplets
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-droplets">list-all-droplets</a></p>
@@ -175,7 +199,7 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-ne
 </dd>
 <dt><a href="#floatingIpsAssignRegion">floatingIpsAssignRegion(region, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Create and assign a Floating IP to a region.
-Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region">create-a-new-floating-ip-assigned-to-a-droplet</a></p>
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region">create-a-new-floating-ip-reserved-to-a-region</a></p>
 </dd>
 <dt><a href="#floatingIpsGet">floatingIpsGet(ipAddress, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Retrieve an existing Floating IP
@@ -486,6 +510,93 @@ Info: [destroy-a-key](https://developers.digitalocean.com/documentation/v2/#dest
 | Param | Type | Description |
 | --- | --- | --- |
 | keyIdentity | <code>\*</code> | The Id or Fingerprint of the SSH Key |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointCreate"></a>
+
+## cdnEndpointCreate(origin, ttl, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a new CDN endpoint
+Info: [create-a-new-cdn-endpoint](https://developers.digitalocean.com/documentation/v2/#create-a-new-cdn-endpoint)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| origin | <code>string</code> | The origin server address (FQDN) which provides the content for the CDN |
+| ttl | <code>number</code> | The amount of time (seconds) the content is cached by the CDN's edge servers. Defaults to 3600 (one hour) |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointGet"></a>
+
+## cdnEndpointGet(endpointId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get information about an existing CDN endpoint
+Info: [retrieve-an-existing-cdn-endpoint](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-cdn-endpoint)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| endpointId | <code>string</code> | The id of an existing CDN endpoint |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointGetAll"></a>
+
+## cdnEndpointGetAll(query, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get a list of CDN endpoints
+Info: [list-all-cdn-endpoints](https://developers.digitalocean.com/documentation/v2/#list-all-cdn-endpoints)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| query | <code>Object</code> | Query Options |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointUpdate"></a>
+
+## cdnEndpointUpdate(endpointId, ttl, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Update an existing endpoint
+Info: [update-an-existing-cdn-endpoint](https://developers.digitalocean.com/documentation/v2/#update-an-existing-cdn-endpoint)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| endpointId | <code>string</code> | The id of an existing CDN endpoint |
+| ttl | <code>number</code> | The amount of time (seconds) the content is cached by the CDN's edge servers. |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointDelete"></a>
+
+## cdnEndpointDelete(endpointId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a specific CDN endpoint
+Info: [delete-a-cdn-endpoint](https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| endpointId | <code>string</code> | The id of an existing CDN endpoint |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="cdnEndpointPurgeCache"></a>
+
+## cdnEndpointPurgeCache(endpointId, files, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Purge cached content from a CDN endpoint
+Info: [purge-the-cache-for-an-existing-cdn-endpoint](https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| endpointId | <code>string</code> | The id of an existing CDN endpoint |
+| files | <code>Array</code> | An array of strings containing the path to the content to be purged from the CDN cache |
 | [callback] | <code>\*</code> | Optional function to execute on completion |
 
 <a name="dropletsGetAll"></a>
@@ -984,7 +1095,7 @@ Info: [create-a-new-floating-ip-assigned-to-a-droplet](https://developers.digita
 
 ## floatingIpsAssignRegion(region, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
 Create and assign a Floating IP to a region.
-Info: [create-a-new-floating-ip-assigned-to-a-droplet](https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet)
+Info: [create-a-new-floating-ip-reserved-to-a-region](https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region)
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
