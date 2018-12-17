@@ -1749,4 +1749,183 @@ export default class DigitalOcean {
     const options = { actionPath: `certificates/${encodeURIComponent(certificateId)}`, method: 'DELETE' };
     return this._handleRequest(options, callback);
   }
+
+  /**
+   * Get All Kubernetes Clusters
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetes(query, callback) {
+    const options = {
+      actionPath: 'kubernetes/clusters',
+      key: 'kubernetes',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create a Kubernetes Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-kubernetes-cluster kubernetes-create-cluster}
+   * @param {object} clusterData - Cluster creation data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesCreateCluster(clusterData, callback) {
+    const options = {
+      actionPath: 'kubernetes/clusters',
+      method: 'POST',
+      body: clusterData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get A Single Kubernetes Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-kubernetes-cluster kubernetes-cluster-get-by-id}
+   * @param {string} clusterId - Id of the Cluster to get
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesClusterGet(clusterId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}` };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a Kubernetes Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-kubernetes-cluster kubernetes-cluster-delete}
+   * @param {string} clusterId - Id of the Cluster to delete
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesClusterDelete(clusterId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}`, method: 'DELETE' };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get the kubeconfig for a Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-the-kubeconfig-for-a-kubernetes-cluster kubernetes-cluster-get-config}
+   * @param {string} clusterId - Id of the Cluster to get the Kubeconfig for
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesClusterGetConfig(clusterId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/kubeconfig` };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get the NodePools for a Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-node-pools-in-a-kubernetes-clusters kubernetes-get-node-pools}
+   * @param {string} clusterId - The Id of the Cluster
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodePools(clusterId, query, callback) {
+    const options = {
+      actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools`,
+      key: 'kubernetes',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get a NodePool on a Cluster by Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-a-node-pool-for-a-kubernetes-cluster kubernetes-cluster-get-nodepool-by-id}
+   * @param {string} clusterId - Id of the Cluster
+   * @param {string} nodePoolId - Id of the NodePool to retrieve
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodePoolGet(clusterId, nodePoolId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools/${encodeURIComponent(nodePoolId)}` };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add a NodePool on a Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-node-pool-to-a-kubernetes-cluster kubernetes-cluster-add-node-pool}
+   * @param {string} clusterId - Id of the Cluster
+   * @param {string} nodePoolId - Id of the NodePool to delete
+   * @param {object} nodePoolConfiguration - The NodePool creation data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodePoolAdd(clusterId, nodePoolConfiguration, callback) {
+    const options = {
+      actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools`,
+      method: 'POST',
+      body: nodePoolConfiguration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Update a NodePool on a Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-node-pool-in-a-kubernetes-cluster kubernetes-cluster-update-node-pool}
+   * @param {string} clusterId - Id of the Cluster
+   * @param {string} nodePoolId - Id of the NodePool to delete
+   * @param {object} nodePoolConfiguration - The update data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodePoolUpdate(clusterId, nodePoolId, nodePoolConfiguration, callback) {
+    const options = {
+      actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools/${encodeURIComponent(nodePoolId)}`,
+      method: 'PUT',
+      body: nodePoolConfiguration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a NodePool from a Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-node-pool-in-a-kubernetes-cluster kubernetes-cluster-delete-node-pool}
+   * @param {string} clusterId - Id of the Cluster
+   * @param {string} nodePoolId - Id of the NodePool to delete
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodePoolDelete(clusterId, nodePoolId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools/${encodeURIComponent(nodePoolId)}`, method: 'DELETE' };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Recycle the NodePool of a Kubernetes Cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#recycle-nodes-in-a-kubernetes-cluster kubernetes-cluster-recycle}
+   * @param {string} clusterId - Id of the Cluster to cycle
+   * @param {string} nodePoolId - Id of the NodePool to cycle
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesNodesRecycle(clusterId, nodePoolId, callback) {
+    const options = { actionPath: `kubernetes/clusters/${encodeURIComponent(clusterId)}/node_pools/${encodeURIComponent(nodePoolId)}/recycle`, method: 'POST' };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get Kubernetes availability
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes kubernetes-get-availability}
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  kubernetesAvailability(callback) {
+    const options = { actionPath: 'kubernetes/options' };
+    return this._handleRequest(options, callback);
+  }
 }

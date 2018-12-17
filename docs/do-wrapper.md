@@ -401,6 +401,54 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an
 <dd><p>Delete Certificate By Id
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-certificate">certificates-delete-by-id</a></p>
 </dd>
+<dt><a href="#kubernetes">kubernetes([query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get All Kubernetes Clusters
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters">kubernetes-get-clusters</a></p>
+</dd>
+<dt><a href="#kubernetesCreateCluster">kubernetesCreateCluster(clusterData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a Kubernetes Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-kubernetes-cluster">kubernetes-create-cluster</a></p>
+</dd>
+<dt><a href="#kubernetesClusterGet">kubernetesClusterGet(clusterId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get A Single Kubernetes Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-kubernetes-cluster">kubernetes-cluster-get-by-id</a></p>
+</dd>
+<dt><a href="#kubernetesClusterDelete">kubernetesClusterDelete(clusterId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a Kubernetes Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-kubernetes-cluster">kubernetes-cluster-delete</a></p>
+</dd>
+<dt><a href="#kubernetesClusterGetConfig">kubernetesClusterGetConfig(clusterId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get the kubeconfig for a Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-the-kubeconfig-for-a-kubernetes-cluster">kubernetes-cluster-get-config</a></p>
+</dd>
+<dt><a href="#kubernetesNodePools">kubernetesNodePools(clusterId, [query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get the NodePools for a Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-node-pools-in-a-kubernetes-clusters">kubernetes-get-node-pools</a></p>
+</dd>
+<dt><a href="#kubernetesNodePoolGet">kubernetesNodePoolGet(clusterId, nodePoolId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get a NodePool on a Cluster by Id
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-a-node-pool-for-a-kubernetes-cluster">kubernetes-cluster-get-nodepool-by-id</a></p>
+</dd>
+<dt><a href="#kubernetesNodePoolAdd">kubernetesNodePoolAdd(clusterId, nodePoolId, nodePoolConfiguration, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Add a NodePool on a Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#add-a-node-pool-to-a-kubernetes-cluster">kubernetes-cluster-add-node-pool</a></p>
+</dd>
+<dt><a href="#kubernetesNodePoolUpdate">kubernetesNodePoolUpdate(clusterId, nodePoolId, nodePoolConfiguration, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Update a NodePool on a Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#update-a-node-pool-in-a-kubernetes-cluster">kubernetes-cluster-update-node-pool</a></p>
+</dd>
+<dt><a href="#kubernetesNodePoolDelete">kubernetesNodePoolDelete(clusterId, nodePoolId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a NodePool from a Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-node-pool-in-a-kubernetes-cluster">kubernetes-cluster-delete-node-pool</a></p>
+</dd>
+<dt><a href="#kubernetesNodesRecycle">kubernetesNodesRecycle(clusterId, nodePoolId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Recycle the NodePool of a Kubernetes Cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#recycle-nodes-in-a-kubernetes-cluster">kubernetes-cluster-recycle</a></p>
+</dd>
+<dt><a href="#kubernetesAvailability">kubernetesAvailability([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get Kubernetes availability
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes">kubernetes-get-availability</a></p>
+</dd>
 </dl>
 
 <a name="account"></a>
@@ -1830,6 +1878,181 @@ Info: [certificates-get-by-id](https://developers.digitalocean.com/documentation
 ## certificatesDeleteById([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
 Delete Certificate By Id
 Info: [certificates-delete-by-id](https://developers.digitalocean.com/documentation/v2/#delete-a-certificate)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetes"></a>
+
+## kubernetes([query], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get All Kubernetes Clusters
+Info: [kubernetes-get-clusters](https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [query] | <code>object</code> | Optional query parameters |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesCreateCluster"></a>
+
+## kubernetesCreateCluster(clusterData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a Kubernetes Cluster
+Info: [kubernetes-create-cluster](https://developers.digitalocean.com/documentation/v2/#create-a-new-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterData | <code>object</code> | Cluster creation data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesClusterGet"></a>
+
+## kubernetesClusterGet(clusterId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get A Single Kubernetes Cluster
+Info: [kubernetes-cluster-get-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster to get |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesClusterDelete"></a>
+
+## kubernetesClusterDelete(clusterId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a Kubernetes Cluster
+Info: [kubernetes-cluster-delete](https://developers.digitalocean.com/documentation/v2/#delete-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster to delete |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesClusterGetConfig"></a>
+
+## kubernetesClusterGetConfig(clusterId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get the kubeconfig for a Cluster
+Info: [kubernetes-cluster-get-config](https://developers.digitalocean.com/documentation/v2/#retrieve-the-kubeconfig-for-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster to get the Kubeconfig for |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodePools"></a>
+
+## kubernetesNodePools(clusterId, [query], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get the NodePools for a Cluster
+Info: [kubernetes-get-node-pools](https://developers.digitalocean.com/documentation/v2/#list-all-node-pools-in-a-kubernetes-clusters)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The Id of the Cluster |
+| [query] | <code>object</code> | Optional query parameters |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodePoolGet"></a>
+
+## kubernetesNodePoolGet(clusterId, nodePoolId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get a NodePool on a Cluster by Id
+Info: [kubernetes-cluster-get-nodepool-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-a-node-pool-for-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster |
+| nodePoolId | <code>string</code> | Id of the NodePool to retrieve |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodePoolAdd"></a>
+
+## kubernetesNodePoolAdd(clusterId, nodePoolId, nodePoolConfiguration, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Add a NodePool on a Cluster
+Info: [kubernetes-cluster-add-node-pool](https://developers.digitalocean.com/documentation/v2/#add-a-node-pool-to-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster |
+| nodePoolId | <code>string</code> | Id of the NodePool to delete |
+| nodePoolConfiguration | <code>object</code> | The NodePool creation data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodePoolUpdate"></a>
+
+## kubernetesNodePoolUpdate(clusterId, nodePoolId, nodePoolConfiguration, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Update a NodePool on a Cluster
+Info: [kubernetes-cluster-update-node-pool](https://developers.digitalocean.com/documentation/v2/#update-a-node-pool-in-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster |
+| nodePoolId | <code>string</code> | Id of the NodePool to delete |
+| nodePoolConfiguration | <code>object</code> | The update data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodePoolDelete"></a>
+
+## kubernetesNodePoolDelete(clusterId, nodePoolId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a NodePool from a Cluster
+Info: [kubernetes-cluster-delete-node-pool](https://developers.digitalocean.com/documentation/v2/#delete-a-node-pool-in-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster |
+| nodePoolId | <code>string</code> | Id of the NodePool to delete |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesNodesRecycle"></a>
+
+## kubernetesNodesRecycle(clusterId, nodePoolId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Recycle the NodePool of a Kubernetes Cluster
+Info: [kubernetes-cluster-recycle](https://developers.digitalocean.com/documentation/v2/#recycle-nodes-in-a-kubernetes-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | Id of the Cluster to cycle |
+| nodePoolId | <code>string</code> | Id of the NodePool to cycle |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="kubernetesAvailability"></a>
+
+## kubernetesAvailability([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get Kubernetes availability
+Info: [kubernetes-get-availability](https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes)
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
