@@ -1691,4 +1691,62 @@ export default class DigitalOcean {
     };
     return this._handleRequest(options, callback);
   }
+
+  /**
+   * Get All Certificates
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-certificates certificates}
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  certificates(query, callback) {
+    const options = {
+      actionPath: 'certificates',
+      key: 'certificates',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create A Certificate
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-certificate certificates-create-new}
+   * @param {object} certificateData - Certificate Creation Data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  certificatesCreate(certificateData, callback) {
+    const options = {
+      actionPath: 'certificates',
+      method: 'POST',
+      body: certificateData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get Certificate By Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-certificate certificates-get-by-id}
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  certificatesGetById(certificateId, callback) {
+    const options = { actionPath: `certificates/${encodeURIComponent(certificateId)}` };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete Certificate By Id
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-certificate certificates-delete-by-id}
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  certificatesDeleteById(certificateId, callback) {
+    const options = { actionPath: `certificates/${encodeURIComponent(certificateId)}`, method: 'DELETE' };
+    return this._handleRequest(options, callback);
+  }
 }
