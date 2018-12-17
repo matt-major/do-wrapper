@@ -385,6 +385,22 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an
 <dd><p>Delete a snapshot
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-snapshot">delete-a-snapshot</a></p>
 </dd>
+<dt><a href="#certificates">certificates([query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get All Certificates
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-certificates">certificates</a></p>
+</dd>
+<dt><a href="#certificatesCreate">certificatesCreate(certificateData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create A Certificate
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-certificate">certificates-create-new</a></p>
+</dd>
+<dt><a href="#certificatesGetById">certificatesGetById([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get Certificate By Id
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-certificate">certificates-get-by-id</a></p>
+</dd>
+<dt><a href="#certificatesDeleteById">certificatesDeleteById([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete Certificate By Id
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-certificate">certificates-delete-by-id</a></p>
+</dd>
 </dl>
 
 <a name="account"></a>
@@ -1766,5 +1782,59 @@ Info: [delete-a-snapshot](https://developers.digitalocean.com/documentation/v2/#
 | Param | Type | Description |
 | --- | --- | --- |
 | snapshotId | <code>string</code> | The Id of the Snapshot |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="certificates"></a>
+
+## certificates([query], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get All Certificates
+Info: [certificates](https://developers.digitalocean.com/documentation/v2/#list-all-certificates)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [query] | <code>object</code> | Optional query parameters |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="certificatesCreate"></a>
+
+## certificatesCreate(certificateData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create A Certificate
+Info: [certificates-create-new](https://developers.digitalocean.com/documentation/v2/#create-a-new-certificate)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| certificateData | <code>object</code> | Certificate Creation Data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="certificatesGetById"></a>
+
+## certificatesGetById([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get Certificate By Id
+Info: [certificates-get-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-certificate)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="certificatesDeleteById"></a>
+
+## certificatesDeleteById([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete Certificate By Id
+Info: [certificates-delete-by-id](https://developers.digitalocean.com/documentation/v2/#delete-a-certificate)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
 | [callback] | <code>\*</code> | Optional function to execute on completion |
 
