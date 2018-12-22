@@ -449,6 +449,38 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#recycle-nod
 <dd><p>Get Kubernetes availability
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes">kubernetes-get-availability</a></p>
 </dd>
+<dt><a href="#projects">projects([query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get All Projects
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-projects">projects</a></p>
+</dd>
+<dt><a href="#projectsCreate">projectsCreate(projectData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-project">projects-create</a></p>
+</dd>
+<dt><a href="#projectsUpdate">projectsUpdate(projectId, projectData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Update A Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#update-a-project">projects-update</a></p>
+</dd>
+<dt><a href="#projectsPatch">projectsPatch(projectId, projectData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Patch A Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#patch-a-project">projects-patch</a></p>
+</dd>
+<dt><a href="#projectsGet">projectsGet(projectId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get A Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project">projects-get-by-id</a></p>
+</dd>
+<dt><a href="#projectsGetDefault">projectsGetDefault([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get The Default Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project">projects-get-default</a></p>
+</dd>
+<dt><a href="#projectsUpdateDefault">projectsUpdateDefault(projectData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Update The Default Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#update-the-default-project">projects-default-update</a></p>
+</dd>
+<dt><a href="#projectsPatchDefault">projectsPatchDefault(projectData, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Patch The Default Project
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#patch-the-default-project">projects-default-patch</a></p>
+</dd>
 </dl>
 
 <a name="account"></a>
@@ -2059,5 +2091,118 @@ Info: [kubernetes-get-availability](https://developers.digitalocean.com/document
 
 | Param | Type | Description |
 | --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projects"></a>
+
+## projects([query], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get All Projects
+Info: [projects](https://developers.digitalocean.com/documentation/v2/#list-all-projects)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [query] | <code>object</code> | Optional query parameters |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsCreate"></a>
+
+## projectsCreate(projectData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a Project
+Info: [projects-create](https://developers.digitalocean.com/documentation/v2/#create-a-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectData | <code>object</code> | Project creation data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsUpdate"></a>
+
+## projectsUpdate(projectId, projectData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Update A Project
+Info: [projects-update](https://developers.digitalocean.com/documentation/v2/#update-a-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectId | <code>string</code> | The Project Id to get |
+| projectData | <code>object</code> | The Update Data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsPatch"></a>
+
+## projectsPatch(projectId, projectData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Patch A Project
+Info: [projects-patch](https://developers.digitalocean.com/documentation/v2/#patch-a-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectId | <code>string</code> | The Project Id to get |
+| projectData | <code>object</code> | The Patch Data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsGet"></a>
+
+## projectsGet(projectId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get A Project
+Info: [projects-get-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectId | <code>string</code> | The Project Id to get |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsGetDefault"></a>
+
+## projectsGetDefault([callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get The Default Project
+Info: [projects-get-default](https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsUpdateDefault"></a>
+
+## projectsUpdateDefault(projectData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Update The Default Project
+Info: [projects-default-update](https://developers.digitalocean.com/documentation/v2/#update-the-default-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectData | <code>object</code> | The Update Data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsPatchDefault"></a>
+
+## projectsPatchDefault(projectData, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Patch The Default Project
+Info: [projects-default-patch](https://developers.digitalocean.com/documentation/v2/#patch-the-default-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectData | <code>object</code> | The Patch Data |
 | [callback] | <code>\*</code> | Optional function to execute on completion |
 

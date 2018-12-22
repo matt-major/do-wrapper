@@ -1928,4 +1928,136 @@ export default class DigitalOcean {
     const options = { actionPath: 'kubernetes/options' };
     return this._handleRequest(options, callback);
   }
+
+  /**
+   * Get All Projects
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-projects projects}
+   * 
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projects(query, callback) {
+    const options = {
+      actionPath: 'projects',
+      key: 'projects',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create a Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-project projects-create}
+   * @param {object} projectData - Project creation data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsCreate(projectData, callback) {
+    const options = {
+      actionPath: 'projects',
+      method: 'POST',
+      body: projectData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Update A Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-project projects-update}
+   * 
+   * @param {string} projectId - The Project Id to get
+   * @param {object} projectData - The Update Data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsUpdate(projectId, projectData, callback) {
+    const options = {
+      actionPath: `projects/${encodeURIComponent(projectId)}`,
+      method: 'PUT',
+      body: projectData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Patch A Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#patch-a-project projects-patch}
+   * 
+   * @param {string} projectId - The Project Id to get
+   * @param {object} projectData - The Patch Data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsPatch(projectId, projectData, callback) {
+    const options = {
+      actionPath: `projects/${encodeURIComponent(projectId)}`,
+      method: 'PATCH',
+      body: projectData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get A Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project projects-get-by-id}
+   * 
+   * @param {string} projectId - The Project Id to get
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsGet(projectId, callback) {
+    const options = { actionPath: `projects/${encodeURIComponent(projectId)}` };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get The Default Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project projects-get-default}
+   * 
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsGetDefault(callback) {
+    const options = { actionPath: 'projects/default' };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Update The Default Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-the-default-project projects-default-update}
+   * 
+   * @param {object} projectData - The Update Data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsUpdateDefault(projectData, callback) {
+    const options = {
+      actionPath: 'projects/default',
+      method: 'PUT',
+      body: projectData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Patch The Default Project
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#patch-the-default-project projects-default-patch}
+   * 
+   * @param {object} projectData - The Patch Data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsPatchDefault(projectData, callback) {
+    const options = {
+      actionPath: 'projects/default',
+      method: 'PATCH',
+      body: projectData
+    };
+    return this._handleRequest(options, callback);
+  }
 }
