@@ -6,7 +6,8 @@
 Info <a href="https://developers.digitalocean.com/documentation/v2/#account">account</a></p>
 </dd>
 <dt><a href="#accountGetActions">accountGetActions(query, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
-<dd><p>Get Account Actions</p>
+<dd><p>Get Account Actions
+Info <a href="https://developers.digitalocean.com/documentation/v2/#list-all-actions">list-all-actions</a></p>
 </dd>
 <dt><a href="#accountGetAction">accountGetAction(actionId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Get Action Information for Account
@@ -500,6 +501,7 @@ Info [account](https://developers.digitalocean.com/documentation/v2/#account)
 
 ## accountGetActions(query, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
 Get Account Actions
+Info [list-all-actions](https://developers.digitalocean.com/documentation/v2/#list-all-actions)
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  

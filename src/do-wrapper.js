@@ -31,6 +31,7 @@ export default class DigitalOcean {
 
   /**
    * Get Account Actions
+   * Info {@link https://developers.digitalocean.com/documentation/v2/#list-all-actions list-all-actions}
    * @param {{per_page: number, page: number, includeAll: boolean}} query - Query Options
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1932,7 +1933,7 @@ export default class DigitalOcean {
   /**
    * Get All Projects
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-projects projects}
-   * 
+   *
    * @param {object} [query] - Optional query parameters
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -1969,7 +1970,7 @@ export default class DigitalOcean {
   /**
    * Update A Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-a-project projects-update}
-   * 
+   *
    * @param {string} projectId - The Project Id to get
    * @param {object} projectData - The Update Data
    * @param {*} [callback] - Optional function to execute on completion
@@ -1987,7 +1988,7 @@ export default class DigitalOcean {
   /**
    * Patch A Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#patch-a-project projects-patch}
-   * 
+   *
    * @param {string} projectId - The Project Id to get
    * @param {object} projectData - The Patch Data
    * @param {*} [callback] - Optional function to execute on completion
@@ -2005,7 +2006,7 @@ export default class DigitalOcean {
   /**
    * Get A Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project projects-get-by-id}
-   * 
+   *
    * @param {string} projectId - The Project Id to get
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -2018,7 +2019,7 @@ export default class DigitalOcean {
   /**
    * Get The Default Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project projects-get-default}
-   * 
+   *
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
@@ -2030,7 +2031,7 @@ export default class DigitalOcean {
   /**
    * Update The Default Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#update-the-default-project projects-default-update}
-   * 
+   *
    * @param {object} projectData - The Update Data
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
@@ -2047,7 +2048,7 @@ export default class DigitalOcean {
   /**
    * Patch The Default Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#patch-the-default-project projects-default-patch}
-   * 
+   *
    * @param {object} projectData - The Patch Data
    * @param {*} [callback] - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
