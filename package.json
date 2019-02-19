@@ -44,7 +44,7 @@
     "jsdoc": "3.5.5",
     "jsdoc-to-markdown": "^4.0.1",
     "jshint": "^2.10.1",
-    "mocha": "2.4.5",
+    "mocha": "^6.0.0",
     "natives": "^1.1.6",
     "should": "13.2.1"
   }
