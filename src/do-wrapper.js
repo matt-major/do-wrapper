@@ -1752,6 +1752,25 @@ export default class DigitalOcean {
   }
 
   /**
+   * Get All Database clusters
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-database-clusters list-all-database-clusters}
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databases(query, callback) {
+    const options = {
+      actionPath: 'databases/',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
