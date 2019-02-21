@@ -1771,6 +1771,22 @@ export default class DigitalOcean {
   }
 
   /**
+   * Create a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-database-cluster create-a-new-database-cluster}
+   * @param {object} [clusterData] - Database cluster creation data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreate(clusterData, callback) {
+    const options = {
+      actionPath: 'databases',
+      method: 'POST',
+      body: clusterData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
