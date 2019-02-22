@@ -1801,6 +1801,23 @@ export default class DigitalOcean {
   }
 
   /**
+   * Resize a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster resize-a-database-cluster}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration required to resize the cluster
+   * @param {*} callback  - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesResize(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/resize`,
+      method: 'PUT',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
