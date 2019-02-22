@@ -1818,6 +1818,25 @@ export default class DigitalOcean {
   }
 
   /**
+   * Migrate a database cluster to a new region
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#migrate-a-database-cluster-to-a-new-region migrate-a-database-cluster-to-a-new-region}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} region - The slug identifier for the region
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesMigrate(clusterId, region, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/migrate`,
+      method: 'PUT',
+      body: {
+        region: region
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
