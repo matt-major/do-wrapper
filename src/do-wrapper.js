@@ -1837,6 +1837,23 @@ export default class DigitalOcean {
   }
 
   /**
+   * Cofigure a database cluster's maintenance window
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#configure-a-database-cluster-s-maintenance-window configure-a-database-cluster-s-maintenance-window}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration required to perform maintenance
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesMaintenance(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/maintenance`,
+      method: 'PUT',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
