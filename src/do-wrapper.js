@@ -1854,6 +1854,20 @@ export default class DigitalOcean {
   }
 
   /**
+   * List all of the available backups of a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-database-cluster list-backups-for-a-database-cluster}
+   * @param {string} clusterId - The databases cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetBackups(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/backups`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
