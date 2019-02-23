@@ -402,6 +402,106 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an
 <dd><p>Delete Certificate By Id
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-certificate">certificates-delete-by-id</a></p>
 </dd>
+<dt><a href="#databases">databases([query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get All Database clusters
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-database-clusters">list-all-database-clusters</a></p>
+</dd>
+<dt><a href="#databasesCreate">databasesCreate([clusterData], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-new-database-cluster">create-a-new-database-cluster</a></p>
+</dd>
+<dt><a href="#databasesGet">databasesGet([clusterId], callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Retrieve an existing Database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-cluster">retrieve-an-existing-database-cluster</a></p>
+</dd>
+<dt><a href="#databasesResize">databasesResize(clusterId, configuration, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Resize a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster">resize-a-database-cluster</a></p>
+</dd>
+<dt><a href="#databasesMigrate">databasesMigrate(clusterId, region, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Migrate a database cluster to a new region
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#migrate-a-database-cluster-to-a-new-region">migrate-a-database-cluster-to-a-new-region</a></p>
+</dd>
+<dt><a href="#databasesMaintenance">databasesMaintenance(clusterId, configuration, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Cofigure a database cluster&#39;s maintenance window
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#configure-a-database-cluster-s-maintenance-window">configure-a-database-cluster-s-maintenance-window</a></p>
+</dd>
+<dt><a href="#databasesGetBackups">databasesGetBackups(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all of the available backups of a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-database-cluster">list-backups-for-a-database-cluster</a></p>
+</dd>
+<dt><a href="#databasesRestore">databasesRestore(configuration, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a new database cluster based on backup of an existing cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#restore-from-a-database-cluster-backup">restore-from-a-database-cluster-backup</a></p>
+</dd>
+<dt><a href="#databasesDelete">databasesDelete(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Destroy a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#destroy-a-database-cluster">destroy-a-database-cluster</a></p>
+</dd>
+<dt><a href="#databasesCreateReplica">databasesCreateReplica(clusterId, configuration, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Create a read-only replica of the database
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#create-a-read-only-replica">create-a-read-only-replica</a></p>
+</dd>
+<dt><a href="#databasesGetReplica">databasesGetReplica(clusterId, replicaName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Retrieve an existing read-only replica
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-read-only-replica">retrieve-an-existing-read-only-replica</a></p>
+</dd>
+<dt><a href="#databasesReplicaGetAll">databasesReplicaGetAll(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all of the read-only replicas associated with a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-read-only-replicas">list-all-read-only-replicas</a></p>
+</dd>
+<dt><a href="#databasesDeleteReplica">databasesDeleteReplica(clusterId, replicaName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Destroy a specific read-only replica
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#destroy-a-read-only-replica">destroy-a-read-only-replica</a></p>
+</dd>
+<dt><a href="#databasesCreateUser">databasesCreateUser(clusterId, username, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Add a database user
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#add-a-database-user">add-a-database-user</a></p>
+</dd>
+<dt><a href="#databasesGetUser">databasesGetUser(clusterId, username, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get information about an existing database user
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-user">retrieve-an-existing-database-user</a></p>
+</dd>
+<dt><a href="#databasesUsersGetAll">databasesUsersGetAll(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all the users of a database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-database-users">list-all-database-users</a></p>
+</dd>
+<dt><a href="#databasesDeleteUser">databasesDeleteUser(clusterId, username, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Remove a database user
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#remove-a-database-user">remove-a-database-user</a></p>
+</dd>
+<dt><a href="#databasesCreateDB">databasesCreateDB(clusterId, databaseName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Add a new database to an existing cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#add-a-new-database">add-a-new-database</a></p>
+</dd>
+<dt><a href="#databasesGetDB">databasesGetDB(clusterId, databaseName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get information about an existing database cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database">retrieve-an-existing-database</a></p>
+</dd>
+<dt><a href="#databasesDeleteDB">databasesDeleteDB(clusterId, databaseName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a specific database
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-database">delete-a-database</a></p>
+</dd>
+<dt><a href="#databasesDBGetAll">databasesDBGetAll(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all of the databases in a cluster
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-databases">list-all-databases</a></p>
+</dd>
+<dt><a href="#databasesCreatePool">databasesCreatePool(clusterId, configuration, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Add a new connection pool
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#add-a-new-connection-pool">add-a-new-connection-pool</a></p>
+</dd>
+<dt><a href="#databasesPoolGetAll">databasesPoolGetAll(clusterId, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>List all of the connection pools
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools">list-all-connection-pools</a></p>
+</dd>
+<dt><a href="#databasesGetPool">databasesGetPool(clusterId, poolName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get information about an existing connection pool
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-connection-pool"> retrieve-an-existing-connection-pool</a></p>
+</dd>
+<dt><a href="#databasesDeletePool">databasesDeletePool(clusterId, poolName, callback)</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Delete a specific connection pool
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#delete-a-connection-pool">delete-a-connection-pool</a></p>
+</dd>
 <dt><a href="#kubernetes">kubernetes([query], [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Get All Kubernetes Clusters
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters">kubernetes-get-clusters</a></p>
@@ -1919,6 +2019,371 @@ Info: [certificates-delete-by-id](https://developers.digitalocean.com/documentat
 | Param | Type | Description |
 | --- | --- | --- |
 | [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databases"></a>
+
+## databases([query], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get All Database clusters
+Info: [list-all-database-clusters](https://developers.digitalocean.com/documentation/v2/#list-all-database-clusters)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [query] | <code>object</code> | Optional query parameters |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesCreate"></a>
+
+## databasesCreate([clusterData], [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a database cluster
+Info: [create-a-new-database-cluster](https://developers.digitalocean.com/documentation/v2/#create-a-new-database-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [clusterData] | <code>object</code> | Database cluster creation data |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGet"></a>
+
+## databasesGet([clusterId], callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Retrieve an existing Database cluster
+Info: [retrieve-an-existing-database-cluster](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [clusterId] | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesResize"></a>
+
+## databasesResize(clusterId, configuration, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Resize a database cluster
+Info: [resize-a-database-cluster](https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| configuration | <code>Object</code> | The configuration required to resize the cluster |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesMigrate"></a>
+
+## databasesMigrate(clusterId, region, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Migrate a database cluster to a new region
+Info: [migrate-a-database-cluster-to-a-new-region](https://developers.digitalocean.com/documentation/v2/#migrate-a-database-cluster-to-a-new-region)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| region | <code>string</code> | The slug identifier for the region |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesMaintenance"></a>
+
+## databasesMaintenance(clusterId, configuration, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Cofigure a database cluster's maintenance window
+Info: [configure-a-database-cluster-s-maintenance-window](https://developers.digitalocean.com/documentation/v2/#configure-a-database-cluster-s-maintenance-window)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| configuration | <code>Object</code> | The configuration required to perform maintenance |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGetBackups"></a>
+
+## databasesGetBackups(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all of the available backups of a database cluster
+Info: [list-backups-for-a-database-cluster](https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-database-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The databases cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesRestore"></a>
+
+## databasesRestore(configuration, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a new database cluster based on backup of an existing cluster
+Info: [restore-from-a-database-cluster-backup](https://developers.digitalocean.com/documentation/v2/#restore-from-a-database-cluster-backup)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| configuration | <code>Object</code> | The configuration required to restore a database cluster |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDelete"></a>
+
+## databasesDelete(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Destroy a database cluster
+Info: [destroy-a-database-cluster](https://developers.digitalocean.com/documentation/v2/#destroy-a-database-cluster)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesCreateReplica"></a>
+
+## databasesCreateReplica(clusterId, configuration, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Create a read-only replica of the database
+Info: [create-a-read-only-replica](https://developers.digitalocean.com/documentation/v2/#create-a-read-only-replica)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| configuration | <code>Object</code> | The configuration to create a replica |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGetReplica"></a>
+
+## databasesGetReplica(clusterId, replicaName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Retrieve an existing read-only replica
+Info: [retrieve-an-existing-read-only-replica](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-read-only-replica)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| replicaName | <code>string</code> | The existing database replica name |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesReplicaGetAll"></a>
+
+## databasesReplicaGetAll(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all of the read-only replicas associated with a database cluster
+Info: [list-all-read-only-replicas](https://developers.digitalocean.com/documentation/v2/#list-all-read-only-replicas)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDeleteReplica"></a>
+
+## databasesDeleteReplica(clusterId, replicaName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Destroy a specific read-only replica
+Info: [destroy-a-read-only-replica](https://developers.digitalocean.com/documentation/v2/#destroy-a-read-only-replica)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| replicaName | <code>string</code> | The existing database replica name |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesCreateUser"></a>
+
+## databasesCreateUser(clusterId, username, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Add a database user
+Info: [add-a-database-user](https://developers.digitalocean.com/documentation/v2/#add-a-database-user)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| username | <code>string</code> | The name to give the database user |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGetUser"></a>
+
+## databasesGetUser(clusterId, username, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get information about an existing database user
+Info: [retrieve-an-existing-database-user](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-user)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| username | <code>string</code> | The name of the database user |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesUsersGetAll"></a>
+
+## databasesUsersGetAll(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all the users of a database cluster
+Info: [list-all-database-users](https://developers.digitalocean.com/documentation/v2/#list-all-database-users)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDeleteUser"></a>
+
+## databasesDeleteUser(clusterId, username, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Remove a database user
+Info: [remove-a-database-user](https://developers.digitalocean.com/documentation/v2/#remove-a-database-user)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| username | <code>string</code> | The name of the database user |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesCreateDB"></a>
+
+## databasesCreateDB(clusterId, databaseName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Add a new database to an existing cluster
+Info: [add-a-new-database](https://developers.digitalocean.com/documentation/v2/#add-a-new-database)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| databaseName | <code>string</code> | The name to give the database |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGetDB"></a>
+
+## databasesGetDB(clusterId, databaseName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get information about an existing database cluster
+Info: [retrieve-an-existing-database](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| databaseName | <code>string</code> | The name of the database |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDeleteDB"></a>
+
+## databasesDeleteDB(clusterId, databaseName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a specific database
+Info: [delete-a-database](https://developers.digitalocean.com/documentation/v2/#delete-a-database)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| databaseName | <code>string</code> | The name of the database |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDBGetAll"></a>
+
+## databasesDBGetAll(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all of the databases in a cluster
+Info: [list-all-databases](https://developers.digitalocean.com/documentation/v2/#list-all-databases)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesCreatePool"></a>
+
+## databasesCreatePool(clusterId, configuration, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Add a new connection pool
+Info: [add-a-new-connection-pool](https://developers.digitalocean.com/documentation/v2/#add-a-new-connection-pool)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| configuration | <code>Object</code> | The configuration for a new connection pool |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesPoolGetAll"></a>
+
+## databasesPoolGetAll(clusterId, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+List all of the connection pools
+Info: [list-all-connection-pools](https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesGetPool"></a>
+
+## databasesGetPool(clusterId, poolName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get information about an existing connection pool
+Info: [ retrieve-an-existing-connection-pool](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-connection-pool)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| poolName | <code>string</code> | The name of the pool |
+| callback | <code>\*</code> | Optional function to execute on completion |
+
+<a name="databasesDeletePool"></a>
+
+## databasesDeletePool(clusterId, poolName, callback) ⇒ <code>Promise</code> \| <code>undefined</code>
+Delete a specific connection pool
+Info: [delete-a-connection-pool](https://developers.digitalocean.com/documentation/v2/#delete-a-connection-pool)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| clusterId | <code>string</code> | The database cluster ID |
+| poolName | <code>string</code> | The name of the pool |
+| callback | <code>\*</code> | Optional function to execute on completion |
 
 <a name="kubernetes"></a>
 
