@@ -2106,6 +2106,20 @@ export default class DigitalOcean {
   }
 
   /**
+  * List all of the connection pools
+  * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools list-all-connection-pools}
+  * @param {string} clusterId - The database cluster ID
+  * @param {*} callback - Optional function to execute on completion
+  * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+  */
+  databasesPoolGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
