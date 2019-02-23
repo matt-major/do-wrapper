@@ -1899,6 +1899,23 @@ export default class DigitalOcean {
   }
 
   /**
+   * Create a read-only replica of the database
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-read-only-replica create-a-read-only-replica}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration to create a replica
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateReplica(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
