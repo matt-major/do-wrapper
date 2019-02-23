@@ -1868,6 +1868,22 @@ export default class DigitalOcean {
   }
 
   /**
+   * Create a new database cluster based on backup of an existing cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#restore-from-a-database-cluster-backup restore-from-a-database-cluster-backup}
+   * @param {Object} configuration - The configuration required to restore a database cluster
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesRestore(configuration, callback) {
+    const options = {
+      actionPath: `databases`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
