@@ -2135,6 +2135,22 @@ export default class DigitalOcean {
   }
 
   /**
+   * Delete a specific connection pool
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-connection-pool delete-a-connection-pool}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} poolName - The name of the pool
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeletePool(clusterId, poolName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools/${encodeURIComponent(poolName)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
