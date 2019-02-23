@@ -2059,6 +2059,22 @@ export default class DigitalOcean {
   }
 
   /**
+   * Delete a specific database
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-database delete-a-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name of the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeleteDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs/${databaseName}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
