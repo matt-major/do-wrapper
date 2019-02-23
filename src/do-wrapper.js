@@ -1961,6 +1961,25 @@ export default class DigitalOcean {
   }
 
   /**
+   * Add a database user
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-database-user add-a-database-user}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} username - The name to give the database user
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateUser(clusterId, username, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users`,
+      method: 'POST',
+      body: {
+        name: username
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
