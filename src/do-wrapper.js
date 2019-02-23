@@ -1983,7 +1983,7 @@ export default class DigitalOcean {
    * Get information about an existing database user
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-user retrieve-an-existing-database-user}
    * @param {string} clusterId - The database cluster ID
-   * @param {string} username - The name to give the database user
+   * @param {string} username - The name of the database user
    * @param {*} callback - Optional function to execute on completion
    * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
    */
@@ -2004,6 +2004,22 @@ export default class DigitalOcean {
   databasesUsersGetAll(clusterId, callback) {
     const options = {
       actionPath: `databases/${encodeURIComponent(clusterId)}/users`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Remove a database user
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-a-database-user remove-a-database-user}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} username - The name of the database user
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeleteUser(clusterId, username, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
+      method: 'DELETE',
     };
     return this._handleRequest(options, callback);
   }
