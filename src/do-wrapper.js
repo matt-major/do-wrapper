@@ -2025,6 +2025,25 @@ export default class DigitalOcean {
   }
 
   /**
+   * Add a new database to an existing cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-new-database add-a-new-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name to give the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs`,
+      method: 'POST',
+      body: {
+        name: databaseName
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
