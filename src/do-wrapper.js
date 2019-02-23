@@ -2089,6 +2089,23 @@ export default class DigitalOcean {
   }
 
   /**
+   * Add a new connection pool
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-new-connection-pool add-a-new-connection-pool}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration for a new connection pool
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreatePool(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
