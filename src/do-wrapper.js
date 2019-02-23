@@ -1931,6 +1931,20 @@ export default class DigitalOcean {
   }
 
   /**
+   * List all of the read-only replicas associated with a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-read-only-replicas list-all-read-only-replicas}
+   * @param {string} clusterId - The database cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesReplicaGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
