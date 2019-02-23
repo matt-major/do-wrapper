@@ -2044,6 +2044,21 @@ export default class DigitalOcean {
   }
 
   /**
+   * Get information about an existing database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database retrieve-an-existing-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name of the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs/${databaseName}`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
