@@ -513,7 +513,8 @@ export default class DigitalOcean {
         tag_name: (query) ? ((query) ? (query.tag_name || '') : '') : '',
         per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
         page: (query) ? (query.page || 1) : 1
-      }
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
     };
     return this._handleRequest(options, callback);
   }
