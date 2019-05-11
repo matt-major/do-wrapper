@@ -1752,6 +1752,405 @@ export default class DigitalOcean {
   }
 
   /**
+   * Get All Database clusters
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-database-clusters list-all-database-clusters}
+   * @param {object} [query] - Optional query parameters
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databases(query, callback) {
+    const options = {
+      actionPath: 'databases/',
+      qs: {
+        per_page: (query) ? (query.per_page || this.perPage) : this.perPage,
+        page: (query) ? (query.page || 1) : 1
+      },
+      includeAll: (query) ? (query.includeAll || false) : false
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-new-database-cluster create-a-new-database-cluster}
+   * @param {object} [clusterData] - Database cluster creation data
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreate(clusterData, callback) {
+    const options = {
+      actionPath: 'databases',
+      method: 'POST',
+      body: clusterData
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Retrieve an existing Database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-cluster retrieve-an-existing-database-cluster}
+   * @param {string} [clusterId] - The database cluster ID
+   * @param {*} callback  - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGet(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Resize a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster resize-a-database-cluster}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration required to resize the cluster
+   * @param {*} callback  - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesResize(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/resize`,
+      method: 'PUT',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Migrate a database cluster to a new region
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#migrate-a-database-cluster-to-a-new-region migrate-a-database-cluster-to-a-new-region}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} region - The slug identifier for the region
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesMigrate(clusterId, region, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/migrate`,
+      method: 'PUT',
+      body: {
+        region: region
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Cofigure a database cluster's maintenance window
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#configure-a-database-cluster-s-maintenance-window configure-a-database-cluster-s-maintenance-window}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration required to perform maintenance
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesMaintenance(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/maintenance`,
+      method: 'PUT',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all of the available backups of a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-database-cluster list-backups-for-a-database-cluster}
+   * @param {string} clusterId - The databases cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetBackups(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/backups`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create a new database cluster based on backup of an existing cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#restore-from-a-database-cluster-backup restore-from-a-database-cluster-backup}
+   * @param {Object} configuration - The configuration required to restore a database cluster
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesRestore(configuration, callback) {
+    const options = {
+      actionPath: `databases`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Destroy a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#destroy-a-database-cluster destroy-a-database-cluster}
+   * @param {string} clusterId - The database cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDelete(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Create a read-only replica of the database
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#create-a-read-only-replica create-a-read-only-replica}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration to create a replica
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateReplica(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Retrieve an existing read-only replica
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-read-only-replica retrieve-an-existing-read-only-replica}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} replicaName - The existing database replica name
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetReplica(clusterId, replicaName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas/${encodeURIComponent(replicaName)}`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all of the read-only replicas associated with a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-read-only-replicas list-all-read-only-replicas}
+   * @param {string} clusterId - The database cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesReplicaGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Destroy a specific read-only replica
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#destroy-a-read-only-replica destroy-a-read-only-replica}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} replicaName - The existing database replica name
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeleteReplica(clusterId, replicaName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/replicas/${encodeURIComponent(replicaName)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add a database user
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-database-user add-a-database-user}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} username - The name to give the database user
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateUser(clusterId, username, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users`,
+      method: 'POST',
+      body: {
+        name: username
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get information about an existing database user
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database-user retrieve-an-existing-database-user}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} username - The name of the database user
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetUser(clusterId, username, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all the users of a database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-database-users list-all-database-users}
+   * @param {string} clusterId - The database cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesUsersGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Remove a database user
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#remove-a-database-user remove-a-database-user}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} username - The name of the database user
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeleteUser(clusterId, username, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
+      method: 'DELETE',
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add a new database to an existing cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-new-database add-a-new-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name to give the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreateDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs`,
+      method: 'POST',
+      body: {
+        name: databaseName
+      }
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get information about an existing database cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database retrieve-an-existing-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name of the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs/${databaseName}`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a specific database
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-database delete-a-database}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} databaseName - The name of the database
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeleteDB(clusterId, databaseName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs/${databaseName}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * List all of the databases in a cluster
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-databases list-all-databases}
+   * @param {string} clusterId - The database cluster ID
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDBGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/dbs`
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Add a new connection pool
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#add-a-new-connection-pool add-a-new-connection-pool}
+   * @param {string} clusterId - The database cluster ID
+   * @param {Object} configuration - The configuration for a new connection pool
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesCreatePool(clusterId, configuration, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools`,
+      method: 'POST',
+      body: configuration
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+  * List all of the connection pools
+  * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools list-all-connection-pools}
+  * @param {string} clusterId - The database cluster ID
+  * @param {*} callback - Optional function to execute on completion
+  * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+  */
+  databasesPoolGetAll(clusterId, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Get information about an existing connection pool
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-connection-pool  retrieve-an-existing-connection-pool}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} poolName - The name of the pool
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesGetPool(clusterId, poolName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools/${encodeURIComponent(poolName)}`,
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
+   * Delete a specific connection pool
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#delete-a-connection-pool delete-a-connection-pool}
+   * @param {string} clusterId - The database cluster ID
+   * @param {string} poolName - The name of the pool
+   * @param {*} callback - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  databasesDeletePool(clusterId, poolName, callback) {
+    const options = {
+      actionPath: `databases/${encodeURIComponent(clusterId)}/pools/${encodeURIComponent(poolName)}`,
+      method: 'DELETE'
+    };
+    return this._handleRequest(options, callback);
+  }
+
+  /**
    * Get All Kubernetes Clusters
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters kubernetes-get-clusters}
    * @param {object} [query] - Optional query parameters
