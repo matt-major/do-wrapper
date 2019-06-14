@@ -261,7 +261,7 @@ export default class DigitalOcean {
    */
   cdnEndpointPurgeCache(endpointId, files, callback) {
     const options = {
-      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}`,
+      actionPath: `cdn/endpoints/${encodeURIComponent(endpointId)}/cache`,
       method: 'DELETE',
       body: { files: files }
     };
