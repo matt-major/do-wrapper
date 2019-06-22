@@ -204,7 +204,7 @@ export default class DigitalOcean {
    */
   cdnEndpointGetAll(query, callback) {
     const options = {
-      actionPath: '/cdn/endpoints',
+      actionPath: 'cdn/endpoints',
       key: 'endpoints',
       qs: {
         tag_name: (query) ? (query.tag_name || '') : '',
