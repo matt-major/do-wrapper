@@ -2416,6 +2416,19 @@ export default class DigitalOcean {
     return this._handleRequest(options, callback);
   }
 
+    /**
+   * Get Project Resources
+   * Info: {@link https://developers.digitalocean.com/documentation/v2/#list-all-resources list-all-resources}
+   *
+   * @param {string} projectId - The Project Id to get
+   * @param {*} [callback] - Optional function to execute on completion
+   * @returns {Promise|undefined} - Returns a promise if [callback] is not defined
+   */
+  projectsGetResources(projectId, callback) {
+    const options = { actionPath: `projects/${encodeURIComponent(projectId)}/resources` };
+    return this._handleRequest(options, callback);
+  }
+
   /**
    * Get The Default Project
    * Info: {@link https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project projects-get-default}
