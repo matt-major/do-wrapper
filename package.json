@@ -32,21 +32,21 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.87.0"
+    "request": "2.88.0"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
-    "chai": "4.1.2",
+    "chai": "4.2.0",
     "gulp": "^4.0.0",
     "gulp-babel": "7.0.1",
     "gulp-uglify": "3.0.0",
     "husky": "0.14.3",
-    "jsdoc": "^3.6.1",
-    "jsdoc-to-markdown": "^4.0.1",
-    "jshint": "^2.10.1",
+    "jsdoc": "^3.6.3",
+    "jsdoc-to-markdown": "^5.0.0",
+    "jshint": "^2.10.2",
     "mocha": "^6.1.4",
     "natives": "^1.1.6",
-    "should": "13.2.1"
+    "should": "13.2.3"
   }
 }
