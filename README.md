@@ -12,8 +12,6 @@ This library is developed and provided at no cost. If you'd like to donate a sma
 
 * **PayPal**
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/mattmajor14)
-* **Crypto**
-<span class="badge-crypto"><a href="https://commerce.coinbase.com/checkout/3cb5e3ce-5c76-43be-8f28-b1ad2be8b76d" title="Donate to this project using Cryptocurrency"><img src="https://img.shields.io/badge/crypto-donate-yellow.svg" alt="crypto donate button" /></a></span>
 
 ### Install
 
