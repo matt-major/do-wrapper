@@ -14,7 +14,8 @@
     "build": "gulp compile && npm run doc",
     "precommit": "npm t",
     "test": "jshint src/*.js && ./node_modules/mocha/bin/mocha",
-    "doc": "./node_modules/.bin/jsdoc2md src/do-wrapper.js > docs/do-wrapper.md && ./node_modules/.bin/jsdoc2md src/request-helper.js > docs/request-helper.md"
+    "doc": "./node_modules/.bin/jsdoc2md src/do-wrapper.js > docs/do-wrapper.md && ./node_modules/.bin/jsdoc2md src/request-helper.js > docs/request-helper.md",
+    "postinstall": "node scripts/postinstall.js"
   },
   "license": "MIT",
   "bugs": {
