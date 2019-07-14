@@ -570,6 +570,10 @@ Info: <a href="https://developers.digitalocean.com/documentation/v2/#patch-a-pro
 <dd><p>Get A Project
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project">projects-get-by-id</a></p>
 </dd>
+<dt><a href="#projectsGetResources">projectsGetResources(projectId, [callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
+<dd><p>Get Project Resources
+Info: <a href="https://developers.digitalocean.com/documentation/v2/#list-all-resources">list-all-resources</a></p>
+</dd>
 <dt><a href="#projectsGetDefault">projectsGetDefault([callback])</a> ⇒ <code>Promise</code> | <code>undefined</code></dt>
 <dd><p>Get The Default Project
 Info: <a href="https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project">projects-get-default</a></p>
@@ -2623,6 +2627,20 @@ Info: [projects-patch](https://developers.digitalocean.com/documentation/v2/#pat
 ## projectsGet(projectId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
 Get A Project
 Info: [projects-get-by-id](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project)
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| projectId | <code>string</code> | The Project Id to get |
+| [callback] | <code>\*</code> | Optional function to execute on completion |
+
+<a name="projectsGetResources"></a>
+
+## projectsGetResources(projectId, [callback]) ⇒ <code>Promise</code> \| <code>undefined</code>
+Get Project Resources
+Info: [list-all-resources](https://developers.digitalocean.com/documentation/v2/#list-all-resources)
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> \| <code>undefined</code> - - Returns a promise if [callback] is not defined  
