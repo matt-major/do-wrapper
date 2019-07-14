@@ -8,9 +8,8 @@
 
 ### Donate
 
-This library is developed and provided at no cost. If you'd like to donate a small amount to help its continued development please consider one of the following:
+This library is developed and provided at no cost. If you'd like to donate a small amount to help its continued development please consider the below:
 
-* **PayPal**
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/mattmajor14)
 
 ### Install
@@ -90,7 +89,7 @@ Please raise an issue on GitHub with as much information as possible and the ste
 
 The MIT License (MIT)
 
-Copyright (c) 2018 Matt Major
+Copyright (c) 2019 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
