@@ -6,12 +6,6 @@
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Known Vulnerabilities](https://snyk.io/test/github/matt-major/do-wrapper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/matt-major/do-wrapper?targetFile=package.json)
 
-### Donate
-
-This library is developed and provided at no cost. If you'd like to donate a small amount to help its continued development please consider the below:
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/mattmajor14)
-
 ### Install
 
 ```do-wrapper``` is available on ```npm``` and as such, can be installed through ```npm``` with ease.
