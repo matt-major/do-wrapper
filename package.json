@@ -9,12 +9,8 @@
     "url": "https://github.com/matt-major/do-wrapper.git"
   },
   "main": "./dist/do-wrapper.js",
-  "types": "./types/do-wrapper.d.ts",
   "scripts": {
-    "build": "gulp compile && npm run doc",
-    "precommit": "npm t",
-    "test": "jshint src/*.js && ./node_modules/mocha/bin/mocha",
-    "doc": "./node_modules/.bin/jsdoc2md src/do-wrapper.js > docs/do-wrapper.md && ./node_modules/.bin/jsdoc2md src/request-helper.js > docs/request-helper.md",
+    "build": "tsc",
     "postinstall": "node scripts/postinstall.js"
   },
   "license": "MIT",
@@ -34,22 +30,12 @@
   "dependencies": {
     "request": "2.88.0"
   },
-  "peerDependencies": {
-    "handlebars": "4.1.2"
-  },
   "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-preset-env": "1.7.0",
+    "@types/request": "^2.48.2",
     "chai": "4.2.0",
-    "gulp": "^4.0.0",
-    "gulp-babel": "7.0.1",
-    "gulp-uglify": "3.0.0",
-    "husky": "0.14.3",
-    "jsdoc": "^3.6.3",
-    "jsdoc-to-markdown": "^5.0.0",
-    "jshint": "^2.10.2",
     "mocha": "^6.1.4",
     "natives": "^1.1.6",
-    "should": "13.2.3"
+    "should": "13.2.3",
+    "typescript": "^3.5.3"
   }
 }
