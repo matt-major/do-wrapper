@@ -1,4 +1,6 @@
 # do-wrapper
+## v4 Rewrite of the project - WORK IN PROGRESS
+
 ### A Node.js wrapper for the Digital Ocean v2 API
 
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
