@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Projects = /** @class */ (function (_super) {
     __extends(Projects, _super);
-    function Projects(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Projects(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Projects;
 }(base_module_1.BaseModule));

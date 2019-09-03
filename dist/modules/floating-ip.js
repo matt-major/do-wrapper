@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var FloatingIPs = /** @class */ (function (_super) {
     __extends(FloatingIPs, _super);
-    function FloatingIPs(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function FloatingIPs(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return FloatingIPs;
 }(base_module_1.BaseModule));

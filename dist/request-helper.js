@@ -20,25 +20,22 @@ var RequestHelper = /** @class */ (function () {
     /**
      * Check the required Request & Trigger
      * @param {*} options - Request Options
-     * @param {*} [callback] - Optional function to execute on completion
-     * @returns {Promise|undefined} - Returns a promise if callback is not defined
+     * @returns {Promise} - Returns a promise
      */
-    RequestHelper.prototype.request = function (options, callback) {
-        var promise;
-        if (!callback) {
-            promise = new Promise(function (resolve, reject) {
-                callback = function (err, response, body) {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        resolve({ response: response, body: body });
-                    }
-                };
-            });
-        }
+    RequestHelper.prototype.request = function (options) {
+        var callback;
+        var promise = new Promise(function (resolve, reject) {
+            callback = function (err, response, body) {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve({ response: response, body: body });
+                }
+            };
+        });
         options.includeAll ? this.getAllPages(options.key, options, callback) : this.submitRequest(options, callback);
-        return promise; // Will be undefined if callback was passed.
+        return promise;
     };
     /**
      * Submit the Request
@@ -52,7 +49,7 @@ var RequestHelper = /** @class */ (function () {
             if (err) {
                 callback(err);
             }
-            else if (!err && !_this.isSuccessfulRequest(response.statusCode)) {
+            else if (!err && !_this._isSuccessfulRequest(response.statusCode)) {
                 callback(body);
             }
             else {
@@ -65,7 +62,7 @@ var RequestHelper = /** @class */ (function () {
      * @param {number} statusCode - The Status Code
      * @returns {boolean}
      */
-    RequestHelper.prototype.isSuccessfulRequest = function (statusCode) {
+    RequestHelper.prototype._isSuccessfulRequest = function (statusCode) {
         var statusCodePattern = /^[2][0-9][0-9]$/;
         return statusCodePattern.test("" + statusCode);
     };

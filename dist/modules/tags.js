@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Tags = /** @class */ (function (_super) {
     __extends(Tags, _super);
-    function Tags(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Tags(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Tags;
 }(base_module_1.BaseModule));

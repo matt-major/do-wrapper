@@ -1,6 +1,7 @@
 import RequestHelper from './request-helper';
 
 import Account from './modules/account';
+import Actions from './modules/actions';
 import CDN from './modules/cdn';
 import Certificates from './modules/certificates';
 import Databases from './modules/databases';
@@ -22,6 +23,7 @@ export default class DigitalOcean {
   private pageSize: number;
 
   public account: Account;
+  public actions: Actions;
   public cdn: CDN;
   public certificates: Certificates;
   public databases: Databases;
@@ -43,22 +45,23 @@ export default class DigitalOcean {
     this.pageSize = pageSize;
 
     const requestHelper = new RequestHelper(token);
-    this.account = new Account(requestHelper);
-    this.cdn = new CDN(requestHelper);
-    this.certificates = new Certificates(requestHelper);
-    this.databases = new Databases(requestHelper);
-    this.domains = new Domains(requestHelper);
-    this.droplets = new Droplets(requestHelper);
-    this.firewalls = new Firewalls(requestHelper);
-    this.floatingIPs = new FloatingIPs(requestHelper);
-    this.images = new Images(requestHelper);
-    this.kubernetes = new Kubernetes(requestHelper);
-    this.loadBalancers = new LoadBalancers(requestHelper);
-    this.projects = new Projects(requestHelper);
-    this.regions = new Regions(requestHelper);
-    this.sizes = new Sizes(requestHelper);
-    this.snapshots = new Snapshots(requestHelper);
-    this.tags = new Tags(requestHelper);
-    this.volumes = new Volumes(requestHelper);
+    this.account = new Account(pageSize, requestHelper);
+    this.actions = new Actions(pageSize, requestHelper);
+    this.cdn = new CDN(pageSize, requestHelper);
+    this.certificates = new Certificates(pageSize, requestHelper);
+    this.databases = new Databases(pageSize, requestHelper);
+    this.domains = new Domains(pageSize, requestHelper);
+    this.droplets = new Droplets(pageSize, requestHelper);
+    this.firewalls = new Firewalls(pageSize, requestHelper);
+    this.floatingIPs = new FloatingIPs(pageSize, requestHelper);
+    this.images = new Images(pageSize, requestHelper);
+    this.kubernetes = new Kubernetes(pageSize, requestHelper);
+    this.loadBalancers = new LoadBalancers(pageSize, requestHelper);
+    this.projects = new Projects(pageSize, requestHelper);
+    this.regions = new Regions(pageSize, requestHelper);
+    this.sizes = new Sizes(pageSize, requestHelper);
+    this.snapshots = new Snapshots(pageSize, requestHelper);
+    this.tags = new Tags(pageSize, requestHelper);
+    this.volumes = new Volumes(pageSize, requestHelper);
   }
 }

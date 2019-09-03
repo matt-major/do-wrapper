@@ -25,24 +25,24 @@ export default class RequestHelper {
   /**
    * Check the required Request & Trigger
    * @param {*} options - Request Options
-   * @param {*} [callback] - Optional function to execute on completion
-   * @returns {Promise|undefined} - Returns a promise if callback is not defined
+   * @returns {Promise} - Returns a promise
    */
-  request(options: any, callback?: Function): any {
-    let promise;
-    if ( !callback ) {
-      promise = new Promise((resolve, reject) => {
-        callback = (err: any, response: any, body: any) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve({response, body});
-          }
-        };
-      });
-    }
+  request(options: any): Promise<any> | undefined {
+    let callback;
+
+    const promise = new Promise((resolve, reject) => {
+      callback = (err: any, response: any, body: any) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve({response, body});
+        }
+      };
+    });
+
     options.includeAll ? this.getAllPages(options.key, options, callback) : this.submitRequest(options, callback);
-    return promise; // Will be undefined if callback was passed.
+
+    return promise;
   }
 
   /**
@@ -51,11 +51,12 @@ export default class RequestHelper {
    * @param {*} callback - Function to execute on completion
    */
   submitRequest(options: any, callback: any): void {
-    let requestOptions = this.requestBuilder(options);
-    request(requestOptions, (err, response, body) => {
-      if ( err ) {
+    const requestOptions = this.requestBuilder(options);
+
+    request(requestOptions, (err: any, response: any, body: any) => {
+      if (err) {
         callback(err);
-      } else if ( !err && !this.isSuccessfulRequest(response.statusCode) ) {
+      } else if (!err && !this._isSuccessfulRequest(response.statusCode)) {
         callback(body);
       } else {
         callback(null, response, body);
@@ -68,7 +69,7 @@ export default class RequestHelper {
    * @param {number} statusCode - The Status Code
    * @returns {boolean}
    */
-  isSuccessfulRequest(statusCode: number) {
+  _isSuccessfulRequest(statusCode: number): boolean {
     const statusCodePattern = /^[2][0-9][0-9]$/;
     return statusCodePattern.test(`${statusCode}`);
   }
@@ -81,9 +82,9 @@ export default class RequestHelper {
    */
   getAllPages(key: string, options: any, callback: any) {
     let items: any[] = [],
-        total: number = 0,
-        required: number = 0,
-        completed: number = 1;
+      total: number = 0,
+      required: number = 0,
+      completed: number = 1;
 
     options.qs.page = 1;
 
@@ -96,18 +97,18 @@ export default class RequestHelper {
       items = items.concat(body[key]);
       required = total / (options.qs.per_page || 25);
 
-      if ( items.length >= total ) {
+      if (items.length >= total) {
         return callback(null, response, items);
       } else {
         this.getRemainingPages(options, 2, required, function (err: any, response: any, body: any) {
-          if ( err ) {
+          if (err) {
             callback(err);
           }
-          
+
           completed++;
           items = items.concat(body[key]);
 
-          if ( completed === required ) {
+          if (completed === required) {
             callback(null, response, items);
           }
         });
@@ -134,7 +135,7 @@ export default class RequestHelper {
    * @param {*} options - Options Object
    * @returns {*}
    */
-  requestBuilder(options: any) {
+  requestBuilder(options: any): any {
     return {
       uri: this.apiUrl + options.actionPath,
       method: options.method || 'GET',

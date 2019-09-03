@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Firewalls = /** @class */ (function (_super) {
     __extends(Firewalls, _super);
-    function Firewalls(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Firewalls(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Firewalls;
 }(base_module_1.BaseModule));

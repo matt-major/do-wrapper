@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Domains = /** @class */ (function (_super) {
     __extends(Domains, _super);
-    function Domains(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Domains(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Domains;
 }(base_module_1.BaseModule));

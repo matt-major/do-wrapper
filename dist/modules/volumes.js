@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Volumes = /** @class */ (function (_super) {
     __extends(Volumes, _super);
-    function Volumes(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Volumes(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Volumes;
 }(base_module_1.BaseModule));

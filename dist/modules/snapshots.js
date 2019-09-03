@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Snapshots = /** @class */ (function (_super) {
     __extends(Snapshots, _super);
-    function Snapshots(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Snapshots(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Snapshots;
 }(base_module_1.BaseModule));

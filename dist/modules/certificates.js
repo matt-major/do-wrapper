@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Certificates = /** @class */ (function (_super) {
     __extends(Certificates, _super);
-    function Certificates(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Certificates(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Certificates;
 }(base_module_1.BaseModule));

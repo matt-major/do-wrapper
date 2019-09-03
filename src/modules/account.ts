@@ -8,11 +8,11 @@ export default class Account extends BaseModule {
         actionPath: 'account',
     };
 
-    constructor(requestHelper: RequestHelper) {
-        super(requestHelper);
+    constructor(pageSize: number, requestHelper: RequestHelper) {
+        super(pageSize, requestHelper);
     }
 
-    public get(callback: any): ResponseHolder<AccountGetResponse> {
-        return this._execute(this.baseOptions, callback);
+    public get(): Promise<any> | undefined {
+        return this._execute(this.baseOptions);
     }
 }

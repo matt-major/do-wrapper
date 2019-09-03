@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var LoadBalancers = /** @class */ (function (_super) {
     __extends(LoadBalancers, _super);
-    function LoadBalancers(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function LoadBalancers(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return LoadBalancers;
 }(base_module_1.BaseModule));

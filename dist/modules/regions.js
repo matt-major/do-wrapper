@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Regions = /** @class */ (function (_super) {
     __extends(Regions, _super);
-    function Regions(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Regions(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Regions;
 }(base_module_1.BaseModule));

@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseModule = /** @class */ (function () {
-    function BaseModule(requestHelper) {
+    function BaseModule(pageSize, requestHelper) {
+        this.pageSize = pageSize;
         this.requestHelper = requestHelper;
     }
-    BaseModule.prototype._execute = function (options, callback) {
-        return this.requestHelper.request(options, callback);
+    BaseModule.prototype._execute = function (options) {
+        return this.requestHelper.request(options);
     };
     return BaseModule;
 }());

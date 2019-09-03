@@ -16,15 +16,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Account = /** @class */ (function (_super) {
     __extends(Account, _super);
-    function Account(requestHelper) {
-        var _this = _super.call(this, requestHelper) || this;
+    function Account(pageSize, requestHelper) {
+        var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.baseOptions = {
             actionPath: 'account',
         };
         return _this;
     }
-    Account.prototype.get = function (callback) {
-        return this._execute(this.baseOptions, callback);
+    Account.prototype.get = function () {
+        return this._execute(this.baseOptions);
     };
     return Account;
 }(base_module_1.BaseModule));

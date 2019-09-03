@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var Droplets = /** @class */ (function (_super) {
     __extends(Droplets, _super);
-    function Droplets(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function Droplets(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return Droplets;
 }(base_module_1.BaseModule));

@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
 var CDN = /** @class */ (function (_super) {
     __extends(CDN, _super);
-    function CDN(requestHelper) {
-        return _super.call(this, requestHelper) || this;
+    function CDN(pageSize, requestHelper) {
+        return _super.call(this, pageSize, requestHelper) || this;
     }
     return CDN;
 }(base_module_1.BaseModule));
