@@ -17,15 +17,14 @@ export default class Actions extends BaseModule {
      * @returns Promise
      */
     public get(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
-        const requestOptions = {
+        const requestOptions = this._getBaseRequestOptions({
             actionPath: this.basePath,
-            qs: {
-                tag_name: tagName || '',
-                per_page: pageSize || this.pageSize,
-                page: page || 1,
-            },
-            includeAll: includeAll || false,
-        };
+            key: 'actions',
+            tagName: tagName,
+            pageSize: pageSize,
+            page: page,
+            includeAll: includeAll
+        });
 
         return this._execute(requestOptions);
     }

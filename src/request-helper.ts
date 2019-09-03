@@ -95,7 +95,7 @@ export default class RequestHelper {
 
       total = body.meta.total;
       items = items.concat(body[key]);
-      required = total / (options.qs.per_page || 25);
+      required = Math.ceil(total / (options.qs.per_page || 25));
 
       if (items.length >= total) {
         return callback(null, response, items);

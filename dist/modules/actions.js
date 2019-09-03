@@ -33,15 +33,14 @@ var Actions = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = {
+        var requestOptions = this._getBaseRequestOptions({
             actionPath: this.basePath,
-            qs: {
-                tag_name: tagName || '',
-                per_page: pageSize || this.pageSize,
-                page: page || 1,
-            },
-            includeAll: includeAll || false,
-        };
+            key: 'actions',
+            tagName: tagName,
+            pageSize: pageSize,
+            page: page,
+            includeAll: includeAll
+        });
         return this._execute(requestOptions);
     };
     /**
