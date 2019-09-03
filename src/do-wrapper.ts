@@ -10,6 +10,7 @@ import Droplets from './modules/droplets';
 import Firewalls from './modules/firewalls';
 import FloatingIPs from './modules/floating-ip';
 import Images from './modules/images';
+import Keys from './modules/keys';
 import Kubernetes from './modules/kubernetes';
 import LoadBalancers from './modules/load-balancers';
 import Projects from './modules/projects';
@@ -32,6 +33,7 @@ export default class DigitalOcean {
   public firewalls: Firewalls;
   public floatingIPs: FloatingIPs;
   public images: Images;
+  public keys: Keys;
   public kubernetes: Kubernetes;
   public loadBalancers: LoadBalancers;
   public projects: Projects;
@@ -55,6 +57,7 @@ export default class DigitalOcean {
     this.firewalls = new Firewalls(pageSize, requestHelper);
     this.floatingIPs = new FloatingIPs(pageSize, requestHelper);
     this.images = new Images(pageSize, requestHelper);
+    this.keys = new Keys(pageSize, requestHelper);
     this.kubernetes = new Kubernetes(pageSize, requestHelper);
     this.loadBalancers = new LoadBalancers(pageSize, requestHelper);
     this.projects = new Projects(pageSize, requestHelper);

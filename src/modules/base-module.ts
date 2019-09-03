@@ -10,7 +10,7 @@ export class BaseModule {
         this.requestHelper = requestHelper;
     }
 
-    protected _getBaseRequestOptions(options: any): any {
+    protected _getBasePaginatedRequestOptions(options: any): any {
         return {
             actionPath: options.actionPath,
             key: options.key,

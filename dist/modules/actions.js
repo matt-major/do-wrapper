@@ -49,10 +49,9 @@ var Actions = /** @class */ (function (_super) {
      * @returns Promise
      */
     Actions.prototype.getById = function (actionId) {
-        var requestOptions = {
+        return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(actionId)
-        };
-        return this._execute(requestOptions);
+        });
     };
     return Actions;
 }(base_module_1.BaseModule));
