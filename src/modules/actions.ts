@@ -1,26 +1,43 @@
 import RequestHelper from "../request-helper";
 import { BaseModule } from "./base-module";
-import { ResponseHolder } from "../types/common";
-import { ActionEntry } from "../types/actions";
 
 export default class Actions extends BaseModule {
-    private baseOptions: Object = {
-        actionPath: 'actions',
-    };
+    private basePath: string = 'actions';
 
     constructor(pageSize: number, requestHelper: RequestHelper) {
         super(pageSize, requestHelper);
     }
 
-    public get(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> | undefined {
+    /**
+     * Get all Actions
+     * @param tagName filter to only return actions with a given tag
+     * @param [includeAll] return all actions, paginated (optional)
+     * @param [page] the specific page of actions to return (optional)
+     * @param [pageSize] the number of actions to return per page (optional)
+     * @returns Promise
+     */
+    public get(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
         const requestOptions = {
-            ...this.baseOptions,
+            actionPath: this.basePath,
             qs: {
                 tag_name: tagName || '',
                 per_page: pageSize || this.pageSize,
                 page: page || 1,
             },
             includeAll: includeAll || false,
+        };
+
+        return this._execute(requestOptions);
+    }
+
+    /**
+     * Get a specific Action using its identifier
+     * @param actionId the identifier of the Action
+     * @returns Promise
+     */
+    public getById(actionId: number): Promise<any> {
+        const requestOptions = {
+            actionPath: `${this.basePath}/${encodeURIComponent(actionId)}`
         };
 
         return this._execute(requestOptions);

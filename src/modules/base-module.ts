@@ -9,7 +9,7 @@ export class BaseModule {
         this.requestHelper = requestHelper;
     }
 
-    protected _execute(options: any): Promise<any> | undefined {
+    protected _execute(options: any): Promise<any> {
         return this.requestHelper.request(options);
     }
 }

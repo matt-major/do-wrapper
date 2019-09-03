@@ -23,6 +23,10 @@ var Account = /** @class */ (function (_super) {
         };
         return _this;
     }
+    /**
+     * Get the account information for the token
+     * @returns Promise of the request
+     */
     Account.prototype.get = function () {
         return this._execute(this.baseOptions);
     };

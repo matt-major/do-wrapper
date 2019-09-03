@@ -27,7 +27,7 @@ export default class RequestHelper {
    * @param {*} options - Request Options
    * @returns {Promise} - Returns a promise
    */
-  request(options: any): Promise<any> | undefined {
+  request(options: any): Promise<any> {
     let callback;
 
     const promise = new Promise((resolve, reject) => {
