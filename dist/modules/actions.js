@@ -33,7 +33,7 @@ var Actions = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBaseRequestOptions({
+        var requestOptions = this._getBasePaginatedRequestOptions({
             actionPath: this.basePath,
             key: 'actions',
             tagName: tagName,

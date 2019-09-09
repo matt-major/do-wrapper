@@ -5,7 +5,7 @@ var BaseModule = /** @class */ (function () {
         this.pageSize = pageSize;
         this.requestHelper = requestHelper;
     }
-    BaseModule.prototype._getBaseRequestOptions = function (options) {
+    BaseModule.prototype._getBasePaginatedRequestOptions = function (options) {
         return {
             actionPath: options.actionPath,
             key: options.key,

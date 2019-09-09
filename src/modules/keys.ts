@@ -1,8 +1,13 @@
 import RequestHelper from "../request-helper";
 import { BaseModule } from "./base-module";
+import { AddKeyRequest } from "../types/keys";
 
 export default class Keys extends BaseModule {
     private basePath: string = 'account/keys';
+
+    private baseOptions: any = {
+        actionPath: `${this.basePath}/`,
+    };
 
     constructor(pageSize: number, requestHelper: RequestHelper) {
         super(pageSize, requestHelper);
@@ -23,7 +28,7 @@ export default class Keys extends BaseModule {
             tagName: tagName,
             pageSize: pageSize,
             page: page,
-            includeAll: includeAll
+            includeAll: includeAll,
         });
 
         return this._execute(requestOptions);
@@ -38,5 +43,63 @@ export default class Keys extends BaseModule {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(keyId)}`
         });
+    }
+
+    /**
+     * Get a specific SSH Key using its fingerprint
+     * @param fingerprint the fingerprint of the SSH Key to retrieve
+     * @returns Promise
+     */
+    public getByFingerprint(fingerprint: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(fingerprint)}`
+        });
+    }
+
+    /**
+     * Add a new SSH Key to an account
+     * @param addKeyRequest the configuration of the SSH Key
+     * @returns Promise
+     */
+    public add(addKeyRequest: AddKeyRequest): Promise<any> {
+        const requestOptions = {
+            ...this.baseOptions,
+            method: 'POST',
+            body: addKeyRequest,
+        };
+
+        return this._execute(requestOptions);
+    }
+
+    /**
+     * Rename an SSH Key
+     * @param identifier the ID or Fingerprint of the SSH Key to rename
+     * @param newName the new name to set on the SSH Key
+     * @returns Promise
+     */
+    public rename(identifier: string, newName: string): Promise<any> {
+        const requestOptions = {
+            actionPath: `${this.basePath}/${encodeURIComponent(identifier)}`,
+            method: 'PUT',
+            body: {
+                name: newName,
+            },
+        };
+
+        return this._execute(requestOptions);
+    }
+
+    /**
+     * Delete an SSH Key
+     * @param identifier the ID or Fingerprint of the SSH Key you wish to delete
+     * @returns Promise
+     */
+    public delete(identifier: string): Promise<any> {
+        const requestOptions = {
+            actionPath: `${this.basePath}/${encodeURIComponent(identifier)}`,
+            method: 'DELETE',
+        };
+
+        return this._execute(requestOptions);
     }
 }
