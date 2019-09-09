@@ -17,8 +17,32 @@ var base_module_1 = require("./base-module");
 var Sizes = /** @class */ (function (_super) {
     __extends(Sizes, _super);
     function Sizes(pageSize, requestHelper) {
-        return _super.call(this, pageSize, requestHelper) || this;
+        var _this = _super.call(this, pageSize, requestHelper) || this;
+        _this.basePath = 'sizes';
+        return _this;
     }
+    /**
+     * Get all Size configurations
+     * @param tagName filter to only return Droplet Sizes with a given tag
+     * @param [includeAll] return all Droplet Sizes, paginated (optional)
+     * @param [page] the specific page of Droplet Sizes to return (optional)
+     * @param [pageSize] the number of Droplet Sizes to return per page (optional)
+     * @returns Promise
+     */
+    Sizes.prototype.get = function (tagName, includeAll, page, pageSize) {
+        if (includeAll === void 0) { includeAll = false; }
+        if (page === void 0) { page = 1; }
+        if (pageSize === void 0) { pageSize = this.pageSize; }
+        var requestOptions = this._getBasePaginatedRequestOptions({
+            actionPath: this.basePath,
+            key: 'sizes',
+            tagName: tagName,
+            pageSize: pageSize,
+            page: page,
+            includeAll: includeAll,
+        });
+        return this._execute(requestOptions);
+    };
     return Sizes;
 }(base_module_1.BaseModule));
 exports.default = Sizes;
