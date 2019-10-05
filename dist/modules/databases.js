@@ -68,6 +68,63 @@ var Databases = /** @class */ (function (_super) {
             actionPath: this.basePath + "/" + encodeURIComponent(clusterId),
         });
     };
+    /**
+     * Resize an existing Database Cluster
+     * @param clusterId the identifier of the Database Cluster to resize
+     * @param configuration the resizing configuration
+     */
+    Databases.prototype.resizeCluster = function (clusterId, configuration) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/resize",
+            method: 'PUT',
+            body: configuration,
+        });
+    };
+    /**
+     * Create a new User on an existing Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the name of the User to create
+     * @returns Promise
+     */
+    Databases.prototype.createUser = function (clusterId, username) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users",
+            method: 'POST',
+            body: {
+                name: username,
+            },
+        });
+    };
+    /**
+     * Delete a User from a Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the username of the User to delete
+     */
+    Databases.prototype.deleteUser = function (clusterId, username) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users/" + encodeURIComponent(username),
+            method: 'DELETE',
+        });
+    };
+    /**
+     * Retrieve a single User for a Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the username of the User to retrieve
+     */
+    Databases.prototype.getUser = function (clusterId, username) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users/" + encodeURIComponent(username),
+        });
+    };
+    /**
+     * Retrieve a list of all the Users for a given Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     */
+    Databases.prototype.getAllUsers = function (clusterId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users",
+        });
+    };
     return Databases;
 }(base_module_1.BaseModule));
 exports.default = Databases;

@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
 import { BaseModule } from "./base-module";
-import { DatabaseCreateClusterRequest } from "../types/databases";
+import { DatabaseCreateClusterRequest, DatabaseResizeClusterRequest } from "../types/databases";
 
 export default class Databases extends BaseModule {
     private basePath: string = 'databases';
@@ -55,6 +55,68 @@ export default class Databases extends BaseModule {
     public getClusterById(clusterId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}`,
+        });
+    }
+
+    /**
+     * Resize an existing Database Cluster
+     * @param clusterId the identifier of the Database Cluster to resize
+     * @param configuration the resizing configuration
+     */
+    public resizeCluster(clusterId: string, configuration: DatabaseResizeClusterRequest): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/resize`,
+            method: 'PUT',
+            body: configuration,
+        });
+    }
+
+    /**
+     * Create a new User on an existing Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the name of the User to create
+     * @returns Promise
+     */
+    public createUser(clusterId: string, username: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users`,
+            method: 'POST',
+            body: {
+                name: username,
+            },
+        });
+    }
+
+    /**
+     * Delete a User from a Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the username of the User to delete
+     */
+    public deleteUser(clusterId: string, username: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
+            method: 'DELETE',
+        });
+    }
+
+    /**
+     * Retrieve a single User for a Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     * @param username the username of the User to retrieve
+     */
+    public getUser(clusterId: string, username: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
+        });
+    }
+
+    /**
+     * Retrieve a list of all the Users for a given Database Cluster
+     * @param clusterId the identifier of the Database Cluster
+     */
+    public getAllUsers(clusterId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users`,
         });
     }
 }
