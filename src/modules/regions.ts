@@ -20,7 +20,7 @@ export default class Regions extends BaseModule {
      * @param [pageSize] the number of Regions to return per page (optional)
      * @returns Promise
      */
-    public get(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
+    public getAll(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
         const requestOptions = this._getBasePaginatedRequestOptions({
             actionPath: this.basePath,
             key: 'regions',

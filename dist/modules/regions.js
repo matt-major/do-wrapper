@@ -32,7 +32,7 @@ var Regions = /** @class */ (function (_super) {
      * @param [pageSize] the number of Regions to return per page (optional)
      * @returns Promise
      */
-    Regions.prototype.get = function (tagName, includeAll, page, pageSize) {
+    Regions.prototype.getAll = function (tagName, includeAll, page, pageSize) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
