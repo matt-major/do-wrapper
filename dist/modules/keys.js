@@ -43,7 +43,7 @@ var Keys = /** @class */ (function (_super) {
      * @param [pageSize] the number of SSH Keys to return per page (optional)
      * @returns Promise
      */
-    Keys.prototype.get = function (tagName, includeAll, page, pageSize) {
+    Keys.prototype.getAll = function (tagName, includeAll, page, pageSize) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
@@ -59,7 +59,7 @@ var Keys = /** @class */ (function (_super) {
     };
     /**
      * Get a specific SSH Key using its identifier
-     * @param actionId the identifier of the SSH Key
+     * @param keyId the identifier of the SSH Key
      * @returns Promise
      */
     Keys.prototype.getById = function (keyId) {

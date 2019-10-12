@@ -21,7 +21,7 @@ export default class Keys extends BaseModule {
      * @param [pageSize] the number of SSH Keys to return per page (optional)
      * @returns Promise
      */
-    public get(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
+    public getAll(tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
         const requestOptions = this._getBasePaginatedRequestOptions({
             actionPath: this.basePath,
             key: 'ssh_keys',
@@ -36,7 +36,7 @@ export default class Keys extends BaseModule {
 
     /**
      * Get a specific SSH Key using its identifier
-     * @param actionId the identifier of the SSH Key
+     * @param keyId the identifier of the SSH Key
      * @returns Promise
      */
     public getById(keyId: number): Promise<any> {
