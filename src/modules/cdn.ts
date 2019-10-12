@@ -1,5 +1,5 @@
 import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
+import {BaseModule} from "./base-module";
 
 export default class CDN extends BaseModule {
     private basePath: string = 'cdn/endpoints';
@@ -35,7 +35,7 @@ export default class CDN extends BaseModule {
 
     /**
      * Get a CDN Endpoint via its Id
-     * 
+     *
      * @param endpointId the identifier of the endpoint to retrieve
      * @returns Promise
      */
@@ -47,7 +47,7 @@ export default class CDN extends BaseModule {
 
     /**
      * Create a new CDN Endpoint
-     * 
+     *
      * @param origin The origin server address (FQDN) which provides the content for the CDN
      * @param ttl The amount of time (seconds) the content is cached by the CDN's edge servers. Defaults to 3600 (one hour)
      * @returns Promise
@@ -65,7 +65,7 @@ export default class CDN extends BaseModule {
 
     /**
      * Update the TTL of an existing CDN Endpoint
-     * 
+     *
      * @param endpointId the identifier of the CDN Endpoint you wish to update
      * @param ttl the amount of time (seconds) the content is cached by the CDN's edge servers
      * @returns Promise
@@ -82,7 +82,7 @@ export default class CDN extends BaseModule {
 
     /**
      * Delete an existing CDN Endpoint
-     * 
+     *
      * @param endpointId the identifier of the CDN Endpoint you wish to update
      */
     public deleteEndpoint(endpointId: string): Promise<any> {
@@ -94,7 +94,7 @@ export default class CDN extends BaseModule {
 
     /**
      * Purge cached content from an existing CDN Endpoint
-     * 
+     *
      * @param endpointId the identifier of the CDN Endpoint to purge the cache on
      * @param fileNames an array of path strings to clear purge from the cache
      * @returns Promise

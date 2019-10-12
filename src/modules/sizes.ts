@@ -1,5 +1,5 @@
 import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
+import {BaseModule} from "./base-module";
 
 export default class Sizes extends BaseModule {
     private basePath: string = 'sizes';

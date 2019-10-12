@@ -1,7 +1,5 @@
 import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
-import { ResponseHolder } from "../types/common";
-import { AccountGetResponse } from "../types/account";
+import {BaseModule} from "./base-module";
 
 export default class Account extends BaseModule {
     private baseOptions: Object = {

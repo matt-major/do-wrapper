@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
-import { AddKeyRequest } from "../types/keys";
+import {BaseModule} from "./base-module";
+import {AddKeyRequest} from "../types/keys";
 
 export default class Keys extends BaseModule {
     private basePath: string = 'account/keys';

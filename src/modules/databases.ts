@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
-import { BaseModule } from "./base-module";
-import { DatabaseCreateClusterRequest, DatabaseResizeClusterRequest } from "../types/databases";
+import {BaseModule} from "./base-module";
+import {DatabaseCreateClusterRequest, DatabaseResizeClusterRequest} from "../types/databases";
 
 export default class Databases extends BaseModule {
     private basePath: string = 'databases';
