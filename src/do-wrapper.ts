@@ -15,10 +15,12 @@ import Kubernetes from './modules/kubernetes';
 import LoadBalancers from './modules/load-balancers';
 import Projects from './modules/projects';
 import Regions from './modules/regions';
+import Reports from './modules/reports';
 import Sizes from './modules/sizes';
 import Snapshots from './modules/snapshots';
 import Tags from './modules/tags';
 import Volumes from './modules/volumes';
+
 
 export default class DigitalOcean {
     public account: Account;
@@ -36,6 +38,7 @@ export default class DigitalOcean {
     public loadBalancers: LoadBalancers;
     public projects: Projects;
     public regions: Regions;
+    public reports: Reports;
     public sizes: Sizes;
     public snapshots: Snapshots;
     public tags: Tags;
@@ -61,6 +64,7 @@ export default class DigitalOcean {
         this.loadBalancers = new LoadBalancers(pageSize, requestHelper);
         this.projects = new Projects(pageSize, requestHelper);
         this.regions = new Regions(pageSize, requestHelper);
+        this.reports = new Reports(pageSize, requestHelper);
         this.sizes = new Sizes(pageSize, requestHelper);
         this.snapshots = new Snapshots(pageSize, requestHelper);
         this.tags = new Tags(pageSize, requestHelper);

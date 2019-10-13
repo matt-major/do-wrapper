@@ -1,5 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
+import {DropletCreationRequest} from "../types/droplets";
+import {HttpMethods} from "../common";
 
 export default class Droplets extends BaseModule {
     private basePath: string = 'droplets';
@@ -119,5 +121,88 @@ export default class Droplets extends BaseModule {
         });
 
         return this._execute(requestOptions);
+    }
+
+    /**
+     * Create a new Droplet
+     * @param options the options for the new Droplet
+     * @returns Promise
+     */
+    public create(options: DropletCreationRequest): Promise<any> {
+        return this._execute({
+            ...this.baseOptions,
+            method: HttpMethods.POST,
+            body: options,
+        });
+    }
+
+    /**
+     * Get a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    public getById(dropletId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}`,
+        });
+    }
+
+    /**
+     * Delete a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    public deleteById(dropletId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}`,
+            method: HttpMethods.DELETE,
+        });
+    }
+
+    /**
+     * Get the neighbors of a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    public getNeighbors(dropletId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}/neighbors`,
+        });
+    }
+
+    /**
+     * Get Droplet Upgrades
+     * @returns Promise
+     */
+    public getUpgrades() {
+        return this._execute({
+            actionPath: 'droplet_upgrades',
+        });
+    }
+
+    /**
+     * Request an Action on a Droplet
+     * @param dropletId the identifier of the Droplet
+     * @param action the Action to request
+     * @returns Promise
+     */
+    public requestAction(dropletId: string, action: any): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}/actions`,
+            method: HttpMethods.POST,
+            body: action,
+        });
+    }
+
+    /**
+     * Get the details of an Action on a Droplet
+     * @param dropletId the identifier of the Droplet
+     * @param actionId the identifier of the Action
+     * @returns Promise
+     */
+    public getAction(dropletId: string, actionId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}/actions/${encodeURIComponent(actionId)}`,
+        });
     }
 }

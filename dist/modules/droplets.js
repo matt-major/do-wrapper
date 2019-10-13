@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Droplets = /** @class */ (function (_super) {
     __extends(Droplets, _super);
     function Droplets(pageSize, requestHelper) {
@@ -141,6 +142,78 @@ var Droplets = /** @class */ (function (_super) {
             includeAll: includeAll,
         });
         return this._execute(requestOptions);
+    };
+    /**
+     * Create a new Droplet
+     * @param options the options for the new Droplet
+     * @returns Promise
+     */
+    Droplets.prototype.create = function (options) {
+        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+    };
+    /**
+     * Get a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    Droplets.prototype.getById = function (dropletId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(dropletId),
+        });
+    };
+    /**
+     * Delete a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    Droplets.prototype.deleteById = function (dropletId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(dropletId),
+            method: common_1.HttpMethods.DELETE,
+        });
+    };
+    /**
+     * Get the neighbors of a Droplet by its identifier
+     * @param dropletId the identifier of the Droplet
+     * @returns Promise
+     */
+    Droplets.prototype.getNeighbors = function (dropletId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(dropletId) + "/neighbors",
+        });
+    };
+    /**
+     * Get Droplet Upgrades
+     * @returns Promise
+     */
+    Droplets.prototype.getUpgrades = function () {
+        return this._execute({
+            actionPath: 'droplet_upgrades',
+        });
+    };
+    /**
+     * Request an Action on a Droplet
+     * @param dropletId the identifier of the Droplet
+     * @param action the Action to request
+     * @returns Promise
+     */
+    Droplets.prototype.requestAction = function (dropletId, action) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(dropletId) + "/actions",
+            method: common_1.HttpMethods.POST,
+            body: action,
+        });
+    };
+    /**
+     * Get the details of an Action on a Droplet
+     * @param dropletId the identifier of the Droplet
+     * @param actionId the identifier of the Action
+     * @returns Promise
+     */
+    Droplets.prototype.getAction = function (dropletId, actionId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(dropletId) + "/actions/" + encodeURIComponent(actionId),
+        });
     };
     return Droplets;
 }(base_module_1.BaseModule));
