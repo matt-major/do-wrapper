@@ -1,4 +1,5 @@
 import request from 'request';
+import {HttpMethods} from "./common";
 
 interface Headers {
     [key: string]: any;
@@ -138,7 +139,7 @@ export default class RequestHelper {
     requestBuilder(options: any): any {
         return {
             uri: this.apiUrl + options.actionPath,
-            method: options.method || 'GET',
+            method: options.method || HttpMethods.GET,
             headers: options.headers || this.headers,
             body: options.body || {},
             strictSSL: true,

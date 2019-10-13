@@ -1,5 +1,6 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
+import {HttpMethods} from "../common";
 
 export default class Images extends BaseModule {
     private basePath: string = 'images';
@@ -52,7 +53,7 @@ export default class Images extends BaseModule {
     public deleteById(imageId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(imageId)}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 
@@ -65,7 +66,7 @@ export default class Images extends BaseModule {
     public rename(imageId: string, newName: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(imageId)}`,
-            method: 'PUT',
+            method: HttpMethods.PUT,
             body: {
                 name: newName,
             },
@@ -113,7 +114,7 @@ export default class Images extends BaseModule {
     public requestAction(imageId: string, action: any): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(imageId)}/actions`,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: action,
         });
     }

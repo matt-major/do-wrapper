@@ -1,5 +1,6 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
+import {HttpMethods} from "../common";
 
 export default class Snapshots extends BaseModule {
     private basePath: string = 'snapshots';
@@ -97,8 +98,8 @@ export default class Snapshots extends BaseModule {
      */
     public deleteById(snapshotId: string): Promise<any> {
         return this._execute({
-            method: 'DELETE',
             actionPath: `${this.basePath}/${encodeURIComponent(snapshotId)}`,
+            method: HttpMethods.DELETE,
         });
     }
 }

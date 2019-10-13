@@ -1,6 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
 import {CertificatesCreateRequest} from "../types/Certificates";
+import {HttpMethods} from "../common";
 
 export default class Certificates extends BaseModule {
     private basePath: string = 'certificates';
@@ -41,7 +42,7 @@ export default class Certificates extends BaseModule {
     public create(options: CertificatesCreateRequest): Promise<any> {
         return this._execute({
             ...this.baseOptions,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: options,
         });
     }
@@ -65,7 +66,7 @@ export default class Certificates extends BaseModule {
     public delete(certificateId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(certificateId)}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 }

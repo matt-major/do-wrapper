@@ -1,6 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
 import {LoadBalancerCreationOptions} from "../types/LoadBalancers";
+import {HttpMethods} from "../common";
 
 export default class LoadBalancers extends BaseModule {
     private basePath: string = 'load_balancers';
@@ -21,7 +22,7 @@ export default class LoadBalancers extends BaseModule {
     public create(options: LoadBalancerCreationOptions): Promise<any> {
         return this._execute({
             ...this.baseOptions,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: options,
         });
     }
@@ -44,7 +45,6 @@ export default class LoadBalancers extends BaseModule {
     public getById(loadBalancerId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}`,
-            method: 'GET',
         });
     }
 
@@ -57,7 +57,7 @@ export default class LoadBalancers extends BaseModule {
     public update(loadBalancerId: string, options: any): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}`,
-            method: 'PUT',
+            method: HttpMethods.PUT,
             body: options,
         });
     }
@@ -70,7 +70,7 @@ export default class LoadBalancers extends BaseModule {
     public delete(loadBalancerId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 
@@ -83,7 +83,7 @@ export default class LoadBalancers extends BaseModule {
     public addDroplets(loadBalancerId: string, dropletIds: string[]): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}/droplets`,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: {
                 droplet_ids: dropletIds,
             },
@@ -99,7 +99,7 @@ export default class LoadBalancers extends BaseModule {
     public removeDroplets(loadBalancerId: string, dropletIds: string[]): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}/droplets`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
             body: {
                 droplet_ids: dropletIds,
             },
@@ -115,7 +115,7 @@ export default class LoadBalancers extends BaseModule {
     public addForwardingRules(loadBalancerId: string, rules: any[]): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}/forwarding_rules`,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: {
                 forwarding_rules: rules,
             },
@@ -131,7 +131,7 @@ export default class LoadBalancers extends BaseModule {
     public removeForwardingRules(loadBalancerId: string, rules: any[]): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${loadBalancerId}/forwarding_rules`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
             body: {
                 forwarding_rules: rules,
             },

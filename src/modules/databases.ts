@@ -1,6 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
 import {DatabaseCreateClusterRequest, DatabaseResizeClusterRequest} from "../types/databases";
+import {HttpMethods} from "../common";
 
 export default class Databases extends BaseModule {
     private basePath: string = 'databases';
@@ -42,7 +43,7 @@ export default class Databases extends BaseModule {
     public createCluster(clusterOptions: DatabaseCreateClusterRequest): Promise<any> {
         return this._execute({
             actionPath: this.basePath,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: clusterOptions,
         });
     }
@@ -66,7 +67,7 @@ export default class Databases extends BaseModule {
     public resizeCluster(clusterId: string, configuration: DatabaseResizeClusterRequest): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/resize`,
-            method: 'PUT',
+            method: HttpMethods.PUT,
             body: configuration,
         });
     }
@@ -80,7 +81,7 @@ export default class Databases extends BaseModule {
     public createUser(clusterId: string, username: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users`,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: {
                 name: username,
             },
@@ -95,7 +96,7 @@ export default class Databases extends BaseModule {
     public deleteUser(clusterId: string, username: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users/${encodeURIComponent(username)}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 

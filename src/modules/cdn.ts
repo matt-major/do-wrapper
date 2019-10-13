@@ -1,5 +1,6 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
+import {HttpMethods} from "../common";
 
 export default class CDN extends BaseModule {
     private basePath: string = 'cdn/endpoints';
@@ -55,7 +56,7 @@ export default class CDN extends BaseModule {
     public createEndpoint(origin: string, ttl: number): Promise<any> {
         return this._execute({
             actionPath: this.basePath,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: {
                 origin: origin,
                 ttl: ttl,
@@ -73,7 +74,7 @@ export default class CDN extends BaseModule {
     public updateEndpointTtl(endpointId: string, ttl: number): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(endpointId)}`,
-            method: 'PUT',
+            method: HttpMethods.PUT,
             body: {
                 ttl: ttl,
             },
@@ -88,7 +89,7 @@ export default class CDN extends BaseModule {
     public deleteEndpoint(endpointId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(endpointId)}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 
@@ -102,7 +103,7 @@ export default class CDN extends BaseModule {
     public purgeEndpointCache(endpointId: string, fileNames: string[]): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(endpointId)}/cache`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
             body: {
                 files: fileNames,
             },

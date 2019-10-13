@@ -1,6 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
 import {AddKeyRequest} from "../types/keys";
+import {HttpMethods} from "../common";
 
 export default class Keys extends BaseModule {
     private basePath: string = 'account/keys';
@@ -64,7 +65,7 @@ export default class Keys extends BaseModule {
     public add(addKeyRequest: AddKeyRequest): Promise<any> {
         const requestOptions = {
             ...this.baseOptions,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: addKeyRequest,
         };
 
@@ -80,7 +81,7 @@ export default class Keys extends BaseModule {
     public rename(identifier: string, newName: string): Promise<any> {
         const requestOptions = {
             actionPath: `${this.basePath}/${encodeURIComponent(identifier)}`,
-            method: 'PUT',
+            method: HttpMethods.PUT,
             body: {
                 name: newName,
             },
@@ -97,7 +98,7 @@ export default class Keys extends BaseModule {
     public delete(identifier: string): Promise<any> {
         const requestOptions = {
             actionPath: `${this.basePath}/${encodeURIComponent(identifier)}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         };
 
         return this._execute(requestOptions);

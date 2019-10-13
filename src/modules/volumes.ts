@@ -1,6 +1,7 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
 import {VolumeCreationOptions} from "../types/volumes";
+import {HttpMethods} from "../common";
 
 export default class Volumes extends BaseModule {
     private basePath: string = 'volumes';
@@ -35,7 +36,7 @@ export default class Volumes extends BaseModule {
     public create(options: VolumeCreationOptions): Promise<any> {
         return this._execute({
             ...this.baseOptions,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: options,
         });
     }
@@ -75,7 +76,7 @@ export default class Volumes extends BaseModule {
     public deleteById(volumeId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${volumeId}`,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
         });
     }
 
@@ -88,7 +89,7 @@ export default class Volumes extends BaseModule {
     public deleteByNameAndRegion(volumeName: string, region: string): Promise<any> {
         return this._execute({
             ...this.baseOptions,
-            method: 'DELETE',
+            method: HttpMethods.DELETE,
             qs: {
                 name: volumeName,
                 region: region,
@@ -105,7 +106,7 @@ export default class Volumes extends BaseModule {
     public requestAction(volumeId: string, action: any): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(volumeId)}/actions`,
-            method: 'POST',
+            method: HttpMethods.POST,
             body: action,
         });
     }
