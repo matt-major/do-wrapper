@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Databases = /** @class */ (function (_super) {
     __extends(Databases, _super);
     function Databases(pageSize, requestHelper) {
@@ -54,7 +55,7 @@ var Databases = /** @class */ (function (_super) {
     Databases.prototype.createCluster = function (clusterOptions) {
         return this._execute({
             actionPath: this.basePath,
-            method: 'POST',
+            method: common_1.HttpMethods.POST,
             body: clusterOptions,
         });
     };
@@ -76,7 +77,7 @@ var Databases = /** @class */ (function (_super) {
     Databases.prototype.resizeCluster = function (clusterId, configuration) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/resize",
-            method: 'PUT',
+            method: common_1.HttpMethods.PUT,
             body: configuration,
         });
     };
@@ -89,7 +90,7 @@ var Databases = /** @class */ (function (_super) {
     Databases.prototype.createUser = function (clusterId, username) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users",
-            method: 'POST',
+            method: common_1.HttpMethods.POST,
             body: {
                 name: username,
             },
@@ -103,7 +104,7 @@ var Databases = /** @class */ (function (_super) {
     Databases.prototype.deleteUser = function (clusterId, username) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users/" + encodeURIComponent(username),
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         });
     };
     /**

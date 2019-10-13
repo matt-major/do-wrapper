@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Keys = /** @class */ (function (_super) {
     __extends(Keys, _super);
     function Keys(pageSize, requestHelper) {
@@ -83,7 +84,7 @@ var Keys = /** @class */ (function (_super) {
      * @returns Promise
      */
     Keys.prototype.add = function (addKeyRequest) {
-        var requestOptions = __assign({}, this.baseOptions, { method: 'POST', body: addKeyRequest });
+        var requestOptions = __assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: addKeyRequest });
         return this._execute(requestOptions);
     };
     /**
@@ -95,7 +96,7 @@ var Keys = /** @class */ (function (_super) {
     Keys.prototype.rename = function (identifier, newName) {
         var requestOptions = {
             actionPath: this.basePath + "/" + encodeURIComponent(identifier),
-            method: 'PUT',
+            method: common_1.HttpMethods.PUT,
             body: {
                 name: newName,
             },
@@ -110,7 +111,7 @@ var Keys = /** @class */ (function (_super) {
     Keys.prototype.delete = function (identifier) {
         var requestOptions = {
             actionPath: this.basePath + "/" + encodeURIComponent(identifier),
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         };
         return this._execute(requestOptions);
     };

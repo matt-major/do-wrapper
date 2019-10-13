@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Volumes = /** @class */ (function (_super) {
     __extends(Volumes, _super);
     function Volumes(pageSize, requestHelper) {
@@ -51,7 +52,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: 'POST', body: options }));
+        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get a Block Storage Volume using its identifier
@@ -83,7 +84,7 @@ var Volumes = /** @class */ (function (_super) {
     Volumes.prototype.deleteById = function (volumeId) {
         return this._execute({
             actionPath: this.basePath + "/" + volumeId,
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         });
     };
     /**
@@ -93,7 +94,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.deleteByNameAndRegion = function (volumeName, region) {
-        return this._execute(__assign({}, this.baseOptions, { method: 'DELETE', qs: {
+        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.DELETE, qs: {
                 name: volumeName,
                 region: region,
             } }));
@@ -107,7 +108,7 @@ var Volumes = /** @class */ (function (_super) {
     Volumes.prototype.requestAction = function (volumeId, action) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(volumeId) + "/actions",
-            method: 'POST',
+            method: common_1.HttpMethods.POST,
             body: action,
         });
     };

@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Snapshots = /** @class */ (function (_super) {
     __extends(Snapshots, _super);
     function Snapshots(pageSize, requestHelper) {
@@ -102,8 +103,8 @@ var Snapshots = /** @class */ (function (_super) {
      */
     Snapshots.prototype.deleteById = function (snapshotId) {
         return this._execute({
-            method: 'DELETE',
             actionPath: this.basePath + "/" + encodeURIComponent(snapshotId),
+            method: common_1.HttpMethods.DELETE,
         });
     };
     return Snapshots;

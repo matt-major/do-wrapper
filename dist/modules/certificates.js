@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Certificates = /** @class */ (function (_super) {
     __extends(Certificates, _super);
     function Certificates(pageSize, requestHelper) {
@@ -62,7 +63,7 @@ var Certificates = /** @class */ (function (_super) {
      * @returns Promise
      */
     Certificates.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: 'POST', body: options }));
+        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get a Certificate
@@ -82,7 +83,7 @@ var Certificates = /** @class */ (function (_super) {
     Certificates.prototype.delete = function (certificateId) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(certificateId),
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         });
     };
     return Certificates;

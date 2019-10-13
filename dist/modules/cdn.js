@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var CDN = /** @class */ (function (_super) {
     __extends(CDN, _super);
     function CDN(pageSize, requestHelper) {
@@ -67,7 +68,7 @@ var CDN = /** @class */ (function (_super) {
     CDN.prototype.createEndpoint = function (origin, ttl) {
         return this._execute({
             actionPath: this.basePath,
-            method: 'POST',
+            method: common_1.HttpMethods.POST,
             body: {
                 origin: origin,
                 ttl: ttl,
@@ -84,7 +85,7 @@ var CDN = /** @class */ (function (_super) {
     CDN.prototype.updateEndpointTtl = function (endpointId, ttl) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(endpointId),
-            method: 'PUT',
+            method: common_1.HttpMethods.PUT,
             body: {
                 ttl: ttl,
             },
@@ -98,7 +99,7 @@ var CDN = /** @class */ (function (_super) {
     CDN.prototype.deleteEndpoint = function (endpointId) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(endpointId),
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         });
     };
     /**
@@ -111,7 +112,7 @@ var CDN = /** @class */ (function (_super) {
     CDN.prototype.purgeEndpointCache = function (endpointId, fileNames) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(endpointId) + "/cache",
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
             body: {
                 files: fileNames,
             },

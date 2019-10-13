@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = __importDefault(require("request"));
+var common_1 = require("./common");
 var RequestHelper = /** @class */ (function () {
     /**
      * Request Helper
@@ -121,7 +122,7 @@ var RequestHelper = /** @class */ (function () {
     RequestHelper.prototype.requestBuilder = function (options) {
         return {
             uri: this.apiUrl + options.actionPath,
-            method: options.method || 'GET',
+            method: options.method || common_1.HttpMethods.GET,
             headers: options.headers || this.headers,
             body: options.body || {},
             strictSSL: true,

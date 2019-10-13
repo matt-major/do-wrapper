@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var base_module_1 = require("./base-module");
+var common_1 = require("../common");
 var Images = /** @class */ (function (_super) {
     __extends(Images, _super);
     function Images(pageSize, requestHelper) {
@@ -64,7 +65,7 @@ var Images = /** @class */ (function (_super) {
     Images.prototype.deleteById = function (imageId) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(imageId),
-            method: 'DELETE',
+            method: common_1.HttpMethods.DELETE,
         });
     };
     /**
@@ -76,7 +77,7 @@ var Images = /** @class */ (function (_super) {
     Images.prototype.rename = function (imageId, newName) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(imageId),
-            method: 'PUT',
+            method: common_1.HttpMethods.PUT,
             body: {
                 name: newName,
             },
@@ -123,7 +124,7 @@ var Images = /** @class */ (function (_super) {
     Images.prototype.requestAction = function (imageId, action) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(imageId) + "/actions",
-            method: 'POST',
+            method: common_1.HttpMethods.POST,
             body: action,
         });
     };
