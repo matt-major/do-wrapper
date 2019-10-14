@@ -173,6 +173,16 @@ var Droplets = /** @class */ (function (_super) {
         });
     };
     /**
+     * Delete all Droplets with a given Tag
+     * @param tagName the Tag to delete Droplets for
+     * @returns Promise
+     */
+    Droplets.prototype.deleteByTag = function (tagName) {
+        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.DELETE, qs: {
+                tag_name: tagName,
+            } }));
+    };
+    /**
      * Get the neighbors of a Droplet by its identifier
      * @param dropletId the identifier of the Droplet
      * @returns Promise
@@ -201,6 +211,22 @@ var Droplets = /** @class */ (function (_super) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(dropletId) + "/actions",
             method: common_1.HttpMethods.POST,
+            body: action,
+        });
+    };
+    /**
+     * Request an Action on all Droplets with a given Tag
+     * @param tagName the Tag name to filter Droplets with
+     * @param action the Action to request
+     * @returns Promise
+     */
+    Droplets.prototype.requestActionByTag = function (tagName, action) {
+        return this._execute({
+            actionPath: this.basePath + "/actions",
+            method: common_1.HttpMethods.POST,
+            qs: {
+                tag_name: tagName,
+            },
             body: action,
         });
     };

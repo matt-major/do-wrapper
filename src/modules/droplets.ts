@@ -160,6 +160,21 @@ export default class Droplets extends BaseModule {
     }
 
     /**
+     * Delete all Droplets with a given Tag
+     * @param tagName the Tag to delete Droplets for
+     * @returns Promise
+     */
+    public deleteByTag(tagName: string): Promise<any> {
+        return this._execute({
+            ...this.baseOptions,
+            method: HttpMethods.DELETE,
+            qs: {
+                tag_name: tagName,
+            }
+        });
+    }
+
+    /**
      * Get the neighbors of a Droplet by its identifier
      * @param dropletId the identifier of the Droplet
      * @returns Promise
@@ -190,6 +205,23 @@ export default class Droplets extends BaseModule {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(dropletId)}/actions`,
             method: HttpMethods.POST,
+            body: action,
+        });
+    }
+
+    /**
+     * Request an Action on all Droplets with a given Tag
+     * @param tagName the Tag name to filter Droplets with
+     * @param action the Action to request
+     * @returns Promise
+     */
+    public requestActionByTag(tagName: string, action: any): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/actions`,
+            method: HttpMethods.POST,
+            qs: {
+                tag_name: tagName,
+            },
             body: action,
         });
     }
