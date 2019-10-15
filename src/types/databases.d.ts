@@ -12,3 +12,11 @@ export interface DatabaseResizeClusterRequest {
     size: string;
     num_nodes: number;
 }
+
+export interface AddPoolRequestOptions {
+    name: string;
+    mode: string;
+    size: number;
+    db: string;
+    user: string;
+}

@@ -126,6 +126,52 @@ var Databases = /** @class */ (function (_super) {
             actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/users",
         });
     };
+    /**
+     * Get all Pools for a Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolOptions the Pool options
+     * @returns Promise
+     */
+    Databases.prototype.addPool = function (clusterId, poolOptions) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/pools",
+            method: common_1.HttpMethods.POST,
+            body: poolOptions,
+        });
+    };
+    /**
+     * Get all Pools for a Cluster
+     * @param clusterId the identifier of the Cluster
+     * @returns Promise
+     */
+    Databases.prototype.getAllPools = function (clusterId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/pools",
+        });
+    };
+    /**
+     * Get a Pool for an existing Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolName the name of the Pool
+     * @returns Promise
+     */
+    Databases.prototype.getPool = function (clusterId, poolName) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/pools/" + encodeURIComponent(poolName),
+        });
+    };
+    /**
+     * Delete a Pool from an existing Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolName the name of the Pool
+     * @returns Promise
+     */
+    Databases.prototype.deletePool = function (clusterId, poolName) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(clusterId) + "/pools/" + encodeURIComponent(poolName),
+            method: common_1.HttpMethods.DELETE,
+        });
+    };
     return Databases;
 }(base_module_1.BaseModule));
 exports.default = Databases;

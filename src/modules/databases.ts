@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
 import {BaseModule} from "./base-module";
-import {DatabaseCreateClusterRequest, DatabaseResizeClusterRequest} from "../types/databases";
+import {AddPoolRequestOptions, DatabaseCreateClusterRequest, DatabaseResizeClusterRequest} from "../types/databases";
 import {HttpMethods} from "../common";
 
 export default class Databases extends BaseModule {
@@ -118,6 +118,56 @@ export default class Databases extends BaseModule {
     public getAllUsers(clusterId: string): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/users`,
+        });
+    }
+
+    /**
+     * Get all Pools for a Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolOptions the Pool options
+     * @returns Promise
+     */
+    public addPool(clusterId: string, poolOptions: AddPoolRequestOptions): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/pools`,
+            method: HttpMethods.POST,
+            body: poolOptions,
+        });
+    }
+
+    /**
+     * Get all Pools for a Cluster
+     * @param clusterId the identifier of the Cluster
+     * @returns Promise
+     */
+    public getAllPools(clusterId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/pools`,
+        });
+    }
+
+    /**
+     * Get a Pool for an existing Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolName the name of the Pool
+     * @returns Promise
+     */
+    public getPool(clusterId: string, poolName: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/pools/${encodeURIComponent(poolName)}`,
+        });
+    }
+
+    /**
+     * Delete a Pool from an existing Cluster
+     * @param clusterId the identifier of the Cluster
+     * @param poolName the name of the Pool
+     * @returns Promise
+     */
+    public deletePool(clusterId: string, poolName: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(clusterId)}/pools/${encodeURIComponent(poolName)}`,
+            method: HttpMethods.DELETE,
         });
     }
 }
