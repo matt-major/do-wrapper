@@ -105,12 +105,50 @@ var Projects = /** @class */ (function (_super) {
         });
     };
     /**
+     * Add resources to a Project using its identifier
+     * @param projectId the identifier of the Project
+     * @param resources the resources to add to the Project
+     * @returns Promise
+     */
+    Projects.prototype.addResources = function (projectId, resources) {
+        return this._execute({
+            actionPath: this.basePath + "/" + encodeURIComponent(projectId) + "/resources",
+            method: common_1.HttpMethods.POST,
+            body: {
+                resources: resources,
+            },
+        });
+    };
+    /**
      * Get the default Project
      * @returns Promise
      */
     Projects.prototype.getDefault = function () {
         return this._execute({
             actionPath: this.basePath + "/default",
+        });
+    };
+    /**
+     * Get the resources of the default Project
+     * @returns Promise
+     */
+    Projects.prototype.getDefaultResources = function () {
+        return this._execute({
+            actionPath: this.basePath + "/default/resources",
+        });
+    };
+    /**
+     * Add resources to the default Project
+     * @param resources the resources to add
+     * @returns Promise
+     */
+    Projects.prototype.addDefaultResources = function (resources) {
+        return this._execute({
+            actionPath: this.basePath + "/default/resources",
+            method: common_1.HttpMethods.POST,
+            body: {
+                resources: resources,
+            },
         });
     };
     /**

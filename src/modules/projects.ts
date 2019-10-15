@@ -97,12 +97,53 @@ export default class Projects extends BaseModule {
     }
 
     /**
+     * Add resources to a Project using its identifier
+     * @param projectId the identifier of the Project
+     * @param resources the resources to add to the Project
+     * @returns Promise
+     */
+    public addResources(projectId: string, resources: string[]): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${encodeURIComponent(projectId)}/resources`,
+            method: HttpMethods.POST,
+            body: {
+                resources: resources,
+            },
+        });
+    }
+
+    /**
      * Get the default Project
      * @returns Promise
      */
     public getDefault(): Promise<any> {
         return this._execute({
             actionPath: `${this.basePath}/default`,
+        });
+    }
+
+    /**
+     * Get the resources of the default Project
+     * @returns Promise
+     */
+    public getDefaultResources(): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/default/resources`,
+        });
+    }
+
+    /**
+     * Add resources to the default Project
+     * @param resources the resources to add
+     * @returns Promise
+     */
+    public addDefaultResources(resources: string[]): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/default/resources`,
+            method: HttpMethods.POST,
+            body: {
+                resources: resources,
+            },
         });
     }
 
