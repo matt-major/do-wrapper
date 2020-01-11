@@ -69,7 +69,7 @@ var RequestHelper = /** @class */ (function () {
      * @param {number} statusCode - The Status Code
      * @returns {boolean}
      */
-    RequestHelper.prototype._isSuccessfulRequest = function (statusCode) {
+    RequestHelper.prototype.isSuccessfulRequest = function (statusCode) {
         var statusCodePattern = /^[2][0-9][0-9]$/;
         return statusCodePattern.test("" + statusCode);
     };

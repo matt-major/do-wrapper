@@ -51,7 +51,7 @@ export default class RequestHelper {
      * @param {*} options - Request Options Object
      * @param {*} callback - Function to execute on completion
      */
-    submitRequest(options: any, callback: any): void {
+    private submitRequest(options: any, callback: any): void {
         const requestOptions = this.requestBuilder(options);
 
         got(this.apiUrl + options.actionPath, requestOptions)
@@ -68,7 +68,7 @@ export default class RequestHelper {
      * @param {number} statusCode - The Status Code
      * @returns {boolean}
      */
-    _isSuccessfulRequest(statusCode: number): boolean {
+    private isSuccessfulRequest(statusCode: number): boolean {
         const statusCodePattern = /^[2][0-9][0-9]$/;
         return statusCodePattern.test(`${statusCode}`);
     }
@@ -79,7 +79,7 @@ export default class RequestHelper {
      * @param {*} options - Request Options
      * @param {*} callback - Function to execute on completion
      */
-    getAllPages(key: string, options: any, callback: any) {
+    private getAllPages(key: string, options: any, callback: any) {
         let items: any[] = [],
             total: number = 0,
             required: number = 0,
@@ -122,7 +122,7 @@ export default class RequestHelper {
      * @param {number} last - The last page to retrieve
      * @param {*} callback - Function to execute on completion
      */
-    getRemainingPages(options: any, first: number, last: number, callback: Function) {
+    private getRemainingPages(options: any, first: number, last: number, callback: Function) {
         for (let current = first; current <= last; current++) {
             options.qs.page = current;
             this.submitRequest(options, callback);
@@ -134,7 +134,7 @@ export default class RequestHelper {
      * @param {*} options - Options Object
      * @returns {*}
      */
-    requestBuilder(options: any): any {
+    private requestBuilder(options: any): any {
         let requestOptions: any = {
             method: options.method || HttpMethods.GET,
             headers: options.headers || this.headers,
