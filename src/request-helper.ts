@@ -1,5 +1,5 @@
-import request from 'request';
-import {HttpMethods} from "./common";
+import got from "got";
+import { HttpMethods } from "./common";
 
 interface Headers {
     [key: string]: any;
@@ -32,11 +32,11 @@ export default class RequestHelper {
         let callback;
 
         const promise = new Promise((resolve, reject) => {
-            callback = (err: any, response: any, body: any) => {
+            callback = (err: any, body: any) => {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve({response, body});
+                    resolve(body);
                 }
             };
         });
@@ -54,15 +54,13 @@ export default class RequestHelper {
     submitRequest(options: any, callback: any): void {
         const requestOptions = this.requestBuilder(options);
 
-        request(requestOptions, (err: any, response: any, body: any) => {
-            if (err) {
-                callback(err);
-            } else if (!err && !this._isSuccessfulRequest(response.statusCode)) {
-                callback(body);
-            } else {
-                callback(null, response, body);
-            }
-        });
+        got(this.apiUrl + options.actionPath, requestOptions)
+            .then((response: any) => {
+                callback(response.body);
+            })
+            .catch((error: any) => {
+                callback(error);
+            });
     }
 
     /**
@@ -137,14 +135,21 @@ export default class RequestHelper {
      * @returns {*}
      */
     requestBuilder(options: any): any {
-        return {
-            uri: this.apiUrl + options.actionPath,
+        let requestOptions: any = {
             method: options.method || HttpMethods.GET,
             headers: options.headers || this.headers,
-            body: options.body || {},
             strictSSL: true,
-            json: true,
-            qs: options.qs || {}
+            qs: options.qs || {},
+            retry: 0,
         };
+
+        if (requestOptions.method != HttpMethods.GET) {
+            requestOptions = {
+                ...requestOptions,
+                json: options.body,
+            };
+        }
+
+        return requestOptions;
     }
 }

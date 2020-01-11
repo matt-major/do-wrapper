@@ -1,9 +1,20 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var request_1 = __importDefault(require("request"));
+var got_1 = __importDefault(require("got"));
 var common_1 = require("./common");
 var RequestHelper = /** @class */ (function () {
     /**
@@ -26,12 +37,12 @@ var RequestHelper = /** @class */ (function () {
     RequestHelper.prototype.request = function (options) {
         var callback;
         var promise = new Promise(function (resolve, reject) {
-            callback = function (err, response, body) {
+            callback = function (err, body) {
                 if (err) {
                     reject(err);
                 }
                 else {
-                    resolve({ response: response, body: body });
+                    resolve(body);
                 }
             };
         });
@@ -44,18 +55,13 @@ var RequestHelper = /** @class */ (function () {
      * @param {*} callback - Function to execute on completion
      */
     RequestHelper.prototype.submitRequest = function (options, callback) {
-        var _this = this;
         var requestOptions = this.requestBuilder(options);
-        request_1.default(requestOptions, function (err, response, body) {
-            if (err) {
-                callback(err);
-            }
-            else if (!err && !_this._isSuccessfulRequest(response.statusCode)) {
-                callback(body);
-            }
-            else {
-                callback(null, response, body);
-            }
+        got_1.default(this.apiUrl + options.actionPath, requestOptions)
+            .then(function (response) {
+            callback(response.body);
+        })
+            .catch(function (error) {
+            callback(error);
         });
     };
     /**
@@ -120,15 +126,17 @@ var RequestHelper = /** @class */ (function () {
      * @returns {*}
      */
     RequestHelper.prototype.requestBuilder = function (options) {
-        return {
-            uri: this.apiUrl + options.actionPath,
+        var requestOptions = {
             method: options.method || common_1.HttpMethods.GET,
             headers: options.headers || this.headers,
-            body: options.body || {},
             strictSSL: true,
-            json: true,
-            qs: options.qs || {}
+            qs: options.qs || {},
+            retry: 0,
         };
+        if (requestOptions.method != common_1.HttpMethods.GET) {
+            requestOptions = __assign({}, requestOptions, { json: options.body });
+        }
+        return requestOptions;
     };
     return RequestHelper;
 }());

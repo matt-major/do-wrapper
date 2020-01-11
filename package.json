@@ -28,7 +28,7 @@
     "es6"
   ],
   "dependencies": {
-    "request": "2.88.0"
+    "got": "^10.2.2"
   },
   "devDependencies": {
     "@types/request": "^2.48.2",
