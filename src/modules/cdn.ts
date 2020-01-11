@@ -5,10 +5,6 @@ import { HttpMethods } from "../common";
 export default class CDN extends BaseModule {
     private basePath: string = 'cdn/endpoints';
 
-    private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
-    };
-
     constructor(pageSize: number, requestHelper: RequestHelper) {
         super(pageSize, requestHelper);
     }

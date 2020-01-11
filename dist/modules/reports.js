@@ -19,9 +19,6 @@ var Reports = /** @class */ (function (_super) {
     function Reports(pageSize, requestHelper) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'reports';
-        _this.baseOptions = {
-            actionPath: _this.basePath + "/",
-        };
         return _this;
     }
     /**

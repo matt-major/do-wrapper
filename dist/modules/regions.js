@@ -19,9 +19,6 @@ var Regions = /** @class */ (function (_super) {
     function Regions(pageSize, requestHelper) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'regions';
-        _this.baseOptions = {
-            actionPath: _this.basePath + "/",
-        };
         return _this;
     }
     /**

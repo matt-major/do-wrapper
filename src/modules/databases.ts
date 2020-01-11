@@ -6,10 +6,6 @@ import { HttpMethods } from "../common";
 export default class Databases extends BaseModule {
     private basePath: string = 'databases';
 
-    private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
-    };
-
     constructor(pageSize: number, requestHelper: RequestHelper) {
         super(pageSize, requestHelper);
     }

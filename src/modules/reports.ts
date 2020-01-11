@@ -4,10 +4,6 @@ import { BaseModule } from "./base-module";
 export default class Reports extends BaseModule {
     private basePath: string = 'reports';
 
-    private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
-    };
-
     constructor(pageSize: number, requestHelper: RequestHelper) {
         super(pageSize, requestHelper);
     }

@@ -20,9 +20,6 @@ var Databases = /** @class */ (function (_super) {
     function Databases(pageSize, requestHelper) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'databases';
-        _this.baseOptions = {
-            actionPath: _this.basePath + "/",
-        };
         return _this;
     }
     /**

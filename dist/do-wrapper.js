@@ -27,7 +27,6 @@ var volumes_1 = __importDefault(require("./modules/volumes"));
 var DigitalOcean = /** @class */ (function () {
     function DigitalOcean(token, pageSize) {
         if (pageSize === void 0) { pageSize = 10; }
-        this.pageSize = pageSize;
         var requestHelper = new request_helper_1.default(token);
         this.account = new account_1.default(pageSize, requestHelper);
         this.actions = new actions_1.default(pageSize, requestHelper);

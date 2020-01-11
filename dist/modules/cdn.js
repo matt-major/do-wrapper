@@ -20,9 +20,6 @@ var CDN = /** @class */ (function (_super) {
     function CDN(pageSize, requestHelper) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'cdn/endpoints';
-        _this.baseOptions = {
-            actionPath: _this.basePath + "/",
-        };
         return _this;
     }
     /**
