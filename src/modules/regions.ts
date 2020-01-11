@@ -10,7 +10,7 @@ export default class Regions extends BaseModule {
 
     /**
      * Get all Regions
-     * @param tagName filter to only return Regions with a given tag
+     * @param [tagName] filter to only return Regions with a given tag
      * @param [includeAll] return all Regions, paginated (optional)
      * @param [page] the specific page of Regions to return (optional)
      * @param [pageSize] the number of Regions to return per page (optional)

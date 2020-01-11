@@ -16,7 +16,7 @@ export default class Keys extends BaseModule {
 
     /**
      * Get all SSH Keys
-     * @param tagName filter to only return SSH Keys with a given tag
+     * @param [tagName] filter to only return SSH Keys with a given tag
      * @param [includeAll] return all SSH Keys, paginated (optional)
      * @param [page] the specific page of SSH Keys to return (optional)
      * @param [pageSize] the number of SSH Keys to return per page (optional)

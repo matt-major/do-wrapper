@@ -16,7 +16,7 @@ export default class Certificates extends BaseModule {
 
     /**
      * Get all Certificates
-     * @param tagName filter to only return Certificates with a given tag
+     * @param [tagName] filter to only return Certificates with a given tag
      * @param [includeAll] return all Certificates, paginated (optional)
      * @param [page] the specific page of Certificates to return (optional)
      * @param [pageSize] the number of Certificates to return per page (optional)
@@ -27,6 +27,7 @@ export default class Certificates extends BaseModule {
             actionPath: this.basePath,
             key: 'certificates',
             pageSize: pageSize,
+            tagName: tagName,
             page: page,
             includeAll: includeAll,
         });

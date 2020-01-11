@@ -16,7 +16,7 @@ export default class Droplets extends BaseModule {
 
     /**
      * Get all Droplets
-     * @param tagName filter to only return Droplets with a given tag
+     * @param [tagName] filter to only return Droplets with a given tag
      * @param [includeAll] return all Droplets, paginated (optional)
      * @param [page] the specific page of Droplets to return (optional)
      * @param [pageSize] the number of Droplets to return per page (optional)
@@ -38,7 +38,7 @@ export default class Droplets extends BaseModule {
     /**
      * Get all Kernels for a Droplet
      * @param dropletId the identifier of the Droplet
-     * @param tagName filter to only return Kernels with a given tag
+     * @param [tagName] filter to only return Kernels with a given tag
      * @param [includeAll] return all Kernels, paginated (optional)
      * @param [page] the specific page of Kernels to return (optional)
      * @param [pageSize] the number of Kernels to return per page (optional)
@@ -60,7 +60,7 @@ export default class Droplets extends BaseModule {
     /**
      * Get all Snapshots for a Droplet
      * @param dropletId the identifier of the Droplet
-     * @param tagName filter to only return Snapshots with a given tag
+     * @param [tagName] filter to only return Snapshots with a given tag
      * @param [includeAll] return all Snapshots, paginated (optional)
      * @param [page] the specific page of Snapshots to return (optional)
      * @param [pageSize] the number of Snapshots to return per page (optional)
@@ -82,7 +82,7 @@ export default class Droplets extends BaseModule {
     /**
      * Get all Backups for a Droplet
      * @param dropletId the identifier of the Droplet
-     * @param tagName filter to only return Backups with a given tag
+     * @param [tagName] filter to only return Backups with a given tag
      * @param [includeAll] return all Backups, paginated (optional)
      * @param [page] the specific page of Backups to return (optional)
      * @param [pageSize] the number of Backups to return per page (optional)
@@ -104,7 +104,7 @@ export default class Droplets extends BaseModule {
     /**
      * Get all Actions for a Droplet
      * @param dropletId the identifier of the Droplet
-     * @param tagName filter to only return Actions with a given tag
+     * @param [tagName] filter to only return Actions with a given tag
      * @param [includeAll] return all Actions, paginated (optional)
      * @param [page] the specific page of Actions to return (optional)
      * @param [pageSize] the number of Actions to return per page (optional)

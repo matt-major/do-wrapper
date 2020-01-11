@@ -23,7 +23,7 @@ var Sizes = /** @class */ (function (_super) {
     }
     /**
      * Get all Size configurations
-     * @param tagName filter to only return Droplet Sizes with a given tag
+     * @param [tagName] filter to only return Droplet Sizes with a given tag
      * @param [includeAll] return all Droplet Sizes, paginated (optional)
      * @param [page] the specific page of Droplet Sizes to return (optional)
      * @param [pageSize] the number of Droplet Sizes to return per page (optional)

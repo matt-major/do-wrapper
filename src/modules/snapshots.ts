@@ -16,7 +16,7 @@ export default class Snapshots extends BaseModule {
 
     /**
      * Get all Snapshots, regardless of type
-     * @param tagName filter to only return Snapshots with a given tag
+     * @param [tagName] filter to only return Snapshots with a given tag
      * @param [includeAll] return all Snapshots, paginated (optional)
      * @param [page] the specific page of Snapshots to return (optional)
      * @param [pageSize] the number of Snapshots to return per page (optional)
@@ -47,7 +47,7 @@ export default class Snapshots extends BaseModule {
 
     /**
      * Get all Snapshots, only for Volumes
-     * @param tagName filter to only return Snapshots with a given tag
+     * @param [tagName] filter to only return Snapshots with a given tag
      * @param [includeAll] return all Snapshots, paginated (optional)
      * @param [page] the specific page of Snapshots to return (optional)
      * @param [pageSize] the number of Snapshots to return per page (optional)
@@ -70,7 +70,7 @@ export default class Snapshots extends BaseModule {
 
     /**
      * Get all Snapshots, only for Droplets
-     * @param tagName filter to only return Snapshots with a given tag
+     * @param [tagName] filter to only return Snapshots with a given tag
      * @param [includeAll] return all Snapshots, paginated (optional)
      * @param [page] the specific page of Snapshots to return (optional)
      * @param [pageSize] the number of Snapshots to return per page (optional)

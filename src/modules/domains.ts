@@ -16,7 +16,7 @@ export default class Domains extends BaseModule {
 
     /**
      * Get all Domains
-     * @param tagName filter to only return Domains with a given tag
+     * @param [tagName] filter to only return Domains with a given tag
      * @param [includeAll] return all Domains, paginated (optional)
      * @param [page] the specific page of Domains to return (optional)
      * @param [pageSize] the number of Domains to return per page (optional)
@@ -74,7 +74,7 @@ export default class Domains extends BaseModule {
     /**
      * Get all Domain Records
      * @param domainName the Domain to get the records for
-     * @param tagName filter to only return Domains with a given tag
+     * @param [tagName] filter to only return Domains with a given tag
      * @param [includeAll] return all Domains, paginated (optional)
      * @param [page] the specific page of Domains to return (optional)
      * @param [pageSize] the number of Domains to return per page (optional)

@@ -27,7 +27,7 @@ var Images = /** @class */ (function (_super) {
     }
     /**
      * Get all Images
-     * @param tagName filter to only return Images with a given tag
+     * @param [tagName] filter to only return Images with a given tag
      * @param [includeAll] return all Images, paginated (optional)
      * @param [page] the specific page of Images to return (optional)
      * @param [pageSize] the number of Images to return per page (optional)

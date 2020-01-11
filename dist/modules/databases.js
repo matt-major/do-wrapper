@@ -24,7 +24,7 @@ var Databases = /** @class */ (function (_super) {
     }
     /**
      * Get all Database Clusters
-     * @param tagName filter to only return Database Clusters with a given tag
+     * @param [tagName] filter to only return Database Clusters with a given tag
      * @param [includeAll] return all Database Clusters, paginated (optional)
      * @param [page] the specific page of Database Clusters to return (optional)
      * @param [pageSize] the number of Database Clusters to return per page (optional)
