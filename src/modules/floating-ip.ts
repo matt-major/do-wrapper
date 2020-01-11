@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { HttpMethods } from "../common";
 
 export default class FloatingIPs extends BaseModule {
     private basePath: string = 'floating_ips';

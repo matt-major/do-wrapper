@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {HttpMethods} from "../common";
-import {ClusterNodePool, ClusterNodePoolUpdateOptions, NewClusterRequest} from "../types/kubernetes";
+import { BaseModule } from "./base-module";
+import { HttpMethods } from "../common";
+import { ClusterNodePool, ClusterNodePoolUpdateOptions, NewClusterRequest } from "../types/kubernetes";
 
 export default class Kubernetes extends BaseModule {
     private basePath: string = 'kubernetes/clusters';

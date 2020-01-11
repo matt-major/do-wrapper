@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {CreateProjectOptions, UpdateProjectOptions} from "../types/projects";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { CreateProjectOptions, UpdateProjectOptions } from "../types/projects";
+import { HttpMethods } from "../common";
 
 export default class Projects extends BaseModule {
     private basePath: string = 'projects';

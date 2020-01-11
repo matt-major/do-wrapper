@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {HttpMethods} from "../common";
-import {DomainCreateRequest, DomainRecordRequestOptions} from "../types/domain";
+import { BaseModule } from "./base-module";
+import { HttpMethods } from "../common";
+import { DomainCreateRequest, DomainRecordRequestOptions } from "../types/domain";
 
 export default class Domains extends BaseModule {
     private basePath: string = 'domains';

@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {DropletCreationRequest} from "../types/droplets";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { DropletCreationRequest } from "../types/droplets";
+import { HttpMethods } from "../common";
 
 export default class Droplets extends BaseModule {
     private basePath: string = 'droplets';

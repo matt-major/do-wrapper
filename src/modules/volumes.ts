@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {VolumeCreationOptions} from "../types/volumes";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { VolumeCreationOptions } from "../types/volumes";
+import { HttpMethods } from "../common";
 
 export default class Volumes extends BaseModule {
     private basePath: string = 'volumes';

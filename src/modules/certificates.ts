@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {CertificatesCreateRequest} from "../types/certificates";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { CertificatesCreateRequest } from "../types/certificates";
+import { HttpMethods } from "../common";
 
 export default class Certificates extends BaseModule {
     private basePath: string = 'certificates';

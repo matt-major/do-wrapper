@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {AddPoolRequestOptions, DatabaseCreateClusterRequest, DatabaseResizeClusterRequest} from "../types/databases";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { AddPoolRequestOptions, DatabaseCreateClusterRequest, DatabaseResizeClusterRequest } from "../types/databases";
+import { HttpMethods } from "../common";
 
 export default class Databases extends BaseModule {
     private basePath: string = 'databases';

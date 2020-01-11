@@ -21,7 +21,6 @@ import Snapshots from './modules/snapshots';
 import Tags from './modules/tags';
 import Volumes from './modules/volumes';
 
-
 export default class DigitalOcean {
     public account: Account;
     public actions: Actions;
@@ -43,11 +42,8 @@ export default class DigitalOcean {
     public snapshots: Snapshots;
     public tags: Tags;
     public volumes: Volumes;
-    private pageSize: number;
 
     constructor(token: string, pageSize: number = 10) {
-        this.pageSize = pageSize;
-
         const requestHelper = new RequestHelper(token);
         this.account = new Account(pageSize, requestHelper);
         this.actions = new Actions(pageSize, requestHelper);

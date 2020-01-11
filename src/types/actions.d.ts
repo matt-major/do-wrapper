@@ -1,4 +1,4 @@
-import {ActionRegion} from "./regions";
+import { ActionRegion } from "./regions";
 
 export interface ActionEntry {
     id: number;

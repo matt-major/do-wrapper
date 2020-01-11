@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {HttpMethods} from "../common";
-import {TagAddResourceOption} from "../types/tags";
+import { BaseModule } from "./base-module";
+import { HttpMethods } from "../common";
+import { TagAddResourceOption } from "../types/tags";
 
 export default class Tags extends BaseModule {
     private basePath: string = 'tags';

@@ -1,7 +1,7 @@
 import RequestHelper from "../request-helper";
-import {BaseModule} from "./base-module";
-import {LoadBalancerCreationOptions} from "../types/loadbalancers";
-import {HttpMethods} from "../common";
+import { BaseModule } from "./base-module";
+import { LoadBalancerCreationOptions } from "../types/loadbalancers";
+import { HttpMethods } from "../common";
 
 export default class LoadBalancers extends BaseModule {
     private basePath: string = 'load_balancers';
