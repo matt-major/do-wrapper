@@ -30,7 +30,7 @@ var Reports = /** @class */ (function (_super) {
      */
     Reports.prototype.getDropletNeighbors = function () {
         return this._execute({
-            actionPath: this.basePath + "/droplet_neighbors",
+            actionPath: this.basePath + "/droplet_neighbors_ids",
         });
     };
     return Reports;

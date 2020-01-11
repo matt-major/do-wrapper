@@ -18,7 +18,7 @@ export default class Reports extends BaseModule {
      */
     public getDropletNeighbors(): Promise<any> {
         return this._execute({
-            actionPath: `${this.basePath}/droplet_neighbors`,
+            actionPath: `${this.basePath}/droplet_neighbors_ids`,
         });
     }
 }
