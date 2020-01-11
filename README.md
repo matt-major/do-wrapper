@@ -19,7 +19,7 @@ $ npm install --save do-wrapper
 
 ## Usage
 
-In order to use the library, you'll first need to provision a `Personal Access Token` for your Digital Ocean account. Visit [https://cloud.digitalocean.com/account/api/tokens](your account) to do thus.
+In order to use the library, you'll first need to provision a `Personal Access Token` for your Digital Ocean account.
 
 Once you've got a `Personal Access Token`, make a note of this somewhere safe, as you won't be able to view it again.
 
