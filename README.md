@@ -7,6 +7,10 @@ A Node.js wrapper for the Digital Ocean v2 API
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Known Vulnerabilities](https://snyk.io/test/github/matt-major/do-wrapper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/matt-major/do-wrapper?targetFile=package.json)
 
+# Notice - v4 Rewrite
+
+This version is still under development. You're welcome - and encouraged - to try it out and report any issues via GitHub. This rewrite will require you to change any applications using the library as it is not backwards compatible. In due course this rewrite will replace the previous master branch.
+
 ## Install
 
 `do-wrapper` is available on the `npm` repository and as such, can be installed with `npm`.
