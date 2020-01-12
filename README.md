@@ -1,4 +1,13 @@
 # do-wrapper
+
+### Version 4 is coming!
+
+The v4 rewrite of this library is coming. Running `npm install do-wrapper` will now install this new version.
+
+If you are looking for the older v3 library, use `npm install do-wrapper@^3.25.4`.
+
+Please report any issues with the v4 rewrite via GitHub.
+
 ### A Node.js wrapper for the Digital Ocean v2 API
 
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
