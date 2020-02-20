@@ -37,7 +37,7 @@ var RequestHelper = /** @class */ (function () {
     RequestHelper.prototype.request = function (options) {
         var callback;
         var promise = new Promise(function (resolve, reject) {
-            callback = function (err, body) {
+            callback = function (body, err) {
                 if (err) {
                     reject(err);
                 }
