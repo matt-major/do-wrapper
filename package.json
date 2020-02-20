@@ -37,6 +37,7 @@
     "natives": "^1.1.6",
     "should": "13.2.3",
     "typedoc": "^0.15.8",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "handlebars": ">=4.3.0"
   }
 }
