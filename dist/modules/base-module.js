@@ -20,7 +20,7 @@ var BaseModule = /** @class */ (function () {
         return {
             actionPath: options.actionPath,
             key: options.key,
-            qs: __assign({}, (options.tagName && { tag_name: options.tagName }), { per_page: options.pageSize || this.pageSize, page: options.page || 1 }),
+            qs: __assign(__assign({}, (options.tagName && { tag_name: options.tagName })), { per_page: options.pageSize || this.pageSize, page: options.page || 1 }),
             includeAll: options.includeAll || false,
         };
     };

@@ -64,7 +64,7 @@ var Certificates = /** @class */ (function (_super) {
      * @returns Promise
      */
     Certificates.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get a Certificate

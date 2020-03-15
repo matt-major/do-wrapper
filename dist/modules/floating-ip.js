@@ -48,7 +48,7 @@ var FloatingIPs = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBasePaginatedRequestOptions(__assign({}, this.baseOptions, { key: 'floating_ips', tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
+        var requestOptions = this._getBasePaginatedRequestOptions(__assign(__assign({}, this.baseOptions), { key: 'floating_ips', tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
         return this._execute(requestOptions);
     };
     /**
@@ -57,7 +57,7 @@ var FloatingIPs = /** @class */ (function (_super) {
      * @returns Promise
      */
     FloatingIPs.prototype.assignDroplet = function (dropletId) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: {
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: {
                 droplet_id: dropletId,
             } }));
     };
@@ -67,7 +67,7 @@ var FloatingIPs = /** @class */ (function (_super) {
      * @returns Promise
      */
     FloatingIPs.prototype.assignRegion = function (region) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: {
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: {
                 region: region,
             } }));
     };

@@ -42,7 +42,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.getAll = function (region) {
-        return this._execute(__assign({}, this.baseOptions, { qs: {
+        return this._execute(__assign(__assign({}, this.baseOptions), { qs: {
                 region: region || '',
             } }));
     };
@@ -52,7 +52,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get a Block Storage Volume using its identifier
@@ -71,7 +71,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.getByNameAndRegion = function (volumeName, region) {
-        return this._execute(__assign({}, this.baseOptions, { qs: {
+        return this._execute(__assign(__assign({}, this.baseOptions), { qs: {
                 name: volumeName,
                 region: region,
             } }));
@@ -94,7 +94,7 @@ var Volumes = /** @class */ (function (_super) {
      * @returns Promise
      */
     Volumes.prototype.deleteByNameAndRegion = function (volumeName, region) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.DELETE, qs: {
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.DELETE, qs: {
                 name: volumeName,
                 region: region,
             } }));

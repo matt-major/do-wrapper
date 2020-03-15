@@ -42,7 +42,7 @@ var Firewalls = /** @class */ (function (_super) {
      * @returns Promise
      */
     Firewalls.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Delete a Firewall by its identifier

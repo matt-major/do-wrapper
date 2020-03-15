@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>do-wrapper - v3.25.3</title>
+	<title>do-wrapper - v4.0.0-alpha.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">do-wrapper - v3.25.3</a>
+					<a href="index.html" class="title">do-wrapper - v4.0.0-alpha.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> do-wrapper - v3.25.3</h1>
+			<h1> do-wrapper - v4.0.0-alpha.3</h1>
 		</div>
 	</div>
 </header>
@@ -72,6 +72,10 @@
 					<a href="https://www.npmjs.com/package/do-wrapper"><img src="https://david-dm.org/matt-major/do-wrapper.svg" alt="Dependencies"></a>
 					<a href="https://www.npmjs.com/package/do-wrapper"><img src="https://img.shields.io/npm/dm/do-wrapper.svg" alt="Downloads"></a>
 				<a href="https://snyk.io/test/github/matt-major/do-wrapper?targetFile=package.json"><img src="https://snyk.io/test/github/matt-major/do-wrapper/badge.svg?targetFile=package.json" alt="Known Vulnerabilities"></a></p>
+				<a href="#notice---v4-rewrite" id="notice---v4-rewrite" style="color: inherit; text-decoration: none;">
+					<h1>Notice - v4 Rewrite</h1>
+				</a>
+				<p>This version is still under development. You&#39;re welcome - and encouraged - to try it out and report any issues via GitHub. This rewrite will require you to change any applications using the library as it is not backwards compatible. In due course this rewrite will replace the previous master branch.</p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
@@ -86,8 +90,13 @@
 				<p>In your project, initialise a new instance of the Digital Ocean wrapper:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> DigitalOcean = <span class="hljs-built_in">require</span>(<span class="hljs-string">"do-wrapper"</span>).default;
 
-<span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">new</span> DigitalOcean(<span class="hljs-string">"{personal_access_token}"</span>);</code></pre>
-				<p>Once you&#39;ve created this instance, you can use it to access the many groups of features provided by the wrapper. These are:</p>
+<span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">new</span> DigitalOcean(<span class="hljs-string">'{personal_access_token}'</span>);</code></pre>
+				<p>Once you&#39;ve created an instance, you can use it to access the many groups of features provided by the wrapper, like so:</p>
+				<pre><code class="language-js">instance.account.get()
+    .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(data))
+    .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));</code></pre>
+				<p><strong>Note:</strong> you can view the data behind the error by accessing <code>err.response</code>, this is provided by the underlying request library</p>
+				<p>The available features are:</p>
 				<ul>
 					<li><code>account</code></li>
 					<li><code>actions</code></li>

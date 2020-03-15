@@ -84,7 +84,7 @@ var Keys = /** @class */ (function (_super) {
      * @returns Promise
      */
     Keys.prototype.add = function (addKeyRequest) {
-        var requestOptions = __assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: addKeyRequest });
+        var requestOptions = __assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: addKeyRequest });
         return this._execute(requestOptions);
     };
     /**

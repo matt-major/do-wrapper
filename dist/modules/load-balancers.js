@@ -42,7 +42,7 @@ var LoadBalancers = /** @class */ (function (_super) {
      * @returns Promise
      */
     LoadBalancers.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get all Load Balancers

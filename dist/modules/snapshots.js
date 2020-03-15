@@ -49,7 +49,7 @@ var Snapshots = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBasePaginatedRequestOptions(__assign({}, this.baseOptions, { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
+        var requestOptions = this._getBasePaginatedRequestOptions(__assign(__assign({}, this.baseOptions), { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
         return this._execute(requestOptions);
     };
     /**
@@ -74,7 +74,7 @@ var Snapshots = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBasePaginatedRequestOptions(__assign({}, this.baseOptions, { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll, qs: {
+        var requestOptions = this._getBasePaginatedRequestOptions(__assign(__assign({}, this.baseOptions), { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll, qs: {
                 resource_type: 'volume',
             } }));
         return this._execute(requestOptions);
@@ -91,7 +91,7 @@ var Snapshots = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBasePaginatedRequestOptions(__assign({}, this.baseOptions, { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll, qs: {
+        var requestOptions = this._getBasePaginatedRequestOptions(__assign(__assign({}, this.baseOptions), { tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll, qs: {
                 resource_type: 'droplet',
             } }));
         return this._execute(requestOptions);

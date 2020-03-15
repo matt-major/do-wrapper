@@ -48,7 +48,7 @@ var Domains = /** @class */ (function (_super) {
         if (includeAll === void 0) { includeAll = false; }
         if (page === void 0) { page = 1; }
         if (pageSize === void 0) { pageSize = this.pageSize; }
-        var requestOptions = this._getBasePaginatedRequestOptions(__assign({}, this.baseOptions, { key: 'domains', tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
+        var requestOptions = this._getBasePaginatedRequestOptions(__assign(__assign({}, this.baseOptions), { key: 'domains', tagName: tagName, pageSize: pageSize, page: page, includeAll: includeAll }));
         return this._execute(requestOptions);
     };
     /**
@@ -57,7 +57,7 @@ var Domains = /** @class */ (function (_super) {
      * @returns Promise
      */
     Domains.prototype.create = function (options) {
-        return this._execute(__assign({}, this.baseOptions, { method: common_1.HttpMethods.POST, body: options }));
+        return this._execute(__assign(__assign({}, this.baseOptions), { method: common_1.HttpMethods.POST, body: options }));
     };
     /**
      * Get a Domain
