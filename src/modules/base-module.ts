@@ -15,7 +15,7 @@ export class BaseModule {
             actionPath: options.actionPath,
             key: options.key,
             qs: {
-                tag_name: options.tagName || '',
+                ...(options.tagName && { tag_name: options.tagName }),
                 per_page: options.pageSize || this.pageSize,
                 page: options.page || 1,
             },

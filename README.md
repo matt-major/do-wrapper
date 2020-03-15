@@ -32,10 +32,19 @@ In your project, initialise a new instance of the Digital Ocean wrapper:
 ```js
 const DigitalOcean = require("do-wrapper").default;
 
-const instance = new DigitalOcean("{personal_access_token}");
+const instance = new DigitalOcean('{personal_access_token}');
 ```
 
-Once you've created this instance, you can use it to access the many groups of features provided by the wrapper. These are:
+Once you've created an instance, you can use it to access the many groups of features provided by the wrapper, like so:
+
+```js
+instance.account.get()
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
+```
+**Note:** you can view the data behind the error by accessing `err.response`, this is provided by the underlying request library
+
+The available features are:
 
 * `account`
 * `actions`

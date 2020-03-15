@@ -56,21 +56,11 @@ export default class RequestHelper {
 
         got(this.apiUrl + options.actionPath, requestOptions)
             .then((response: any) => {
-                callback(response.body);
+                callback(JSON.parse(response.body), null);
             })
             .catch((error: any) => {
-                callback(error);
+                callback(null, error);
             });
-    }
-
-    /**
-     * Validate the Response Status Code
-     * @param {number} statusCode - The Status Code
-     * @returns {boolean}
-     */
-    private isSuccessfulRequest(statusCode: number): boolean {
-        const statusCodePattern = /^[2][0-9][0-9]$/;
-        return statusCodePattern.test(`${statusCode}`);
     }
 
     /**
@@ -87,9 +77,9 @@ export default class RequestHelper {
 
         options.qs.page = 1;
 
-        this.submitRequest(options, (err: any, response: any, body: any) => {
+        this.submitRequest(options, (body: any, err: any) => {
             if (err) {
-                callback(err);
+                return callback(body, err);
             }
 
             total = body.meta.total;
@@ -97,18 +87,18 @@ export default class RequestHelper {
             required = Math.ceil(total / (options.qs.per_page || 25));
 
             if (items.length >= total) {
-                return callback(null, response, items);
+                return callback(items);
             } else {
-                this.getRemainingPages(options, 2, required, function (err: any, response: any, body: any) {
+                this.getRemainingPages(options, 2, required, (err: any, body: any) => {
                     if (err) {
-                        callback(err);
+                        return callback(body, err);
                     }
 
                     completed++;
                     items = items.concat(body[key]);
 
                     if (completed === required) {
-                        callback(null, response, items);
+                        return callback(items);
                     }
                 });
             }
@@ -135,21 +125,13 @@ export default class RequestHelper {
      * @returns {*}
      */
     private requestBuilder(options: any): any {
-        let requestOptions: any = {
+        return {
             method: options.method || HttpMethods.GET,
             headers: options.headers || this.headers,
             strictSSL: true,
-            qs: options.qs || {},
+            searchParams: options.qs || {},
             retry: 0,
+            ...(options.body && { json: options.body }),
         };
-
-        if (requestOptions.method != HttpMethods.GET) {
-            requestOptions = {
-                ...requestOptions,
-                json: options.body,
-            };
-        }
-
-        return requestOptions;
     }
 }

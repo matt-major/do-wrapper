@@ -58,20 +58,11 @@ var RequestHelper = /** @class */ (function () {
         var requestOptions = this.requestBuilder(options);
         got_1.default(this.apiUrl + options.actionPath, requestOptions)
             .then(function (response) {
-            callback(response.body);
+            callback(JSON.parse(response.body), null);
         })
             .catch(function (error) {
-            callback(error);
+            callback(null, error);
         });
-    };
-    /**
-     * Validate the Response Status Code
-     * @param {number} statusCode - The Status Code
-     * @returns {boolean}
-     */
-    RequestHelper.prototype.isSuccessfulRequest = function (statusCode) {
-        var statusCodePattern = /^[2][0-9][0-9]$/;
-        return statusCodePattern.test("" + statusCode);
     };
     /**
      * Get All Pages
@@ -83,25 +74,25 @@ var RequestHelper = /** @class */ (function () {
         var _this = this;
         var items = [], total = 0, required = 0, completed = 1;
         options.qs.page = 1;
-        this.submitRequest(options, function (err, response, body) {
+        this.submitRequest(options, function (body, err) {
             if (err) {
-                callback(err);
+                return callback(body, err);
             }
             total = body.meta.total;
             items = items.concat(body[key]);
             required = Math.ceil(total / (options.qs.per_page || 25));
             if (items.length >= total) {
-                return callback(null, response, items);
+                return callback(items);
             }
             else {
-                _this.getRemainingPages(options, 2, required, function (err, response, body) {
+                _this.getRemainingPages(options, 2, required, function (err, body) {
                     if (err) {
-                        callback(err);
+                        return callback(body, err);
                     }
                     completed++;
                     items = items.concat(body[key]);
                     if (completed === required) {
-                        callback(null, response, items);
+                        return callback(items);
                     }
                 });
             }
@@ -126,17 +117,7 @@ var RequestHelper = /** @class */ (function () {
      * @returns {*}
      */
     RequestHelper.prototype.requestBuilder = function (options) {
-        var requestOptions = {
-            method: options.method || common_1.HttpMethods.GET,
-            headers: options.headers || this.headers,
-            strictSSL: true,
-            qs: options.qs || {},
-            retry: 0,
-        };
-        if (requestOptions.method != common_1.HttpMethods.GET) {
-            requestOptions = __assign({}, requestOptions, { json: options.body });
-        }
-        return requestOptions;
+        return __assign({ method: options.method || common_1.HttpMethods.GET, headers: options.headers || this.headers, strictSSL: true, searchParams: options.qs || {}, retry: 0 }, (options.body && { json: options.body }));
     };
     return RequestHelper;
 }());
