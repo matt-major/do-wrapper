@@ -77,21 +77,24 @@ export default class RequestHelper {
 
         options.qs.page = 1;
 
+        // Override the per_page amount to avoid HTTP 429 TOO_MANY_REQUESTS
+        options.qs.per_page = 25;
+
         this.submitRequest(options, (body: any, err: any) => {
             if (err) {
-                return callback(body, err);
+                return callback(null, err);
             }
 
             total = body.meta.total;
             items = items.concat(body[key]);
-            required = Math.ceil(total / (options.qs.per_page || 25));
+            required = Math.ceil(total / options.qs.per_page);
 
             if (items.length >= total) {
                 return callback(items);
             } else {
-                this.getRemainingPages(options, 2, required, (err: any, body: any) => {
+                this.getRemainingPages(options, 2, required, (body: any, err: any) => {
                     if (err) {
-                        return callback(body, err);
+                        return callback(null, err);
                     }
 
                     completed++;

@@ -74,20 +74,22 @@ var RequestHelper = /** @class */ (function () {
         var _this = this;
         var items = [], total = 0, required = 0, completed = 1;
         options.qs.page = 1;
+        // Override the per_page amount to avoid HTTP 429 TOO_MANY_REQUESTS
+        options.qs.per_page = 25;
         this.submitRequest(options, function (body, err) {
             if (err) {
-                return callback(body, err);
+                return callback(null, err);
             }
             total = body.meta.total;
             items = items.concat(body[key]);
-            required = Math.ceil(total / (options.qs.per_page || 25));
+            required = Math.ceil(total / options.qs.per_page);
             if (items.length >= total) {
                 return callback(items);
             }
             else {
-                _this.getRemainingPages(options, 2, required, function (err, body) {
+                _this.getRemainingPages(options, 2, required, function (body, err) {
                     if (err) {
-                        return callback(body, err);
+                        return callback(null, err);
                     }
                     completed++;
                     items = items.concat(body[key]);
