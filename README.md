@@ -1,98 +1,77 @@
 # do-wrapper
 
-### Version 4 is coming!
-
-The v4 rewrite of this library is coming. Running `npm install do-wrapper` will now install this new version.
-
-If you are looking for the older v3 library, use `npm install do-wrapper@^3.25.4`.
-
-Please report any issues with the v4 rewrite via GitHub.
-
-### A Node.js wrapper for the Digital Ocean v2 API
+A Node.js wrapper for the Digital Ocean v2 API
 
 [![Build Status](https://travis-ci.org/matt-major/do-wrapper.svg?branch=master)](https://travis-ci.org/matt-major/do-wrapper)
 [![Dependencies](https://david-dm.org/matt-major/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Downloads](https://img.shields.io/npm/dm/do-wrapper.svg)](https://www.npmjs.com/package/do-wrapper)
 [![Known Vulnerabilities](https://snyk.io/test/github/matt-major/do-wrapper/badge.svg?targetFile=package.json)](https://snyk.io/test/github/matt-major/do-wrapper?targetFile=package.json)
 
-### Install
+# Notice - v4 Rewrite
 
-```do-wrapper``` is available on ```npm``` and as such, can be installed through ```npm``` with ease.
+This version is still under development. You're welcome - and encouraged - to try it out and report any issues via GitHub. This rewrite will require you to change any applications using the library as it is not backwards compatible. In due course this rewrite will replace the previous master branch.
 
-To install ```do-wrapper``` and add it to your ```package.json``` file, use the following command:
+## Install
 
-```sh
-$ npm install --save do-wrapper
-```
+`do-wrapper` is available on the `npm` repository and as such, can be installed with `npm`.
 
-### Documentation
-
-All methods are documented. You can generate the API docs using the following command.
-
-```sh
-$ npm run doc
-```
-
-You can then open `doc/index.html` to view the API documentation.
-
-Alternatively, you can view the generated markdown docs here:
-* [Digital Ocean](docs/do-wrapper.md)
-* [Request Helper](docs/request-helper.md)
-
-### Usage
-
-In order to use ```do-wrapper``` you will need to generate an API key on the DigitalOcean website. Once you have this, add the library to your project with the following command:
+To install `do-wrapper` and add it to your `package.json`, use the following command:
 
 ```sh
 $ npm install --save do-wrapper
 ```
 
-Once installed you need to instantiate a new copy of ```do-wrapper``` in your application, like so:
+## Usage
+
+In order to use the library, you'll first need to provision a `Personal Access Token` for your Digital Ocean account.
+
+Once you've got a `Personal Access Token`, make a note of this somewhere safe, as you won't be able to view it again.
+
+In your project, initialise a new instance of the Digital Ocean wrapper:
 
 ```js
-var DigitalOcean = require('do-wrapper').default,
-    api = new DigitalOcean('[api_key]', [page_size]);
-```
-*Note: replace [api_key] and [per_page_size] with your API key and desired page size.*
+const DigitalOcean = require("do-wrapper").default;
 
-You can now test that your API key is correct and that everything is working by checking for your account information:
+const instance = new DigitalOcean('{personal_access_token}');
+```
+
+Once you've created an instance, you can use it to access the many groups of features provided by the wrapper, like so:
+
 ```js
-api.account((err, res, body) => {
-  console.log(body);
-});
+instance.account.get()
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
 ```
+**Note:** you can view the data behind the error by accessing `err.response`, this is provided by the underlying request library
 
-And if you'd prefer to use promises, don't provide a callback:
-```js
-api.account().then((data) => {
-  console.log(data.body);
-});
-```
+The available features are:
 
-If you get back a response similar to the below, success!
+* `account`
+* `actions`
+* `cdn`
+* `certificates`
+* `databases`
+* `domains`
+* `droplets`
+* `firewalls`
+* `floatingIPs`
+* `images`
+* `keys`
+* `kubernetes`
+* `loadBalancers`
+* `projects`
+* `regions`
+* `reports`
+* `sizes`
+* `snapshots`
+* `tags`
+* `volumes`
 
-```json
-{
-  "account": {
-    "droplet_limit": 5,
-    "email": "do-wrapper@do-wrapper.com",
-    "uuid": "57e96b88ed1511e490ec1681e6b88ec1",
-    "email_verified": true
-  }
-}
-```
-
-*Note: I've replaced my actual information with some dummy values...*
-
-### Issues
-
-Please raise an issue on GitHub with as much information as possible and the steps to replicate (if possible).
-
-### License
+## License
 
 The MIT License (MIT)
 
-Copyright (c) 2019 Matt Major
+Copyright (c) 2020 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

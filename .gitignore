@@ -6,3 +6,5 @@ doc/
 out/
 .DS_Store
 output/
+src-old/
+test.js
