@@ -58,7 +58,7 @@ var RequestHelper = /** @class */ (function () {
         var requestOptions = this.requestBuilder(options);
         got_1.default(this.apiUrl + options.actionPath, requestOptions)
             .then(function (response) {
-            callback(JSON.parse(response.body), null);
+            callback(response.statusCode === 204 ? null : JSON.parse(response.body), null);
         })
             .catch(function (error) {
             callback(null, error);
