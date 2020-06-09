@@ -56,7 +56,7 @@ export default class RequestHelper {
 
         got(this.apiUrl + options.actionPath, requestOptions)
             .then((response: any) => {
-                callback(JSON.parse(response.body), null);
+                callback(response.statusCode === 204 ? null : JSON.parse(response.body), null);
             })
             .catch((error: any) => {
                 callback(null, error);
