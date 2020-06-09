@@ -28,16 +28,16 @@
     "es6"
   ],
   "dependencies": {
-    "got": "^10.6.0"
+    "got": "^10.7.0"
   },
   "devDependencies": {
-    "@types/request": "^2.48.4",
+    "@types/request": "^2.48.5",
     "chai": "4.2.0",
-    "handlebars": "^4.7.3",
-    "mocha": "^7.1.0",
+    "handlebars": "^4.7.6",
+    "mocha": "^7.2.0",
     "natives": "^1.1.6",
     "should": "13.2.3",
     "typedoc": "^0.16.11",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.5"
   }
 }

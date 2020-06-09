@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseModule = void 0;
 var BaseModule = /** @class */ (function () {
     function BaseModule(pageSize, requestHelper) {
         this.pageSize = pageSize;
