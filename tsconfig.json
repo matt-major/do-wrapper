@@ -5,10 +5,13 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
+    "declaration": true,
+    "declarationDir": "./dist",
     "esModuleInterop": true
   },
   "exclude": [
-    "src-old/"
+    "src-old/",
+    "dist"
   ],
   "typedocOptions": {
     "out": "docs",
