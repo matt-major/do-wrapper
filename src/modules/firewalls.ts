@@ -52,6 +52,16 @@ export default class Firewalls extends BaseModule {
     }
 
     /**
+    * Retrieve all firewalls
+    * @returns Promise
+    */
+    public getAll(): Promise<any> {
+        return this._execute({
+          actionPath: this.basePath
+        });
+    }
+
+    /**
      * Update a Firewall using its identifier
      * @param firewallId the identifier of the Firewall to update
      * @param options the Firewall details

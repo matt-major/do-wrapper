@@ -66,6 +66,15 @@ var Firewalls = /** @class */ (function (_super) {
         });
     };
     /**
+    * Retrieve all firewalls
+    * @returns Promise
+    */
+    Firewalls.prototype.getAll = function () {
+        return this._execute({
+            actionPath: this.basePath
+        });
+    };
+    /**
      * Update a Firewall using its identifier
      * @param firewallId the identifier of the Firewall to update
      * @param options the Firewall details
