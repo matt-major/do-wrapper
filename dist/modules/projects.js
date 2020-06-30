@@ -32,7 +32,7 @@ var Projects = /** @class */ (function (_super) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'projects';
         _this.baseOptions = {
-            actionPath: _this.basePath + "/",
+            actionPath: "" + _this.basePath,
         };
         return _this;
     }
