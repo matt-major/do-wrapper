@@ -27,8 +27,8 @@ In your project, initialise a new instance of the Digital Ocean wrapper:
 
 ```js
 const DigitalOcean = require("do-wrapper").default;
-// or typescript
-// import DigitalOcean from "do-wrapper";
+// oe
+import DigitalOcean from "do-wrapper";
 
 const instance = new DigitalOcean('{personal_access_token}');
 ```
