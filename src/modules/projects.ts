@@ -7,7 +7,7 @@ export default class Projects extends BaseModule {
     private basePath: string = 'projects';
 
     private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
+        actionPath: `${this.basePath}`,
     };
 
     constructor(pageSize: number, requestHelper: RequestHelper) {
