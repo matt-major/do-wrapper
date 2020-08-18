@@ -7,7 +7,7 @@ export default class Tags extends BaseModule {
     private basePath: string = 'tags';
 
     private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
+        actionPath: this.basePath,
     };
 
     constructor(pageSize: number, requestHelper: RequestHelper) {
