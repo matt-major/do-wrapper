@@ -32,7 +32,7 @@ var LoadBalancers = /** @class */ (function (_super) {
         var _this = _super.call(this, pageSize, requestHelper) || this;
         _this.basePath = 'load_balancers';
         _this.baseOptions = {
-            actionPath: _this.basePath + "/",
+            actionPath: _this.basePath,
         };
         return _this;
     }
