@@ -11,8 +11,7 @@
   "main": "./dist/do-wrapper.js",
   "types": "./dist/do-wrapper.d.ts",
   "scripts": {
-    "build": "tsc && cp -r src/types dist/",
-    "postinstall": "node scripts/postinstall.js"
+    "build": "tsc && cp -r src/types dist/"
   },
   "license": "MIT",
   "bugs": {
