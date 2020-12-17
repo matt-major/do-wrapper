@@ -4,37 +4,56 @@ const DigitalOcean = require('../dist/do-wrapper').default,
       should = require('chai').should();
 
 describe('do-wrapper', function () {
-  var api, testSize, testToken;
+  const testSize = 10;
+  const testToken = 'a-test-token';
 
-  testSize = 10;
-  testToken = 'a-test-token';
-
+  var api;
   beforeEach(function () {
     api = new DigitalOcean(testToken, testSize);
   });
 
   describe('On instantiation of a new DigitalOcean class', function () {
-    it('it should have the correct page size', function () {
-      api.perPage.should.equal(testSize);
+    it('should bind the correct modules', function () {
+      const expectedModules = [
+        'account',
+        'actions',
+        'cdn',
+        'certificates',
+        'databases',
+        'domains',
+        'droplets',
+        'firewalls',
+        'floatingIPs',
+        'keys',
+        'kubernetes',
+        'images',
+        'loadBalancers',
+        'projects',
+        'regions',
+        'reports',
+        'sizes',
+        'snapshots',
+        'tags',
+        'volumes'
+      ];
+
+      expectedModules.should.have.members(Object.keys(api));
     });
 
-    it('it should have a new RequestHelper class', function () {
-      should.exist(api.requestHelper);
-    });
-
-    describe('Request Helper Class', function () {
-      it('it should have the API url', function () {
-        var url = api.requestHelper.apiUrl;
-        (url).should.equal('https://api.digitalocean.com/v2/');
-      });
-
-      it('it should have the correct headers', function () {
-        var headers = api.requestHelper.headers;
-        headers.should.eql({
-          authorization: 'Bearer ' + testToken,
-          content_type: 'application/json'
+    describe('each module', function () {
+      it('should have the correct page size set', function () {
+        Object.keys(api).forEach((m) => {
+          const modulePageSize = api[m].pageSize;
+          modulePageSize.should.equal(testSize);
         });
       });
-    });
+  
+      it('should have a requestHelper injected', function () {
+        Object.keys(api).forEach((m) => {
+          const module = api[m];
+          module.should.have.property('requestHelper');
+        });
+      });
+    })
   });
 });

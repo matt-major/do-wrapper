@@ -11,7 +11,8 @@
   "main": "./dist/do-wrapper.js",
   "types": "./dist/do-wrapper.d.ts",
   "scripts": {
-    "build": "tsc && cp -r src/types dist/"
+    "build": "tsc && cp -r src/types dist/",
+    "test": "mocha"
   },
   "license": "MIT",
   "bugs": {
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@types/request": "^2.48.5",
-    "chai": "4.2.0",
+    "chai": "^4.2.0",
     "handlebars": "^4.7.6",
     "mocha": "^8.2.1",
     "natives": "^1.1.6",
