@@ -85,6 +85,8 @@
 				<p>Once you&#39;ve got a <code>Personal Access Token</code>, make a note of this somewhere safe, as you won&#39;t be able to view it again.</p>
 				<p>In your project, initialise a new instance of the Digital Ocean wrapper:</p>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> DigitalOcean = <span class="hljs-built_in">require</span>(<span class="hljs-string">"do-wrapper"</span>).default;
+<span class="hljs-comment">// oe</span>
+<span class="hljs-keyword">import</span> DigitalOcean <span class="hljs-keyword">from</span> <span class="hljs-string">"do-wrapper"</span>;
 
 <span class="hljs-keyword">const</span> instance = <span class="hljs-keyword">new</span> DigitalOcean(<span class="hljs-string">'{personal_access_token}'</span>);</code></pre>
 				<p>Once you&#39;ve created an instance, you can use it to access the many groups of features provided by the wrapper, like so:</p>
