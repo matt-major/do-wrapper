@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
 import { BaseModule } from "./base-module";
-import { VolumeCreationOptions } from "../types/volumes";
+import { VolumeCreationOptions, VolumeSnapshopCreationOptions } from "../types/volumes";
 import { HttpMethods } from "../common";
 
 export default class Volumes extends BaseModule {
@@ -108,6 +108,31 @@ export default class Volumes extends BaseModule {
             actionPath: `${this.basePath}/${encodeURIComponent(volumeId)}/actions`,
             method: HttpMethods.POST,
             body: action,
+        });
+    }
+
+    /**
+     * Get the snapshots for a specific Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @returns Promise
+     */
+    public getSnapshots(volumeId: string): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${volumeId}/snapshots`,
+        });
+    }
+
+    /**
+     * Create a new snapshot for a Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @param options the options to create the snapshot
+     * @returns Promise
+     */
+    public createSnapshot(volumeId: string, options: VolumeSnapshopCreationOptions): Promise<any> {
+        return this._execute({
+            actionPath: `${this.basePath}/${volumeId}/snapshots`,
+            method: HttpMethods.POST,
+            body: options,
         });
     }
 }
