@@ -112,6 +112,29 @@ var Volumes = /** @class */ (function (_super) {
             body: action,
         });
     };
+    /**
+     * Get the snapshots for a specific Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @returns Promise
+     */
+    Volumes.prototype.getSnapshots = function (volumeId) {
+        return this._execute({
+            actionPath: this.basePath + "/" + volumeId + "/snapshots",
+        });
+    };
+    /**
+     * Create a new snapshot for a Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @param options the options to create the snapshot
+     * @returns Promise
+     */
+    Volumes.prototype.createSnapshot = function (volumeId, options) {
+        return this._execute({
+            actionPath: this.basePath + "/" + volumeId + "/snapshots",
+            method: common_1.HttpMethods.POST,
+            body: options,
+        });
+    };
     return Volumes;
 }(base_module_1.BaseModule));
 exports.default = Volumes;

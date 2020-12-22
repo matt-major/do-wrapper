@@ -1,6 +1,6 @@
 import RequestHelper from "../request-helper";
 import { BaseModule } from "./base-module";
-import { VolumeCreationOptions } from "../types/volumes";
+import { VolumeCreationOptions, VolumeSnapshopCreationOptions } from "../types/volumes";
 export default class Volumes extends BaseModule {
     private basePath;
     private baseOptions;
@@ -50,4 +50,17 @@ export default class Volumes extends BaseModule {
      * @returns Promise
      */
     requestAction(volumeId: string, action: any): Promise<any>;
+    /**
+     * Get the snapshots for a specific Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @returns Promise
+     */
+    getSnapshots(volumeId: string): Promise<any>;
+    /**
+     * Create a new snapshot for a Block Storage Volume
+     * @param volumeId the identifier of the Block Storage Volume
+     * @param options the options to create the snapshot
+     * @returns Promise
+     */
+    createSnapshot(volumeId: string, options: VolumeSnapshopCreationOptions): Promise<any>;
 }

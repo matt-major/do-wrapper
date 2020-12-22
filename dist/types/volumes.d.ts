@@ -4,3 +4,8 @@ export interface VolumeCreationOptions {
     description: string;
     region: string;
 }
+
+export interface VolumeSnapshopCreationOptions {
+    name: string;
+    tags?: string[];
+}
