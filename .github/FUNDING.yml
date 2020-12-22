@@ -1,1 +1,2 @@
-custom: ["http://paypal.me/mattmajor14"]
+custom:
+  ["http://paypal.me/mattmajor14", https://www.buymeacoffee.com/mattmajordev]
