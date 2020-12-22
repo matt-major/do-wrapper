@@ -1,3 +1,7 @@
+**[do-wrapper](README.md)**
+
+> [Globals](globals.md)
+
 # do-wrapper
 
 A Node.js wrapper for the Digital Ocean v2 API
@@ -42,7 +46,7 @@ instance.account.get()
 ```
 **Note:** you can view the data behind the error by accessing `err.response`, this is provided by the underlying request library
 
-You can view the [full docs here](docs/globals.md), but as a high level all API methods for the following features are believed to be in place:
+The available features are:
 
 * `account`
 * `actions`

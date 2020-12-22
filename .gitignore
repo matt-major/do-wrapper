@@ -17,7 +17,6 @@ out/
 config.gypi
 CVS
 npm-debug.log
-docs/
 output/
 src-old/
 test.js
