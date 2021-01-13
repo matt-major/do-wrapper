@@ -7,7 +7,7 @@ export default class LoadBalancers extends BaseModule {
     private basePath: string = 'load_balancers';
 
     private baseOptions: any = {
-        actionPath: `${this.basePath}/`,
+        actionPath: this.basePath,
     };
 
     constructor(pageSize: number, requestHelper: RequestHelper) {
