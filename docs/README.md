@@ -73,7 +73,7 @@ The available features are:
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Matt Major
+Copyright (c) 2021 Matt Major
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
