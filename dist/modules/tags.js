@@ -94,7 +94,7 @@ var Tags = /** @class */ (function (_super) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(tagName) + "/resources",
             method: common_1.HttpMethods.POST,
-            body: resources,
+            body: { resources: resources },
         });
     };
     /**
@@ -107,7 +107,7 @@ var Tags = /** @class */ (function (_super) {
         return this._execute({
             actionPath: this.basePath + "/" + encodeURIComponent(tagName) + "/resources",
             method: common_1.HttpMethods.DELETE,
-            body: resources,
+            body: { resources: resources },
         });
     };
     return Tags;

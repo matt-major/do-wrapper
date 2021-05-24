@@ -83,7 +83,7 @@ export default class Tags extends BaseModule {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(tagName)}/resources`,
             method: HttpMethods.POST,
-            body: resources,
+            body: { resources },
         });
     }
 
@@ -97,7 +97,7 @@ export default class Tags extends BaseModule {
         return this._execute({
             actionPath: `${this.basePath}/${encodeURIComponent(tagName)}/resources`,
             method: HttpMethods.DELETE,
-            body: resources,
+            body: { resources },
         });
     }
 }
