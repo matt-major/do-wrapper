@@ -80,11 +80,11 @@ export default class Domains extends BaseModule {
      * @param [pageSize] the number of Domains to return per page (optional)
      * @returns Promise
      */
-    public getAllRecords(domainName: string, tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
+    public getAllRecords(domainName: string, type?: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
         const requestOptions = this._getBasePaginatedRequestOptions({
             actionPath: `${this.basePath}/${encodeURIComponent(domainName)}/records`,
             key: 'domain_records',
-            tagName: tagName,
+            type,
             pageSize: pageSize,
             page: page,
             includeAll: includeAll,
