@@ -1,6 +1,6 @@
 {
   "name": "do-wrapper",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "Node.js Wrapper for Digital Ocean API v2",
   "author": "Matt Major",
   "homepage": "https://github.com/matt-major/do-wrapper",
