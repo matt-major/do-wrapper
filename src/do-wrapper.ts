@@ -21,6 +21,10 @@ import Snapshots from './modules/snapshots';
 import Tags from './modules/tags';
 import Volumes from './modules/volumes';
 
+interface Config {
+    apiUrl: string;
+}
+
 export default class DigitalOcean {
     public account: Account;
     public actions: Actions;
@@ -43,8 +47,10 @@ export default class DigitalOcean {
     public tags: Tags;
     public volumes: Volumes;
 
-    constructor(token: string, pageSize: number = 10) {
-        const requestHelper = new RequestHelper(token);
+    constructor(token: string, pageSize: number = 10, config?: Config) {
+        const requestHelper = new RequestHelper(token, {
+            apiUrl: config?.apiUrl || ""
+        });
         this.account = new Account(pageSize, requestHelper);
         this.actions = new Actions(pageSize, requestHelper);
         this.cdn = new CDN(pageSize, requestHelper);
