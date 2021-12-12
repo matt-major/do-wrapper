@@ -5,6 +5,10 @@ interface Headers {
     [key: string]: any;
 }
 
+interface Config {
+    apiUrl: string;
+}
+
 export default class RequestHelper {
     private headers: Headers;
     private apiUrl: string;
@@ -12,15 +16,21 @@ export default class RequestHelper {
     /**
      * Request Helper
      * @param {string} token - Your Private API Token
+     * @param {Config} config - Configuration for overrides
      * @constructor
      */
-    constructor(token: string) {
+    constructor(token: string, config: Config) {
         this.headers = {
             'authorization': `Bearer ${token}`,
             'content_type': 'application/json'
         };
 
-        this.apiUrl = 'https://api.digitalocean.com/v2/';
+        let url = 'https://api.digitalocean.com/v2/';
+        if (config.apiUrl.trim().length > 0) {
+            url = config.apiUrl;
+        }
+
+        this.apiUrl = url;
     }
 
     /**
